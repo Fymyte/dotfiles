@@ -1,0 +1,221 @@
+/*
+ * Author: Pierrick Guillaume
+ * Github: @Fymyte
+ */
+
+configuration {
+  icon-theme:          "Oranchelo";
+  fixed-num-lines:     true;
+  show-icons:          true;
+  click-to-exit:       true;
+  sidebar-mode:        false;
+  scroll-method:       0;
+  drun-display-format: "{name}";
+  run-display-format:  "{name}";
+  drun-url-launcher:   "xdg-open {cmd}";
+
+  // Select entry with a single mouse click
+  hover-select:        true;
+  me-select-entry:     "";
+  me-accept-entry:     "MousePrimary";
+
+  // Display options
+  display-drun:        "  Apps ";
+  display-run:         "  Run ";
+  display-window:      " 﩯 Window ";
+  display-network:     "  Network ";
+  display-emoji:       " 😀 Emoji ";
+  display-keys:        "  Keys ";
+  modi:                [run,drun];
+}
+
+* {
+  font:                "JetBrains Mono Bold 10";
+  font-emphasis:       "JetBrains Mono ExtraBold Italic 14";
+  background-color:    @background;
+  text-color:          @foreground;
+  border-radius:       10px;
+  border-width:        4px;
+}
+
+window {
+  border:              0px;
+  border-color:        @accent;
+  padding:             20px;
+  location:            center;
+  anchor:              center;
+  width:               50%;
+  // height:              50%;
+  max-height:          60%;
+}
+
+mainbox {
+  border:              0px;
+  border-color:        @accent;
+  padding:             0px;
+}
+
+inputbar {
+  spacing:             0;
+}
+
+prompt {
+  text-color:          @background;
+  background-color:    @accent;
+  padding:             0px 20px;
+  horizontal-align:    0.5;
+  vertical-align:      0.5;
+}
+
+textbox-prompt-colon {
+  expand:           false;
+  vertical-align:   0.5;
+  horizontal-align: 0.5;
+  str:              "   ";
+  text-color:       inherit;
+}
+
+num-filtered-rows {
+  expand:     false;
+  text-color: inherit;
+  vertical-align: 0.5;
+  horizontal-align: 0.5;
+}
+
+num-rows {
+  expand:     false;
+  text-color: inherit;
+  vertical-align: 0.5;
+  horizontal-align: 0.5;
+}
+
+textbox-num-sep {
+  expand:     false;
+  str:        "/";
+  text-color: inherit;
+  vertical-align: 0.5;
+  horizontal-align: 0.5;
+}
+
+entry {
+  spacing:             0;
+  text-color:          @accent;
+  padding:             15px 20px;
+  font:                @font-emphasis;
+  background-color:    @overlay;
+  vertical-align:      0.5;
+  cursor:              text;
+  placeholder:         "";
+}
+
+case-indicator {
+  spacing:             0;
+  horizontal-align:    0.5;
+  vertical-align:      0.5;
+}
+
+listview {
+  fixed-height:        0;
+  border:              0px;
+  border-color:        @accent;
+  spacing:             5px;
+  scrollbar:           false;
+  padding:             25px 5px 0px 5px;
+  dynamic:             true;
+  lines:               10;
+}
+
+sidebar {
+  border:              0;
+  border-color:        @accent;
+}
+
+element-text, element-icon {
+  background-color:    transparent;
+  text-color:          inherit;
+  cursor:              inherit;
+  highlight:           inherit;
+}
+
+element {
+  background-color:    @background;
+  text-color:          @foreground;
+  border:              @border-width;
+  border-color:        transparent;
+  padding:             15px;
+}
+
+element normal {
+  background-color:    @background;
+  text-color:          @foreground;
+}
+element normal.urgent {
+  text-color:          @red;
+}
+element normal.active {
+  border-color:        @green;
+}
+element selected {
+  background-color:    @surface;
+  text-color:          @foreground;
+}
+element selected.normal {
+  background-color:    @surface;
+  text-color:          @foreground;
+}
+element selected.urgent {
+  background-color:    @background;
+  border-color:        @red;
+  text-color:          @red;
+}
+element selected.active {
+  background-color:    @background;
+  text-color:          @accent;
+}
+element alternate{
+  background-color:    @background;
+}
+element alternate.normal {
+  background-color:    @background;
+}
+element alternate.urgent {
+  background-color:    @background;
+}
+element alternate.active {
+  background-color:    @background;
+}
+
+button {
+  horizontal-align:    0.5;
+  vertical-align:      0.5;
+  background-color:    @accent;
+  margin:              5px;
+  padding:             15px;
+  text-color:          @background;
+  border:              0px;
+  border-radius:       @border-radius;
+  border-color:        @accent;
+}
+
+button selected {
+  background-color:    @background;
+  text-color:          @accent;
+  border:              @border-width;
+  border-color:        @accent;
+}
+
+scrollbar {
+  width:               4px;
+  border:              0px;
+  handle-color:        @foreground;
+  handle-width:        8px;
+  padding:             0;
+}
+
+#message .textbox {
+  // border:              @border-width;
+  // border-color:        @accent;
+  // padding:             1px;
+  text-color:          @red;
+}
+

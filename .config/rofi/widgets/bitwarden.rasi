@@ -1,0 +1,22 @@
+/*
+ * Author: Pierrick Guillaume
+ * Github: @Fymyte
+ */
+
+configuration {
+  fixed-num-lines:     false;
+  terminal: "kitty";
+  sidebar-mode: false;
+}
+
+@import "shared/colors.rasi"
+@import "shared/config.rasi"
+
+// window {
+//   height: 50%;
+// }
+
+inputbar {
+  padding:  0px 10px;
+  children: [ prompt,textbox-prompt-colon,entry ];
+}

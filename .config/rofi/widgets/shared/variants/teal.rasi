@@ -1,0 +1,9 @@
+/*
+ * Author: Pierrick Guillaume
+ * Github: @Fymyte
+ */
+
+* {
+  accent: @Teal;
+}
+
