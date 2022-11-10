@@ -1,1 +1,1 @@
-/home/pierrick/.local/share/themes/
+{{ .chezmoi.homeDir}}/.local/share/themes/
