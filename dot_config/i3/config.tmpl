@@ -303,6 +303,8 @@ bindsym $mod+d exec ~/.config/rofi/bin/launcher.sh
 bindsym $mod+semicolon exec rofi -modi emoji -show emoji -theme ~/.config/rofi/widgets/emoji.rasi
 bindsym $mod+Ctrl+b exec "bwmenu -p mainbox{children:[inputbar]\;} -p window{height:inherit\;} -- --normal-window -theme ~/.config/rofi/widgets/bitwarden.rasi"
 bindsym $mod+Ctrl+f exec "bwmenu -- -theme ~/.config/rofi/widgets/bitwarden.rasi"
+bindsym $mod+Shift+d exec rofi -modi power-menu:rofi-power-menu -show power-menu -theme ~/.config/rofi/widgets/powermenu.rasi
+
 
 # Composer start/stop
 bindsym $mod+t exec --no-startup-id pkill picom
