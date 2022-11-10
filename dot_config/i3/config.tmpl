@@ -1,5 +1,5 @@
+# vim:ft=i3config
 # i3 config file (v4)
-# Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 #############################
 ### general constant def: ###
@@ -9,9 +9,11 @@
 set $mod Mod4
 set $alt Mod1
 
+{{- if eq .chezmoi.hostname "bigarch" }}
 # Set monitors (xrandr --current to list them)
 set $monitor1 "DP-4"
 set $monitor2 "DP-0"
+{{- end }}
 
 set $terminal i3-sensible-terminal
 
@@ -39,9 +41,8 @@ bindsym $mod+u border none
 bindsym $mod+y border pixel 5
 bindsym $mod+n border normal
 
-
 # Set inner/outer gaps
-gaps inner 14
+gaps inner 10
 gaps outer -2
 
 # Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
