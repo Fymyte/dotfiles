@@ -1,0 +1,25 @@
+
+/*
+ * Author: Pierrick Guillaume
+ * Github: @Fymyte
+ */
+
+configuration {
+  terminal: "kitty";
+}
+
+@import "shared/colors.rasi"
+@import "shared/config.rasi"
+
+window {
+  width:    500px;
+}
+
+inputbar {
+  padding:  0px 10px;
+  children: [ prompt,textbox-prompt-colon,entry ];
+}
+
+listview {
+  lines:   6;
+}

@@ -1,0 +1,15 @@
+@import "palettes/frappe.rasi"
+@import "variants/teal.rasi"
+
+* {
+  background:  @Surface0;
+  border:      @Rosewater;
+  separator:   @Crust;
+  overlay:     @Overlay0;
+  surface:     @Surface1;
+  foreground:  @Text;
+  red:         @Red;
+  green:       @Green;
+  yellow:      @Yellow;
+  teal:        @Teal;
+}

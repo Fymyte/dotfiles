@@ -1,0 +1,10 @@
+/*
+ * Author: Pierrick Guillaume
+ * Github: @Fymyte
+ */
+
+* {
+  accent: @Sky;
+}
+
+

@@ -1,0 +1,42 @@
+/*
+ * Author: Pierrick Guillaume
+ * Github: @Fymyte
+ */
+
+@import "shared/colors.rasi"
+@import "shared/config.rasi"
+
+configuration {
+  modi:             [drun];
+  terminal:         "kitty";
+}
+
+inputbar {
+  children:         [ prompt,textbox-prompt-colon,entry ];
+}
+
+listview {
+  lines:            3;
+  columns:          5;
+}
+
+element-text {
+  expand:              true;
+  horizontal-align:    0.5;
+  vertical-align:      0.5;
+}
+
+element-icon {
+  size:                64px;
+  horizontal-align:    0.5;
+  vertical-align:      0.5;
+}
+
+element {
+  orientation:         vertical;
+}
+
+entry {
+  placeholder:      "Search";
+  placeholder-color:@surface;
+}

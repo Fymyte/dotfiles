@@ -1,0 +1,16 @@
+/*
+ * Author: Pierrick Guillaume
+ * Github: @Fymyte
+ */
+
+configuration {
+  terminal: "kitty";
+}
+
+@import "widgets/shared/colors.rasi"
+@import "widgets/shared/config.rasi"
+
+inputbar {
+  padding:  0px 10px;
+  children: [ prompt,textbox-prompt-colon,entry, textbox-prompt-colon,num-filtered-rows,textbox-num-sep,num-rows ];
+}
