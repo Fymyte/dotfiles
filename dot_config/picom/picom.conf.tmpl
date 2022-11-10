@@ -261,8 +261,11 @@ blur-background-exclude = [
 # Specify the backend to use: `xrender`, `glx`, or `xr_glx_hybrid`.
 # `xrender` is the default one.
 #
+{{ if eq .chezmoi.hostname "bigarch" }}
 backend = "glx"
-#backend = "xrender";
+{{ else }}
+backend = "xrender"
+{{ end }}
 
 # Enable/disable VSync.
 # vsync = false
