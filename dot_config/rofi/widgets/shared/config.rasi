@@ -45,6 +45,7 @@ window {
   location:            center;
   anchor:              center;
   width:               960px;
+  max-width:           50%;
   // height:              50%;
   max-height:          60%;
 }
