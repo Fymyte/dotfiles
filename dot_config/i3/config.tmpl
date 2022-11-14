@@ -29,6 +29,8 @@ set $theme forest
 ### border and gaps settings: ###
 ##########################################
 
+{{ if and (ne .chezmoi.hostname "pandora") (ne .chezmoi.hostname "minibian") }}
+
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
 default_border none
 default_floating_border none
@@ -40,8 +42,6 @@ hide_edge_borders none
 bindsym $mod+u border none
 bindsym $mod+y border pixel 5
 bindsym $mod+n border normal
-
-{{ if and (ne .chezmoi.hostname "pandora") (ne .chezmoi.hostname "minibian") }}
 
 # Set inner/outer gaps
 gaps inner 10
@@ -95,6 +95,21 @@ mode "$mode_gaps_outer" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
+
+{{- else }}
+
+# Configure border style <normal|1pixel|pixel xx|none|pixel>
+default_border pixel 5
+default_floating_border pixel 1
+
+# Hide borders
+hide_edge_borders none
+
+# change borders
+bindsym $mod+u border pixel 5
+bindsym $mod+y border pixel 5
+bindsym $mod+n border normal
+
 {{- end }}
 
 
