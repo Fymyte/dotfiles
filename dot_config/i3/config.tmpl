@@ -41,6 +41,8 @@ bindsym $mod+u border none
 bindsym $mod+y border pixel 5
 bindsym $mod+n border normal
 
+{{ if and (ne .chezmoi.hostname "pandora") (ne .chezmoi.hostname "minibian") }}
+
 # Set inner/outer gaps
 gaps inner 10
 gaps outer -2
@@ -93,6 +95,7 @@ mode "$mode_gaps_outer" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
+{{- end }}
 
 
 ###################################
@@ -333,7 +336,7 @@ exec_always --no-startup-id ~/.config/polybar/launch.sh --$theme --cpu
 # Restore screen layout and background
 exec_always --no-startup-id nitrogen --restore # ; sleep 1; picom -b
 
-# Automaticaly lock the screen after x min of inactivity
+# Automaticaly lock the screen after x min of inactivitY
 # exec --no-startup-id xautolock -time $lock-screen-timeout -locker "i3exit lock"
 
 exec_always --no-startup-id picom
