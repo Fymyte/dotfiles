@@ -3,6 +3,7 @@
 SETUVAR --export CARGO_HOME:/home/fymyte/\x2econfig/cargo
 SETUVAR CARGO_NET_GIT_FETCH_WITH_CLI:1
 SETUVAR __fish_initialized:3400
+SETUVAR _fish_abbr_cm:chezmoi
 SETUVAR _fish_abbr_ls:exa\x20\x2dlha
 SETUVAR _fish_abbr_vim:nvim
 SETUVAR fish_color_autosuggestion:555\x1ebrblack
