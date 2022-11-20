@@ -1,3 +1,16 @@
 [".config/nvim"]
   type = "git-repo"
   url = "https://github.com/Fymyte/nvim-config.git"
+
+[".config/qt5ct/colors/Catppuccin-Frappe.conf"]
+  type = "file"
+  url = "https://raw.githubusercontent.com/catppuccin/qt5ct/main/Catppuccin-Frappe.conf"
+  refreshPeriod = "168h"
+
+[".config/polybar/catppuccin/colors/"]
+  type = "archive"
+  url = "https://codeload.github.com/catppuccin/polybar/zip/refs/heads/main"
+  extract = true
+  stripComponents = 2
+  include = ["polybar-main/themes/**"]
+
