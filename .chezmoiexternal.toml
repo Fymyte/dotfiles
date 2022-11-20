@@ -7,12 +7,12 @@
   url = "https://raw.githubusercontent.com/catppuccin/qt5ct/main/Catppuccin-Frappe.conf"
   refreshPeriod = "168h"
 
-# [".config/polybar/catppuccin/colors/"]
-#   type = "archive"
-#   url = "https://codeload.github.com/catppuccin/polybar/zip/refs/heads/main"
-#   extract = true
-#   stripComponents = 2
-#   include = ["polybar-main/themes/**"]
+[".config/polybar/catppuccin/colors/"]
+  type = "archive"
+  url = "https://codeload.github.com/catppuccin/polybar/zip/refs/heads/main"
+  extract = true
+  stripComponents = 2
+  include = ["polybar-main/themes/**"]
 
 [".local/share/icons/"]
   type = "archive"
