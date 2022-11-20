@@ -14,3 +14,10 @@
   stripComponents = 2
   include = ["polybar-main/themes/**"]
 
+[".local/share/icons/"]
+  type = "archive"
+  url = "https://raw.githubusercontent.com/catppuccin/cursors/main/cursors/Catppuccin-Frappe-Teal-Cursors.zip"
+  extract = true
+  # stripComponents = 
+  # include = ["/**"]
+
