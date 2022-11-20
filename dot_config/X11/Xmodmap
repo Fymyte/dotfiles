@@ -1,0 +1,5 @@
+! -*- coding: utf-8 -*-
+!
+! remap capslock to escape
+clear Lock
+keycode 0x42 = Escape
