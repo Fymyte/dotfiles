@@ -18,6 +18,8 @@
   type = "archive"
   url = "https://raw.githubusercontent.com/catppuccin/cursors/main/cursors/Catppuccin-Frappe-Teal-Cursors.zip"
   extract = true
-  # stripComponents = 
-  # include = ["/**"]
 
+[".tmp/Colloid-theme"]
+  type = "git-repo"
+  url = "https://github.com/vinceliuice/Colloid-icon-theme"
+  refreshPeriod = "168h"
