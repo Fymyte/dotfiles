@@ -29,7 +29,7 @@ set $theme catppuccin
 ### border and gaps settings: ###
 ##########################################
 
-{{ if and (ne .chezmoi.hostname "pandora") (ne .chezmoi.hostname "minibian") }}
+{{ if (ne .chezmoi.hostname "minibian") }}
 
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
 default_border none
