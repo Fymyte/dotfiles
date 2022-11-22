@@ -67,8 +67,8 @@ height = 34
 ; the percentage can optionally be extended with a pixel offset like so:
 ; 50%:-10, this will result in an offset in the x or y direction 
 ; of 50% minus 10 pixels
-offset-x = 100%
-offset-y = 10%
+offset-x = 0%
+offset-y = 0%
 
 ; Background ARGB color (e.g. #f00, #ff992a, #ddff1023)
 background = ${colors.base}
@@ -148,7 +148,11 @@ font-2 = "feather:size=12;3"
 modules-left = launcher sep workspaces sep cpu memory filesystem
 modules-center = date
 ;modules-center = mpd sep date
+{{if or (eq .chezmoi.hostname "bigarch") (eq .chezmoi.hostname "pandora")}}
+modules-right = network sep volume sep sysmenu
+{{else}}
 modules-right = battery network sep volume brightness sep sysmenu
+{{end}}
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
@@ -299,3 +303,4 @@ compositing-border = over
 pseudo-transparency = false
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+;; vim:ft=dosini
