@@ -760,7 +760,11 @@ toggle-off-foreground = ${colors.red}
 ; Normal Module
 [module/network]
 type = internal/network
+{{if eq .chezmoi.hostname "bigarch"}}
 interface = eno1
+{{ else if eq .chezmoi.hostname "miniarch" }}
+interface = wlo1
+{{endif}}
 
 ; Seconds to sleep between updates
 ; Default: 1
