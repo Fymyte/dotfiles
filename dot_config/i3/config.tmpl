@@ -358,7 +358,7 @@ exec_always --no-startup-id nitrogen --restore #
 # Automaticaly lock the screen after x min of inactivitY
 # exec --no-startup-id xautolock -time $lock-screen-timeout -locker "i3exit lock"
 
-exec --no-startup-id picom
+exec_always --no-startup-id pkill picom; picom -b
 
 
 ############################
