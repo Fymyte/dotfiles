@@ -764,7 +764,7 @@ type = internal/network
 interface = eno1
 {{ else if eq .chezmoi.hostname "miniarch" }}
 interface = wlo1
-{{endif}}
+{{end}}
 
 ; Seconds to sleep between updates
 ; Default: 1
