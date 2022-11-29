@@ -345,9 +345,9 @@ bindsym $alt+Ctrl+t exec $terminal -e btop
 
 # TODO: move those in dedicated script
 # Start authentification agent
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-
 exec --no-startup-id dbus-update-activation-environment DISPLAY XAUTHORITY WAYLAND_DISPLAY
+
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
 # Start polybar with proper theme
 exec_always --no-startup-id ~/.config/polybar/launch.sh --$theme --cpu
