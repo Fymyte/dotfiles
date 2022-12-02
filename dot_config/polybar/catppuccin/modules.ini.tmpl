@@ -749,16 +749,12 @@ toggle-off-foreground = ${colors.red}
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
 ; If you use both a wired and a wireless network, just add 2 module definitions. For example
-;;[module/wired-network]
-;;type = internal/network
-;;interface = eno1
-;;
-;;[module/wireless-network]
-;;type = internal/network
-;;interface = wlp5s0
+[module/wireless-network]
+type = internal/network
+interface = wlan0
 
 ; Normal Module
-[module/network]
+[module/wired-network]
 type = internal/network
 {{if eq .chezmoi.hostname "bigarch"}}
 interface = eno1
