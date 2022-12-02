@@ -23,3 +23,8 @@
   type = "git-repo"
   url = "https://github.com/vinceliuice/Colloid-icon-theme"
   refreshPeriod = "168h"
+
+[".local/share/fonts/"]
+  type = "archive"
+  url = "https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.zip"
+  extract = true
