@@ -349,9 +349,6 @@ exec --no-startup-id dbus-update-activation-environment DISPLAY XAUTHORITY WAYLA
 
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
-# Start polybar with proper theme
-exec_always --no-startup-id ~/.config/polybar/launch.sh --$theme --cpu
-
 # Restore screen layout and background
 exec_always --no-startup-id nitrogen --restore #
 
@@ -418,3 +415,40 @@ client.urgent           #e78284 #FDF6E3 #1ABC9C #268BD2
 client.placeholder      #000000 #0c0c0c #ffffff #000000
 
 client.background       #303446
+
+############
+### Bar: ###
+############
+
+{{ if eq .chezmoi.hostname "pandora" }}
+# Start i3bar to display a workspace bar (plus the system information i3status if available)
+bar {
+i3bar_command i3bar
+# status_command exec ~/.config/i3/net-speed.sh
+status_command i3status
+position top
+
+## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
+#   tray_output primary
+	tray_output primary
+
+strip_workspace_numbers yes
+
+    colors {
+        background #232323
+        statusline #b2b2ae
+        separator  #ffb700
+
+#                           border  backgr. text
+        focused_workspace  #F9FAF9 #ffb700 #292F34
+        active_workspace   #595B5B #ffb700 #FDF6E3
+        inactive_workspace #595B5B #222D31 #EEE8D5
+        binding_mode       #16a085 #2C2C2C #F9FAF9
+        urgent_workspace   #16a085 #FDF6E3 #E5201D
+    }
+}
+{{- else }}
+# Start polybar with proper theme
+exec_always --no-startup-id ~/.config/polybar/launch.sh --$theme --cpu
+{{- end }}
+
