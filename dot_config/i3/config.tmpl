@@ -422,7 +422,7 @@ client.background       #303446
 ### Bar: ###
 ############
 
-{{ if eq .chezmoi.hostname "pandora" }}
+{{ if or (eq .chezmoi.hostname "pandora") (eq .chezmoi.hostname "minibian") }}
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 bar {
 i3bar_command i3bar
