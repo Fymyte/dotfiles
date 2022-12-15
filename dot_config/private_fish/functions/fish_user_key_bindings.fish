@@ -7,3 +7,5 @@ function fish_user_key_bindings
 
   bind \ca end-of-line
 end
+
+fzf_key_bindings
