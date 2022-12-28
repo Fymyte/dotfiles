@@ -197,7 +197,11 @@ tray-maxsize = 16
 tray-background = ${colors.base}
 
 ; Tray offset defined as pixel value (e.g. 35) or percentage (e.g. 50%)
+{{ if eq .chezmoi.hostname "miniarch" }}
+tray-offset-x = 300
+{{ else if eq .chezmoi.hostname "bigarch" }}
 tray-offset-x = 1200
+{{ end }}
 tray-offset-y = 0
 
 ; Pad the sides of each tray icon
