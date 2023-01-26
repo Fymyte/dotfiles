@@ -4,10 +4,10 @@ CLONED_DIR="$HOME/.tmp/Colloid-theme/"
 
 install() {
   if [ -d "$1" ]; then
-    DIR=$(pwd)
-    cd "$1"
-    ./install.sh
-    cd "$DIR"
+    (
+      cd "$1" || return
+      ./install.sh
+    )
     rm -rf "$1"
   fi
 }
