@@ -33,16 +33,14 @@ set $theme catppuccin
 
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
 default_border none
-default_floating_border none
+default_floating_border pixel 3
 
 # Hide borders
 hide_edge_borders none
 
-border_radius 5
-
 # change borders
 bindsym $mod+u border none
-bindsym $mod+y border pixel 5
+bindsym $mod+y border pixel 3
 bindsym $mod+n border normal
 
 # Set inner/outer gaps
@@ -101,15 +99,15 @@ mode "$mode_gaps_outer" {
 {{- else }}
 
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
-default_border pixel 5
-default_floating_border pixel 1
+default_border pixel 3
+default_floating_border pixel 3
 
 # Hide borders
 hide_edge_borders none
 
 # change borders
-bindsym $mod+u border pixel 5
-bindsym $mod+y border pixel 5
+bindsym $mod+u border none
+bindsym $mod+y border pixel 3
 bindsym $mod+n border normal
 
 {{- end }}
@@ -411,8 +409,8 @@ mode "resize" {
 
 # Theme colors
 # class                   border  backgr. text    indic.   child_border
-client.focused          #303446 #303446 #c6d0f5 #FDF6E3
-client.focused_inactive #2F3D44 #2F3D44 #1ABC9C #454948
+client.focused          #BABBF1 #BABBF1 #c6d0f5 #FDF6E3
+client.focused_inactive #737994 #737994 #1ABC9C #454948
 client.unfocused        #303446 #2F3D44 #1ABC9C #454948
 client.urgent           #e78284 #FDF6E3 #1ABC9C #268BD2
 client.placeholder      #000000 #0c0c0c #ffffff #000000
