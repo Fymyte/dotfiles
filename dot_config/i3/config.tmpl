@@ -31,10 +31,6 @@ set $theme catppuccin
 
 {{ if (ne .chezmoi.hostname "minibian") }}
 
-# Configure border style <normal|1pixel|pixel xx|none|pixel>
-default_border none
-default_floating_border pixel 3
-
 # Hide borders
 hide_edge_borders none
 
@@ -44,10 +40,18 @@ bindsym $mod+y border pixel 3
 bindsym $mod+n border normal
 
 {{ if (ne .chezmoi.hostname "pandora") }}
+# Configure border style <normal|1pixel|pixel xx|none|pixel>
+default_border none
+default_floating_border pixel 3
+
 # Dont set gaps on work computers
 # Set inner/outer gaps
 gaps inner 5
 gaps outer 0
+{{ else }}
+# Configure border style <normal|1pixel|pixel xx|none|pixel>
+default_border pixel 3
+default_floating_border pixel 3
 {{ end }}
 
 # Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
