@@ -43,9 +43,12 @@ bindsym $mod+u border none
 bindsym $mod+y border pixel 3
 bindsym $mod+n border normal
 
+{{ if (ne .chezmoi.hostname "pandora") }}
+# Dont set gaps on work computers
 # Set inner/outer gaps
 gaps inner 5
 gaps outer 0
+{{ end }}
 
 # Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
 # gaps inner|outer current|all set|plus|minus <px>
