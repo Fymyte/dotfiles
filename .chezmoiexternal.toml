@@ -4,7 +4,7 @@
 
 [".config/qt5ct/colors/Catppuccin-Frappe.conf"]
   type = "file"
-  url = "https://raw.githubusercontent.com/catppuccin/qt5ct/main/Catppuccin-Frappe.conf"
+  url = "https://raw.githubusercontent.com/catppuccin/qt5ct/main/themes/Catppuccin-Frappe.conf"
   refreshPeriod = "168h"
 
 [".config/polybar/catppuccin/colors/"]
