@@ -1,0 +1,10 @@
+Config(
+  width: 800,
+  position: Top,
+  plugins: [
+    "libapplications.so",
+    "libsymbols.so",
+    "libshell.so",
+    "libtranslate.so",
+  ],
+)
