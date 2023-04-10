@@ -1,10 +1,11 @@
 Config(
   width: 800,
   position: Top,
+  hide_icons: false,
+  hide_plugin_info: false,
   plugins: [
     "libapplications.so",
-    "libsymbols.so",
     "libshell.so",
-    "libtranslate.so",
+    "libkidex.so"
   ],
 )
