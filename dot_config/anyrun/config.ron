@@ -1,11 +1,11 @@
 Config(
-  width: Absolute(800),
+  width: Absolute(600),
   position: Center,
-  vertical_offset: Absolute(0),
+  vertical_offset: Absolute(-100),
   hide_icons: false,
   ignore_exclusive_zones: false,
   layer: Overlay,
-  hide_plugin_info: false,
+  hide_plugin_info: true,
   plugins: [
     "libapplications.so",
     "libshell.so",
