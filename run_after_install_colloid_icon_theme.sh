@@ -1,6 +1,6 @@
 #! /usr/bin/env sh
 
-CLONED_DIR="$HOME/.tmp/Colloid-theme/"
+CLONED_DIR="$HOME/.cache/chezmoi/Colloid-theme/"
 
 install() {
   if [ -d "$1" ]; then

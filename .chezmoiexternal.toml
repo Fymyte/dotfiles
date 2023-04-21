@@ -19,7 +19,7 @@
   url = "https://raw.githubusercontent.com/catppuccin/cursors/main/cursors/Catppuccin-Frappe-Teal-Cursors.zip"
   extract = true
 
-[".tmp/Colloid-theme"]
+[".cache/chezmoi/Colloid-theme"]
   type = "git-repo"
   url = "https://github.com/vinceliuice/Colloid-icon-theme"
   refreshPeriod = "168h"
