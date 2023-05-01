@@ -1,6 +1,6 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
-SETUVAR --export CARGO_HOME:{{- .chezmoi.homeDir }}/\x2econfig/cargo
+SETUVAR --export CARGO_HOME:/home/fymyte/\x2econfig/cargo
 SETUVAR CARGO_NET_GIT_FETCH_WITH_CLI:1
 SETUVAR --export EDITOR:nvim
 SETUVAR __fish_initialized:3400
