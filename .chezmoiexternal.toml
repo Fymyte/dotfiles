@@ -14,15 +14,10 @@
   stripComponents = 2
   include = ["polybar-main/themes/**"]
 
-[".icons/"]
-  type = "archive"
-  url = "https://raw.githubusercontent.com/catppuccin/cursors/main/cursors/Catppuccin-Frappe-Teal-Cursors.zip"
-  extract = true
-
 [".cache/chezmoi/Colloid-theme"]
-  type = "git-repo"
-  url = "https://github.com/vinceliuice/Colloid-icon-theme"
-  refreshPeriod = "168h"
+  type = "archive"
+  url = "https://api.github.com/repos/vinceliuice/Colloid-icon-theme/tarball/main"
+  refreshPeriod = "672h"
 
 [".local/share/fonts/"]
   type = "archive"
