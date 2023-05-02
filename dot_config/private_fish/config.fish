@@ -16,6 +16,8 @@ abbr -a gc git commit
 abbr -a tm tmux
 abbr -a ta tmux attach -t
 
+abbr -a gl glab
+
 fish_add_path --append "$HOME/.local/bin"
 fish_add_path --append "$HOME/.config/cargo/bin"
 
