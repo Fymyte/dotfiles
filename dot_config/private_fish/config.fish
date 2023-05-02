@@ -2,6 +2,7 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
   fish_vi_key_bindings
   fish_vi_cursor
+  fzf_key_bindings
   set nvm_default_version latest
   set fish_greeting
 else
@@ -23,6 +24,10 @@ abbr -a gc git commit
 
 abbr -a tm tmux
 abbr -a ta tmux attach -t
+
+if test (hostname) = 'minibian' || test (hostname) = 'pandora'
+  set -gx GL_HOST gitlab-shared.sequans.com
+end
 
 fish_add_path --append "$HOME/.local/bin"
 fish_add_path --append "$HOME/.config/cargo/bin"
