@@ -4,6 +4,7 @@ local config = wt.config_builder()
 
 config.color_scheme = 'Catppuccin Mocha'
 config.font = wt.font 'Cascadia Code'
+config.font_size = 13
 config.alternate_buffer_wheel_scroll_speed = 2
 config.animation_fps = 1
 config.audible_bell = 'Disabled'
