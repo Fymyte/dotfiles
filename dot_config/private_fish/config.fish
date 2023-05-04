@@ -6,7 +6,7 @@ if status is-interactive
 
   set fish_greeting
 
-  if test (hostname) = 'minibian' || test (hostname) = 'pandora'
+  if test (hostnamectl hostname) = 'minibian' || test (hostnamectl hostname) = 'pandora'
     set -gx GL_HOST gitlab-shared.sequans.com
   end
   # Add command abbreviation
@@ -43,7 +43,7 @@ else
   fish_add_path --global "$HOME/.local/bin"
   fish_add_path --global "$HOME/.config/cargo/bin"
 
-  if test (hostname) = 'pandora'
+  if test (hostnamectl hostname) = 'pandora'
     fish_add_path --global "/opt/soft/toolchains64/aarch64-none-linux-gnu/bin/"
   end
 end
