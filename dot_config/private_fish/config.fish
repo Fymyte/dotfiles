@@ -6,7 +6,8 @@ if status is-interactive
 
   set fish_greeting
 
-  if test (hostnamectl hostname) = 'minibian' || test (hostnamectl hostname) = 'pandora'
+  # set -l hostname (cat /etc/hostname)
+  if test hostname = 'minibian' || test hostname = 'pandora'
     set -gx GL_HOST gitlab-shared.sequans.com
   end
   # Add command abbreviation
@@ -26,25 +27,26 @@ if status is-interactive
 
   set nvm_default_version latest
 
-else
-
-  # Used for GPG asking for password using curses
-  set -gx GPG_TTY (tty)
-
   set -gx EDITOR nvim
   set -gx MANPAGER 'nvim +Man!'
   set -gx TERMINAL 'wezterm'
 
   set -gx QT_STYLE_OVERRIDE kvantum
-  # set QT_QPA_PLATFORMTHEME=qt5ct
+  # set QT_QPA_PLATFORMTHEME qt5ct
 
   setxkbmap -option caps:escape
 
   fish_add_path --global "$HOME/.local/bin"
   fish_add_path --global "$HOME/.config/cargo/bin"
 
-  if test (hostnamectl hostname) = 'pandora'
+  if test hostname = 'pandora'
     fish_add_path --global "/opt/soft/toolchains64/aarch64-none-linux-gnu/bin/"
   end
+
+else
+
+  # Used for GPG asking for password using curses
+  set -gx GPG_TTY (tty)
+
 end
 
