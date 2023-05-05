@@ -9,8 +9,6 @@ config.alternate_buffer_wheel_scroll_speed = 2
 config.animation_fps = 1
 config.audible_bell = "Disabled"
 
-config.enable_kitty_keyboard = true
-
 config.use_fancy_tab_bar = false
 config.hide_tab_bar_if_only_one_tab = false
 config.tab_bar_at_bottom = true
@@ -21,6 +19,9 @@ config.window_padding = {
 	top = "5pt",
 }
 
-config.leader = { key = "space", mods = "CTRL" }
+config.leader = { key = "Space", mods = "CTRL" }
+
+config.keys = {
+}
 
 return config
