@@ -6,6 +6,7 @@ Config(
   ignore_exclusive_zones: false,
   layer: Overlay,
   hide_plugin_info: true,
+  close_on_click: true,
   plugins: [
     "libapplications.so",
     "libshell.so",
