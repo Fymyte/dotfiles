@@ -3,8 +3,12 @@ local act = wt.action
 
 local config = wt.config_builder()
 
--- Font
 config.color_scheme = 'Catppuccin Mocha'
+-- Use Catppuccin color palette for command palette as well
+config.command_palette_bg_color = '#11111b'
+config.command_palette_fg_color = '#cdd6f4'
+
+-- Font
 config.font = wt.font 'Cascadia Code'
 config.font_size = 13
 config.adjust_window_size_when_changing_font_size = false
@@ -12,17 +16,17 @@ config.adjust_window_size_when_changing_font_size = false
 -- config.tiling_desktop_environments = {
 --   'X11 i3',
 -- }
-config.default_cursor_style = 'SteadyBar'
+-- Cursor and animation
+config.default_cursor_style = 'SteadyBlock'
 config.cursor_blink_rate = 500
 config.animation_fps = 30
+config.alternate_buffer_wheel_scroll_speed = 2
+config.scrollback_lines = 900000
+config.audible_bell = 'Disabled'
 -- Tab bar
 config.use_fancy_tab_bar = false
 config.hide_tab_bar_if_only_one_tab = false
 config.tab_bar_at_bottom = true
-
-config.alternate_buffer_wheel_scroll_speed = 2
-config.scrollback_lines = 900000
-config.audible_bell = 'Disabled'
 
 config.term = 'wezterm'
 
