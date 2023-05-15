@@ -1,5 +1,6 @@
 local wt = require 'wezterm'
 local act = wt.action
+local cb = wt.action_callback
 
 local config = wt.config_builder()
 
@@ -35,22 +36,48 @@ config.window_padding = {
   top = '5pt',
 }
 
+-- Show which key table is active in the status area
+wt.on('update-status', function(window, pane)
+  local leader
+  if window:leader_is_active() then
+    leader = 'LEADER'
+  end
+
+  local name = window:active_key_table()
+  if name then
+    name = 'TABLE: ' .. name
+  end
+  window:set_right_status(leader or name or '')
+end)
+
 if wt.hostname() ~= 'pandora' then
   config.front_end = 'WebGpu'
 end
 
-config.leader = { key = 'Space', mods = 'CTRL' }
+config.leader = { key = 'Space', mods = 'CTRL', timeout_milliseconds = 2000 }
 
 config.keys = {
   { key = '"', mods = 'ALT|CTRL', action = act.SplitVertical { domain = 'CurrentPaneDomain' } },
+  { key = 's', mods = 'LEADER', action = act.SplitVertical { domain = 'CurrentPaneDomain' } },
   { key = '"', mods = 'SHIFT|ALT|CTRL', action = act.SplitVertical { domain = 'CurrentPaneDomain' } },
   { key = "'", mods = 'SHIFT|ALT|CTRL', action = act.SplitVertical { domain = 'CurrentPaneDomain' } },
   { key = '%', mods = 'ALT|CTRL', action = act.SplitHorizontal { domain = 'CurrentPaneDomain' } },
+  { key = 'v', mods = 'LEADER', action = act.SplitHorizontal { domain = 'CurrentPaneDomain' } },
   { key = '%', mods = 'SHIFT|ALT|CTRL', action = act.SplitHorizontal { domain = 'CurrentPaneDomain' } },
   { key = '5', mods = 'SHIFT|ALT|CTRL', action = act.SplitHorizontal { domain = 'CurrentPaneDomain' } },
+  { key = 'T', mods = 'SHIFT|CTRL', action = act.SpawnTab 'CurrentPaneDomain' },
+  { key = 't', mods = 'SHIFT|CTRL', action = act.SpawnTab 'CurrentPaneDomain' },
+  { key = 't', mods = 'SUPER', action = act.SpawnTab 'CurrentPaneDomain' },
+  { key = 't', mods = 'LEADER', action = act.SpawnTab 'CurrentPaneDomain' },
 
   { key = 'L', mods = 'SHIFT|CTRL', action = act.ShowDebugOverlay },
   { key = 'l', mods = 'SHIFT|CTRL', action = act.ShowDebugOverlay },
+
+  {
+    key = 'w',
+    mods = 'LEADER',
+    action = act.ActivateKeyTable { name = 'wincmd', one_shot = true },
+  },
 
   { key = 'q', mods = 'SHIFT|CTRL', action = act.CloseCurrentTab { confirm = true } },
   { key = 'q', mods = 'SUPER', action = act.CloseCurrentTab { confirm = true } },
@@ -113,7 +140,6 @@ config.keys = {
   { key = 'N', mods = 'SHIFT|CTRL', action = act.SpawnWindow },
   { key = 'P', mods = 'SHIFT|CTRL', action = act.ActivateCommandPalette },
   { key = 'R', mods = 'SHIFT|CTRL', action = act.ReloadConfiguration },
-  { key = 'T', mods = 'SHIFT|CTRL', action = act.SpawnTab 'CurrentPaneDomain' },
   {
     key = 'U',
     mods = 'CTRL',
@@ -149,8 +175,6 @@ config.keys = {
   { key = 'p', mods = 'SHIFT|CTRL', action = act.ActivateCommandPalette },
   { key = 'r', mods = 'SHIFT|CTRL', action = act.ReloadConfiguration },
   { key = 'r', mods = 'SUPER', action = act.ReloadConfiguration },
-  { key = 't', mods = 'SHIFT|CTRL', action = act.SpawnTab 'CurrentPaneDomain' },
-  { key = 't', mods = 'SUPER', action = act.SpawnTab 'CurrentPaneDomain' },
   {
     key = 'u',
     mods = 'SHIFT|CTRL',
@@ -255,6 +279,23 @@ config.key_tables = {
     { key = 'DownArrow', mods = 'NONE', action = act.CopyMode 'MoveDown' },
   },
 
+  wincmd = {
+    { key = 'LeftArrow', action = act.ActivatePaneDirection 'Left' },
+    { key = 'h', action = act.ActivatePaneDirection 'Left' },
+
+    { key = 'RightArrow', action = act.ActivatePaneDirection 'Right' },
+    { key = 'l', action = act.ActivatePaneDirection 'Right' },
+
+    { key = 'UpArrow', action = act.ActivatePaneDirection 'Up' },
+    { key = 'k', action = act.ActivatePaneDirection 'Up' },
+
+    { key = 'DownArrow', action = act.ActivatePaneDirection 'Down' },
+    { key = 'j', action = act.ActivatePaneDirection 'Down' },
+
+    { key = 's', mods = 'NONE', action = act.SplitVertical { domain = 'CurrentPaneDomain' } },
+    { key = 'v', mods = 'NONE', action = act.SplitHorizontal { domain = 'CurrentPaneDomain' } },
+
+  },
   search_mode = {
     { key = 'Enter', mods = 'NONE', action = act.CopyMode 'PriorMatch' },
     { key = 'Escape', mods = 'NONE', action = act.CopyMode 'Close' },

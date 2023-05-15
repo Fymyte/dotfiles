@@ -1,5 +1,5 @@
-@import "palettes/frappe.rasi"
-@import "variants/teal.rasi"
+@import "palettes/mocha.rasi"
+@import "variants/peach.rasi"
 
 * {
   background:  @Surface0;
