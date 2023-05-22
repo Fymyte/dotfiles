@@ -6,6 +6,7 @@ if test hostname = 'minibian' || test hostname = 'pandora'
 end
 
 fish_add_path --global "$HOME/.local/bin"
+fish_add_path --global "$HOME/.local/bin/fzf/bin"
 fish_add_path --global "$HOME/.config/cargo/bin"
 
 set nvm_default_version latest
