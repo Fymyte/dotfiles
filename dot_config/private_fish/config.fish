@@ -43,7 +43,7 @@ if status is-interactive
   set -gx QT_STYLE_OVERRIDE kvantum
   # set QT_QPA_PLATFORMTHEME qt5ct
 
-  setxkbmap -option caps:escape
+  # setxkbmap -option caps:escape
 
 else
 
