@@ -1,4 +1,4 @@
 lock 'swaylock --daemonize -c 000000'
 timeout 300 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on'
-before-sleep 'swaylock --daemonize -c 000000'
+before-sleep 'loginctl lock-session'
 
