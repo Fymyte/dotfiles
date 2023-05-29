@@ -1,10 +1,5 @@
 set fish_greeting
 
-if test hostname = 'minibian' || test hostname = 'pandora'
-  set -gx GL_HOST gitlab-shared.sequans.com
-  fish_add_path --global "/opt/soft/toolchains64/aarch64-none-linux-gnu/bin/"
-end
-
 fish_add_path --global "$HOME/.local/bin"
 fish_add_path --global "$HOME/.local/bin/fzf/bin"
 fish_add_path --global "$HOME/.config/cargo/bin"
@@ -42,8 +37,6 @@ if status is-interactive
 
   set -gx QT_STYLE_OVERRIDE kvantum
   # set QT_QPA_PLATFORMTHEME qt5ct
-
-  # setxkbmap -option caps:escape
 
 else
 
