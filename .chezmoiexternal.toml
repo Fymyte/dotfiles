@@ -7,13 +7,6 @@
   url = "https://raw.githubusercontent.com/catppuccin/qt5ct/main/themes/Catppuccin-Frappe.conf"
   refreshPeriod = "168h"
 
-[".config/polybar/catppuccin/colors/"]
-  type = "archive"
-  url = "https://codeload.github.com/catppuccin/polybar/zip/refs/heads/main"
-  extract = true
-  stripComponents = 2
-  include = ["polybar-main/themes/**"]
-
 [".cache/chezmoi/Colloid-theme"]
   type = "archive"
   url = "https://api.github.com/repos/vinceliuice/Colloid-icon-theme/tarball/main"

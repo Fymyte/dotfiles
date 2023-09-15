@@ -5,6 +5,7 @@ fish_add_path --global "$HOME/.local/bin/fzf/bin"
 fish_add_path --global "$HOME/.config/cargo/bin"
 
 set nvm_default_version latest
+nvm use latest > /dev/null
 
 set -gx EDITOR nvim
 set -gx MANPAGER 'nvim +Man!'
@@ -33,7 +34,6 @@ if status is-interactive
 
   abbr -a tm tmux
   abbr -a ta tmux attach -t
-
 
   set -gx QT_STYLE_OVERRIDE kvantum
   # set QT_QPA_PLATFORMTHEME qt5ct

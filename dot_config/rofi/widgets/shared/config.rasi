@@ -4,7 +4,7 @@
  */
 
 configuration {
-  // icon-theme:          "Oranchelo";
+  icon-theme:          "Colloid-dark";
   fixed-num-lines:     true;
   show-icons:          true;
   click-to-exit:       true;
@@ -20,7 +20,7 @@ configuration {
   me-accept-entry:     "MousePrimary";
 
   // Display options
-  display-drun:        "  Apps ";
+  display-drun:        "   Apps ";
   display-run:         "  Run ";
   display-window:      " 﩯 Window ";
   display-network:     "  Network ";
