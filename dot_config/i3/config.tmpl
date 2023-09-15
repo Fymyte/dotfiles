@@ -22,14 +22,12 @@ set $lock-screen-timeout 15
 set $theme catppuccin
 
 # set default desktop layout (default is tiling)
-# workspace_layout tabbed <stacking|tabbed>
-
+workspace_layout tabbed
+title_align center
 
 ##########################################
 ### border and gaps settings: ###
 ##########################################
-
-{{ if (ne .chezmoi.hostname "minibian") }}
 
 # Hide borders
 hide_edge_borders none
@@ -39,7 +37,6 @@ bindsym $mod+u border none
 bindsym $mod+y border pixel 3
 bindsym $mod+n border normal
 
-{{ if (ne .chezmoi.hostname "pandora") }}
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
 default_border none
 default_floating_border pixel 3
@@ -48,11 +45,6 @@ default_floating_border pixel 3
 # Set inner/outer gaps
 gaps inner 5
 gaps outer 0
-{{ else }}
-# Configure border style <normal|1pixel|pixel xx|none|pixel>
-default_border pixel 3
-default_floating_border pixel 3
-{{ end }}
 
 # Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
 # gaps inner|outer current|all set|plus|minus <px>
@@ -103,8 +95,6 @@ mode "$mode_gaps_outer" {
         bindsym Escape mode "default"
 }
 
-{{- else }}
-
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
 default_border pixel 3
 default_floating_border pixel 3
@@ -116,8 +106,6 @@ hide_edge_borders none
 bindsym $mod+u border none
 bindsym $mod+y border pixel 3
 bindsym $mod+n border normal
-
-{{- end }}
 
 
 ###################################
@@ -207,20 +195,6 @@ set $ws8 8
 set $ws9 9
 set $ws10 10
 
-# Bind workspaces to monitor
-{{ if eq .chezmoi.hostname "bigarch" }}
-workspace $ws9 output $monitor2
-workspace $ws10 output $monitor2
-workspace $ws1 output $monitor1
-workspace $ws2 output $monitor1
-workspace $ws3 output $monitor1
-workspace $ws4 output $monitor1
-workspace $ws5 output $monitor1
-workspace $ws6 output $monitor1
-workspace $ws7 output $monitor1
-workspace $ws8 output $monitor1
-{{ end }}
-
 # switch to workspace
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
@@ -263,7 +237,7 @@ bindsym $alt+Shift+2 move container to workspace $ws10; workspace $ws10
 ####################################
 
 # Open applications on specific workspaces
-assign [class="Firefox"] $ws2
+assign [class="Firefox"] $ws1
 assign [class="brave-browser"] $ws2
 assign [class="thunderbird"] $ws8
 
@@ -282,12 +256,14 @@ for_window [class="Pavucontrol"] floating enable
 for_window [class="qt5ct"] floating enable sticky enable
 for_window [class="Qtconfig-qt4"] floating enable sticky enable
 for_window [class="Skype"] floating enable, move scratchpad, scratchpad show
+for_window [class="teams-for-linux"] floating enable, move scratchpad, scratchpad show
 for_window [class="zoom"] floating enable
 for_window [class="blueman-manager"] floating enable
 for_window [class="(?i)virtualbox"] floating enable
 for_window [class="jetbrains-toolbox"] floating enable border none, move window to output primary
 for_window [class="lutris"] floating enable border none
-for_window [class="speedcrunch"] floating enable border none
+for_window [class="SpeedCrunch"] floating enable
+for_window [window_role="Msgcompose" class="thunderbird"] floating enable
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
@@ -314,11 +290,9 @@ bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 5
 bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5
 
-#exec --no-startup-id volumeicon
-#bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
-#exec --no-startup-id pa-applet
 bindsym $mod+Ctrl+p exec --no-startup-id pulseaudio
 bindsym $mod+Ctrl+m exec pavucontrol
+
 
 #######################################
 ### application's startup bindings: ###
@@ -336,7 +310,6 @@ bindsym $mod+semicolon exec rofi -modi emoji -show emoji -theme ~/.config/rofi/w
 bindsym $mod+Ctrl+b exec "bwmenu -p mainbox{children:[inputbar];} -p window{height:inherit;} -- --normal-window -theme ~/.config/rofi/widgets/bitwarden.rasi"
 bindsym $mod+Ctrl+f exec "bwmenu -- -theme ~/.config/rofi/widgets/bitwarden.rasi"
 bindsym $mod+Shift+d exec rofi -modi power-menu:rofi-power-menu -show power-menu -theme ~/.config/rofi/widgets/powermenu.rasi
-
 
 # Composer start/stop
 bindsym $mod+t exec --no-startup-id pkill picom
@@ -356,18 +329,16 @@ bindsym $alt+Ctrl+t exec $terminal -e btop
 ################################
 
 # TODO: move those in dedicated script
-# Start authentification agent
 exec --no-startup-id dbus-update-activation-environment DISPLAY XAUTHORITY WAYLAND_DISPLAY
 
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+# Start authentification agent
+exec --no-startup-id /usr/lib/x86_64-linux-gnu/libexec/polkit-kde-authentication-agent-1
 
+# Automaticaly lock the screen after x min of inactivitY
 exec --no-startup-id ~/.local/bin/lock.sh
 
 # Restore screen layout and background
 exec_always --no-startup-id nitrogen --restore #
-
-# Automaticaly lock the screen after x min of inactivitY
-# exec --no-startup-id xautolock -time $lock-screen-timeout -locker "i3exit lock"
 
 exec_always --no-startup-id pkill picom; picom -b
 
@@ -434,7 +405,7 @@ client.background       #303446
 ### Bar: ###
 ############
 
-{{ if or (eq .chezmoi.hostname "pandora") (eq .chezmoi.hostname "minibian") }}
+{{ if (eq .chezmoi.hostname "minibian") }}
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 bar {
 i3bar_command i3bar
@@ -463,6 +434,6 @@ strip_workspace_numbers yes
 }
 {{- else }}
 # Start polybar with proper theme
-exec_always --no-startup-id ~/.config/polybar/launch.sh --$theme --cpu
+exec_always --no-startup-id ~/.config/polybar/launch.sh --$theme
 {{- end }}
 
