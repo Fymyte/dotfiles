@@ -2,19 +2,9 @@
   type = "git-repo"
   url = "https://github.com/Fymyte/nvim-config.git"
 
-[".config/qt5ct/colors/Catppuccin-Frappe.conf"]
-  type = "file"
-  url = "https://raw.githubusercontent.com/catppuccin/qt5ct/main/themes/Catppuccin-Frappe.conf"
-  refreshPeriod = "168h"
-
 [".cache/chezmoi/Colloid-theme"]
   type = "archive"
   url = "https://api.github.com/repos/vinceliuice/Colloid-icon-theme/tarball/main"
   refreshPeriod = "672h"
   extract = true
   stripComponents = 1
-
-[".local/share/fonts/"]
-  type = "archive"
-  url = "https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.zip"
-  extract = true
