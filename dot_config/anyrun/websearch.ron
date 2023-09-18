@@ -1,0 +1,7 @@
+Config(
+  prefix: "?",
+  engines: [Google,Custom(
+    name: "Github",
+    url: "github.com/search?q={}"
+  )],
+)
