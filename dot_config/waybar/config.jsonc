@@ -8,7 +8,7 @@
     "height": 30,
     "modules-left": ["hyprland/workspaces"],
     "modules-center": ["hyprland/window"],
-    "modules-right": ["network", "temperature","custom/power_profile","battery","backlight","pulseaudio","pulseaudio#microphone","tray", "clock"],
+    "modules-right": ["temperature","custom/power_profile","battery","backlight","pulseaudio","pulseaudio#microphone","tray", "clock"],
 
     "hyprland/window": {
         "format": " {} "
