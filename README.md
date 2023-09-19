@@ -2,7 +2,7 @@
 
 Dotfiles are managed using [chezmoi](https://chezmoi.io)
 
-## Packages
+## Software
 - hyprland
 - waybar
 - anyrun
@@ -11,6 +11,9 @@ Dotfiles are managed using [chezmoi](https://chezmoi.io)
 - fish
 - dunst
 - watershot
+- cliphist
+
+- KDE connect
 
 ## Theme
 cattpuccin mocha
