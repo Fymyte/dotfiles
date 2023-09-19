@@ -4,6 +4,8 @@ Dotfiles are managed using [chezmoi](https://chezmoi.io)
 
 ## Software
 - hyprland
+    - xdg-desktop-portal-hyprland
+    - xdg-desktop-portal-gtk (For file chooser and font config of gtk flatpak apps)
 - waybar
 - anyrun
 - kitty
@@ -16,4 +18,4 @@ Dotfiles are managed using [chezmoi](https://chezmoi.io)
 - KDE connect
 
 ## Theme
-cattpuccin mocha
+cattpuccin mocha (Peach)
