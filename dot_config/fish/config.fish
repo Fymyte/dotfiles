@@ -7,7 +7,11 @@ fish_add_path --global "$HOME/.config/cargo/bin"
 set nvm_default_version latest
 nvm use latest > /dev/null
 
-set -gx EDITOR nvim
+set -gx EDITOR nvim --server "$NVIM" --remote-tab-silent
+if test -n "$NVIM"
+  alias nvim 'nvim --server "$NVIM" --remote-tab'
+end
+  
 set -gx MANPAGER 'nvim +Man!'
 set -gx TERMINAL 'wezterm'
 
