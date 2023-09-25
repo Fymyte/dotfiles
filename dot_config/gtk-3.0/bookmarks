@@ -1,3 +1,4 @@
-file:///mnt/cloudstation
-file:///mnt/debian-server Server data
+file:///mnt/cloudstation Cloudstation
 file:///mnt/video Cloudstation Video
+file:///mnt/debian-server Server data
+davs://nextcloud.fymyte.com/remote.php/dav/files/Pierrick nextcloud.fymyte.com
