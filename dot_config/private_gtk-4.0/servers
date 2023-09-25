@@ -3,12 +3,12 @@
       xmlns:bookmark="http://www.freedesktop.org/standards/desktop-bookmarks"
       xmlns:mime="http://www.freedesktop.org/standards/shared-mime-info"
 >
-  <bookmark href="davs://nextcloud.fymyte.com/remote.php/dav/files/Pierrick" added="2023-09-19T19:41:32.260899Z" modified="2023-09-19T19:41:32.260905Z" visited="2023-09-19T19:41:32.260900Z">
+  <bookmark href="davs://nextcloud.fymyte.com/remote.php/dav/files/Pierrick" added="2023-09-19T19:41:32.260899Z" modified="2023-09-20T19:09:55.101520Z" visited="2023-09-20T19:09:55.101518Z">
     <title>Pierrick</title>
     <info>
       <metadata owner="http://freedesktop.org">
         <bookmark:applications>
-          <bookmark:application name="org.gnome.Nautilus" exec="&apos;org.gnome.Nautilus %u&apos;" modified="2023-09-19T19:41:32.260902Z" count="1"/>
+          <bookmark:application name="org.gnome.Nautilus" exec="&apos;org.gnome.Nautilus %u&apos;" modified="2023-09-20T19:09:55.101519Z" count="2"/>
         </bookmark:applications>
       </metadata>
     </info>
