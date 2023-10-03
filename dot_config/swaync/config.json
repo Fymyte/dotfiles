@@ -31,11 +31,6 @@
   "scripts": {
   },
   "notification-visibility": {
-    "example-name": {
-      "state": "muted",
-      "urgency": "Low",
-      "app-name": "Spotify"
-    }
   },
   "widgets": [
     "inhibitors",
