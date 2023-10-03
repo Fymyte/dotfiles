@@ -1,139 +1,429 @@
-complete -c himalaya -n "__fish_use_subcommand" -s c -l config -d 'Forces a specific config path'
-complete -c himalaya -n "__fish_use_subcommand" -s a -l account -d 'Selects a specific account'
-complete -c himalaya -n "__fish_use_subcommand" -s o -l output -d 'Defines the output format' -r -f -a "plain json"
-complete -c himalaya -n "__fish_use_subcommand" -s l -l log-level -d 'Defines the logs level' -r -f -a "error warn info debug trace"
-complete -c himalaya -n "__fish_use_subcommand" -s m -l mailbox -d 'Specifies the source mailbox'
-complete -c himalaya -n "__fish_use_subcommand" -s h -l help -d 'Prints help information'
-complete -c himalaya -n "__fish_use_subcommand" -s V -l version -d 'Prints version information'
+complete -c himalaya -n "__fish_use_subcommand" -s c -l config -d 'Set a custom configuration file path' -r
+complete -c himalaya -n "__fish_use_subcommand" -s a -l account -d 'Set the account' -r
+complete -c himalaya -n "__fish_use_subcommand" -s o -l output -d 'Set the output format' -r -f -a "{plain	,json	}"
+complete -c himalaya -n "__fish_use_subcommand" -s C -l color -d 'Control when to use colors.' -r -f -a "{never	,auto	,always	,ansi	}"
+complete -c himalaya -n "__fish_use_subcommand" -s f -l folder -d 'Set the source folder' -r
+complete -c himalaya -n "__fish_use_subcommand" -l disable-cache -d 'Disable any sort of cache'
+complete -c himalaya -n "__fish_use_subcommand" -s h -l help -d 'Print help (see more with \'--help\')'
+complete -c himalaya -n "__fish_use_subcommand" -s V -l version -d 'Print version'
 complete -c himalaya -n "__fish_use_subcommand" -f -a "completion" -d 'Generates the completion script for the given shell'
-complete -c himalaya -n "__fish_use_subcommand" -f -a "notify" -d 'Notifies when new messages arrive in the given mailbox'
+complete -c himalaya -n "__fish_use_subcommand" -f -a "man" -d 'Generate all man pages to the given directory'
+complete -c himalaya -n "__fish_use_subcommand" -f -a "accounts" -d 'Manage accounts'
+complete -c himalaya -n "__fish_use_subcommand" -f -a "folders" -d 'Manage folders'
+complete -c himalaya -n "__fish_use_subcommand" -f -a "flags" -d 'Handles email flags'
+complete -c himalaya -n "__fish_use_subcommand" -f -a "template" -d 'Handles email templates'
+complete -c himalaya -n "__fish_use_subcommand" -f -a "attachments" -d 'Downloads all emails attachments'
+complete -c himalaya -n "__fish_use_subcommand" -f -a "list" -d 'List envelopes'
+complete -c himalaya -n "__fish_use_subcommand" -f -a "search" -d 'Filter envelopes matching the given query'
+complete -c himalaya -n "__fish_use_subcommand" -f -a "sort" -d 'Sort envelopes by the given criteria and matching the given query'
+complete -c himalaya -n "__fish_use_subcommand" -f -a "write" -d 'Write a new email'
+complete -c himalaya -n "__fish_use_subcommand" -f -a "send" -d 'Send a raw email'
+complete -c himalaya -n "__fish_use_subcommand" -f -a "save" -d 'Save a raw email'
+complete -c himalaya -n "__fish_use_subcommand" -f -a "read" -d 'Read text bodies of emails'
+complete -c himalaya -n "__fish_use_subcommand" -f -a "reply" -d 'Answer to an email'
+complete -c himalaya -n "__fish_use_subcommand" -f -a "forward" -d 'Forward an email'
+complete -c himalaya -n "__fish_use_subcommand" -f -a "copy" -d 'Copy emails to the given folder'
+complete -c himalaya -n "__fish_use_subcommand" -f -a "move" -d 'Move emails to the given folder'
+complete -c himalaya -n "__fish_use_subcommand" -f -a "delete" -d 'Delete emails'
+complete -c himalaya -n "__fish_use_subcommand" -f -a "notify" -d 'Notifies when new messages arrive in the given folder'
 complete -c himalaya -n "__fish_use_subcommand" -f -a "watch" -d 'Watches IMAP server changes'
-complete -c himalaya -n "__fish_use_subcommand" -f -a "mailboxes" -d 'Lists mailboxes'
-complete -c himalaya -n "__fish_use_subcommand" -f -a "flag" -d 'Handles flags'
-complete -c himalaya -n "__fish_use_subcommand" -f -a "template" -d 'Generates a message template'
-complete -c himalaya -n "__fish_use_subcommand" -f -a "attachments" -d 'Downloads all message attachments'
-complete -c himalaya -n "__fish_use_subcommand" -f -a "list" -d 'Lists all messages'
-complete -c himalaya -n "__fish_use_subcommand" -f -a "search" -d 'Lists messages matching the given IMAP query'
-complete -c himalaya -n "__fish_use_subcommand" -f -a "write" -d 'Writes a new message'
-complete -c himalaya -n "__fish_use_subcommand" -f -a "send" -d 'Sends a raw message'
-complete -c himalaya -n "__fish_use_subcommand" -f -a "save" -d 'Saves a raw message'
-complete -c himalaya -n "__fish_use_subcommand" -f -a "read" -d 'Reads text bodies of a message'
-complete -c himalaya -n "__fish_use_subcommand" -f -a "reply" -d 'Answers to a message'
-complete -c himalaya -n "__fish_use_subcommand" -f -a "forward" -d 'Forwards a message'
-complete -c himalaya -n "__fish_use_subcommand" -f -a "copy" -d 'Copies a message to the targetted mailbox'
-complete -c himalaya -n "__fish_use_subcommand" -f -a "move" -d 'Moves a message to the targetted mailbox'
-complete -c himalaya -n "__fish_use_subcommand" -f -a "delete" -d 'Deletes a message'
-complete -c himalaya -n "__fish_use_subcommand" -f -a "help" -d 'Prints this message or the help of the given subcommand(s)'
-complete -c himalaya -n "__fish_seen_subcommand_from completion" -s h -l help -d 'Prints help information'
-complete -c himalaya -n "__fish_seen_subcommand_from completion" -s V -l version -d 'Prints version information'
-complete -c himalaya -n "__fish_seen_subcommand_from notify" -s k -l keepalive -d 'Specifies the keepalive duration'
-complete -c himalaya -n "__fish_seen_subcommand_from notify" -s h -l help -d 'Prints help information'
-complete -c himalaya -n "__fish_seen_subcommand_from notify" -s V -l version -d 'Prints version information'
-complete -c himalaya -n "__fish_seen_subcommand_from watch" -s k -l keepalive -d 'Specifies the keepalive duration'
-complete -c himalaya -n "__fish_seen_subcommand_from watch" -s h -l help -d 'Prints help information'
-complete -c himalaya -n "__fish_seen_subcommand_from watch" -s V -l version -d 'Prints version information'
-complete -c himalaya -n "__fish_seen_subcommand_from mailboxes" -s w -l max-width -d 'Defines a maximum width for the table'
-complete -c himalaya -n "__fish_seen_subcommand_from mailboxes" -s h -l help -d 'Prints help information'
-complete -c himalaya -n "__fish_seen_subcommand_from mailboxes" -s V -l version -d 'Prints version information'
-complete -c himalaya -n "__fish_seen_subcommand_from flag" -s h -l help -d 'Prints help information'
-complete -c himalaya -n "__fish_seen_subcommand_from flag" -s V -l version -d 'Prints version information'
-complete -c himalaya -n "__fish_seen_subcommand_from flag" -f -a "add" -d 'Adds flags to a message'
-complete -c himalaya -n "__fish_seen_subcommand_from flag" -f -a "set" -d 'Replaces all message flags'
-complete -c himalaya -n "__fish_seen_subcommand_from flag" -f -a "remove" -d 'Removes flags from a message'
-complete -c himalaya -n "__fish_seen_subcommand_from flag" -f -a "help" -d 'Prints this message or the help of the given subcommand(s)'
-complete -c himalaya -n "__fish_seen_subcommand_from add" -s h -l help -d 'Prints help information'
-complete -c himalaya -n "__fish_seen_subcommand_from add" -s V -l version -d 'Prints version information'
-complete -c himalaya -n "__fish_seen_subcommand_from set" -s h -l help -d 'Prints help information'
-complete -c himalaya -n "__fish_seen_subcommand_from set" -s V -l version -d 'Prints version information'
-complete -c himalaya -n "__fish_seen_subcommand_from remove" -s h -l help -d 'Prints help information'
-complete -c himalaya -n "__fish_seen_subcommand_from remove" -s V -l version -d 'Prints version information'
-complete -c himalaya -n "__fish_seen_subcommand_from help" -s h -l help -d 'Prints help information'
-complete -c himalaya -n "__fish_seen_subcommand_from help" -s V -l version -d 'Prints version information'
-complete -c himalaya -n "__fish_seen_subcommand_from template" -s h -l help -d 'Prints help information'
-complete -c himalaya -n "__fish_seen_subcommand_from template" -s V -l version -d 'Prints version information'
-complete -c himalaya -n "__fish_seen_subcommand_from template" -f -a "new" -d 'Generates a new message template'
-complete -c himalaya -n "__fish_seen_subcommand_from template" -f -a "reply" -d 'Generates a reply message template'
-complete -c himalaya -n "__fish_seen_subcommand_from template" -f -a "forward" -d 'Generates a forward message template'
-complete -c himalaya -n "__fish_seen_subcommand_from template" -f -a "save" -d 'Saves a message based on the given template'
-complete -c himalaya -n "__fish_seen_subcommand_from template" -f -a "send" -d 'Sends a message based on the given template'
-complete -c himalaya -n "__fish_seen_subcommand_from template" -f -a "help" -d 'Prints this message or the help of the given subcommand(s)'
-complete -c himalaya -n "__fish_seen_subcommand_from new" -s s -l subject -d 'Overrides the Subject header'
-complete -c himalaya -n "__fish_seen_subcommand_from new" -s f -l from -d 'Overrides the From header'
-complete -c himalaya -n "__fish_seen_subcommand_from new" -s t -l to -d 'Overrides the To header'
-complete -c himalaya -n "__fish_seen_subcommand_from new" -s c -l cc -d 'Overrides the Cc header'
-complete -c himalaya -n "__fish_seen_subcommand_from new" -s b -l bcc -d 'Overrides the Bcc header'
-complete -c himalaya -n "__fish_seen_subcommand_from new" -s h -l header -d 'Overrides a specific header'
-complete -c himalaya -n "__fish_seen_subcommand_from new" -s B -l body -d 'Overrides the body'
-complete -c himalaya -n "__fish_seen_subcommand_from new" -s S -l signature -d 'Overrides the signature'
-complete -c himalaya -n "__fish_seen_subcommand_from new" -l help -d 'Prints help information'
-complete -c himalaya -n "__fish_seen_subcommand_from new" -s V -l version -d 'Prints version information'
-complete -c himalaya -n "__fish_seen_subcommand_from reply" -s s -l subject -d 'Overrides the Subject header'
-complete -c himalaya -n "__fish_seen_subcommand_from reply" -s f -l from -d 'Overrides the From header'
-complete -c himalaya -n "__fish_seen_subcommand_from reply" -s t -l to -d 'Overrides the To header'
-complete -c himalaya -n "__fish_seen_subcommand_from reply" -s c -l cc -d 'Overrides the Cc header'
-complete -c himalaya -n "__fish_seen_subcommand_from reply" -s b -l bcc -d 'Overrides the Bcc header'
-complete -c himalaya -n "__fish_seen_subcommand_from reply" -s h -l header -d 'Overrides a specific header'
-complete -c himalaya -n "__fish_seen_subcommand_from reply" -s B -l body -d 'Overrides the body'
-complete -c himalaya -n "__fish_seen_subcommand_from reply" -s S -l signature -d 'Overrides the signature'
-complete -c himalaya -n "__fish_seen_subcommand_from reply" -s A -l all -d 'Includes all recipients'
-complete -c himalaya -n "__fish_seen_subcommand_from reply" -l help -d 'Prints help information'
-complete -c himalaya -n "__fish_seen_subcommand_from reply" -s V -l version -d 'Prints version information'
-complete -c himalaya -n "__fish_seen_subcommand_from forward" -s s -l subject -d 'Overrides the Subject header'
-complete -c himalaya -n "__fish_seen_subcommand_from forward" -s f -l from -d 'Overrides the From header'
-complete -c himalaya -n "__fish_seen_subcommand_from forward" -s t -l to -d 'Overrides the To header'
-complete -c himalaya -n "__fish_seen_subcommand_from forward" -s c -l cc -d 'Overrides the Cc header'
-complete -c himalaya -n "__fish_seen_subcommand_from forward" -s b -l bcc -d 'Overrides the Bcc header'
-complete -c himalaya -n "__fish_seen_subcommand_from forward" -s h -l header -d 'Overrides a specific header'
-complete -c himalaya -n "__fish_seen_subcommand_from forward" -s B -l body -d 'Overrides the body'
-complete -c himalaya -n "__fish_seen_subcommand_from forward" -s S -l signature -d 'Overrides the signature'
-complete -c himalaya -n "__fish_seen_subcommand_from forward" -l help -d 'Prints help information'
-complete -c himalaya -n "__fish_seen_subcommand_from forward" -s V -l version -d 'Prints version information'
-complete -c himalaya -n "__fish_seen_subcommand_from save" -s a -l attachment -d 'Adds attachment to the message'
-complete -c himalaya -n "__fish_seen_subcommand_from save" -s h -l help -d 'Prints help information'
-complete -c himalaya -n "__fish_seen_subcommand_from save" -s V -l version -d 'Prints version information'
-complete -c himalaya -n "__fish_seen_subcommand_from send" -s a -l attachment -d 'Adds attachment to the message'
-complete -c himalaya -n "__fish_seen_subcommand_from send" -s h -l help -d 'Prints help information'
-complete -c himalaya -n "__fish_seen_subcommand_from send" -s V -l version -d 'Prints version information'
-complete -c himalaya -n "__fish_seen_subcommand_from help" -s h -l help -d 'Prints help information'
-complete -c himalaya -n "__fish_seen_subcommand_from help" -s V -l version -d 'Prints version information'
-complete -c himalaya -n "__fish_seen_subcommand_from attachments" -s h -l help -d 'Prints help information'
-complete -c himalaya -n "__fish_seen_subcommand_from attachments" -s V -l version -d 'Prints version information'
-complete -c himalaya -n "__fish_seen_subcommand_from list" -s s -l size -d 'Page size'
-complete -c himalaya -n "__fish_seen_subcommand_from list" -s p -l page -d 'Page number'
-complete -c himalaya -n "__fish_seen_subcommand_from list" -s w -l max-width -d 'Defines a maximum width for the table'
-complete -c himalaya -n "__fish_seen_subcommand_from list" -s h -l help -d 'Prints help information'
-complete -c himalaya -n "__fish_seen_subcommand_from list" -s V -l version -d 'Prints version information'
-complete -c himalaya -n "__fish_seen_subcommand_from search" -s s -l size -d 'Page size'
-complete -c himalaya -n "__fish_seen_subcommand_from search" -s p -l page -d 'Page number'
-complete -c himalaya -n "__fish_seen_subcommand_from search" -s w -l max-width -d 'Defines a maximum width for the table'
-complete -c himalaya -n "__fish_seen_subcommand_from search" -s h -l help -d 'Prints help information'
-complete -c himalaya -n "__fish_seen_subcommand_from search" -s V -l version -d 'Prints version information'
-complete -c himalaya -n "__fish_seen_subcommand_from write" -s a -l attachment -d 'Adds attachment to the message'
-complete -c himalaya -n "__fish_seen_subcommand_from write" -s e -l encrypt -d 'Encrypts the message'
-complete -c himalaya -n "__fish_seen_subcommand_from write" -s h -l help -d 'Prints help information'
-complete -c himalaya -n "__fish_seen_subcommand_from write" -s V -l version -d 'Prints version information'
-complete -c himalaya -n "__fish_seen_subcommand_from send" -s h -l help -d 'Prints help information'
-complete -c himalaya -n "__fish_seen_subcommand_from send" -s V -l version -d 'Prints version information'
-complete -c himalaya -n "__fish_seen_subcommand_from save" -s h -l help -d 'Prints help information'
-complete -c himalaya -n "__fish_seen_subcommand_from save" -s V -l version -d 'Prints version information'
-complete -c himalaya -n "__fish_seen_subcommand_from read" -s t -l mime-type -d 'MIME type to use' -r -f -a "plain html"
-complete -c himalaya -n "__fish_seen_subcommand_from read" -s r -l raw -d 'Reads raw message'
-complete -c himalaya -n "__fish_seen_subcommand_from read" -s h -l help -d 'Prints help information'
-complete -c himalaya -n "__fish_seen_subcommand_from read" -s V -l version -d 'Prints version information'
-complete -c himalaya -n "__fish_seen_subcommand_from reply" -s a -l attachment -d 'Adds attachment to the message'
-complete -c himalaya -n "__fish_seen_subcommand_from reply" -s A -l all -d 'Includes all recipients'
-complete -c himalaya -n "__fish_seen_subcommand_from reply" -s e -l encrypt -d 'Encrypts the message'
-complete -c himalaya -n "__fish_seen_subcommand_from reply" -s h -l help -d 'Prints help information'
-complete -c himalaya -n "__fish_seen_subcommand_from reply" -s V -l version -d 'Prints version information'
-complete -c himalaya -n "__fish_seen_subcommand_from forward" -s a -l attachment -d 'Adds attachment to the message'
-complete -c himalaya -n "__fish_seen_subcommand_from forward" -s e -l encrypt -d 'Encrypts the message'
-complete -c himalaya -n "__fish_seen_subcommand_from forward" -s h -l help -d 'Prints help information'
-complete -c himalaya -n "__fish_seen_subcommand_from forward" -s V -l version -d 'Prints version information'
-complete -c himalaya -n "__fish_seen_subcommand_from copy" -s h -l help -d 'Prints help information'
-complete -c himalaya -n "__fish_seen_subcommand_from copy" -s V -l version -d 'Prints version information'
-complete -c himalaya -n "__fish_seen_subcommand_from move" -s h -l help -d 'Prints help information'
-complete -c himalaya -n "__fish_seen_subcommand_from move" -s V -l version -d 'Prints version information'
-complete -c himalaya -n "__fish_seen_subcommand_from delete" -s h -l help -d 'Prints help information'
-complete -c himalaya -n "__fish_seen_subcommand_from delete" -s V -l version -d 'Prints version information'
-complete -c himalaya -n "__fish_seen_subcommand_from help" -s h -l help -d 'Prints help information'
-complete -c himalaya -n "__fish_seen_subcommand_from help" -s V -l version -d 'Prints version information'
+complete -c himalaya -n "__fish_use_subcommand" -f -a "help" -d 'Print this message or the help of the given subcommand(s)'
+complete -c himalaya -n "__fish_seen_subcommand_from completion" -s c -l config -d 'Set a custom configuration file path' -r
+complete -c himalaya -n "__fish_seen_subcommand_from completion" -s a -l account -d 'Set the account' -r
+complete -c himalaya -n "__fish_seen_subcommand_from completion" -s o -l output -d 'Set the output format' -r -f -a "{plain	,json	}"
+complete -c himalaya -n "__fish_seen_subcommand_from completion" -s C -l color -d 'Control when to use colors.' -r -f -a "{never	,auto	,always	,ansi	}"
+complete -c himalaya -n "__fish_seen_subcommand_from completion" -s f -l folder -d 'Set the source folder' -r
+complete -c himalaya -n "__fish_seen_subcommand_from completion" -l disable-cache -d 'Disable any sort of cache'
+complete -c himalaya -n "__fish_seen_subcommand_from completion" -s h -l help -d 'Print help (see more with \'--help\')'
+complete -c himalaya -n "__fish_seen_subcommand_from completion" -s V -l version -d 'Print version'
+complete -c himalaya -n "__fish_seen_subcommand_from man" -s c -l config -d 'Set a custom configuration file path' -r
+complete -c himalaya -n "__fish_seen_subcommand_from man" -s a -l account -d 'Set the account' -r
+complete -c himalaya -n "__fish_seen_subcommand_from man" -s o -l output -d 'Set the output format' -r -f -a "{plain	,json	}"
+complete -c himalaya -n "__fish_seen_subcommand_from man" -s C -l color -d 'Control when to use colors.' -r -f -a "{never	,auto	,always	,ansi	}"
+complete -c himalaya -n "__fish_seen_subcommand_from man" -s f -l folder -d 'Set the source folder' -r
+complete -c himalaya -n "__fish_seen_subcommand_from man" -l disable-cache -d 'Disable any sort of cache'
+complete -c himalaya -n "__fish_seen_subcommand_from man" -s h -l help -d 'Print help (see more with \'--help\')'
+complete -c himalaya -n "__fish_seen_subcommand_from man" -s V -l version -d 'Print version'
+complete -c himalaya -n "__fish_seen_subcommand_from accounts; and not __fish_seen_subcommand_from list; and not __fish_seen_subcommand_from sync; and not __fish_seen_subcommand_from configure; and not __fish_seen_subcommand_from help" -s c -l config -d 'Set a custom configuration file path' -r
+complete -c himalaya -n "__fish_seen_subcommand_from accounts; and not __fish_seen_subcommand_from list; and not __fish_seen_subcommand_from sync; and not __fish_seen_subcommand_from configure; and not __fish_seen_subcommand_from help" -s a -l account -d 'Set the account' -r
+complete -c himalaya -n "__fish_seen_subcommand_from accounts; and not __fish_seen_subcommand_from list; and not __fish_seen_subcommand_from sync; and not __fish_seen_subcommand_from configure; and not __fish_seen_subcommand_from help" -s o -l output -d 'Set the output format' -r -f -a "{plain	,json	}"
+complete -c himalaya -n "__fish_seen_subcommand_from accounts; and not __fish_seen_subcommand_from list; and not __fish_seen_subcommand_from sync; and not __fish_seen_subcommand_from configure; and not __fish_seen_subcommand_from help" -s C -l color -d 'Control when to use colors.' -r -f -a "{never	,auto	,always	,ansi	}"
+complete -c himalaya -n "__fish_seen_subcommand_from accounts; and not __fish_seen_subcommand_from list; and not __fish_seen_subcommand_from sync; and not __fish_seen_subcommand_from configure; and not __fish_seen_subcommand_from help" -s f -l folder -d 'Set the source folder' -r
+complete -c himalaya -n "__fish_seen_subcommand_from accounts; and not __fish_seen_subcommand_from list; and not __fish_seen_subcommand_from sync; and not __fish_seen_subcommand_from configure; and not __fish_seen_subcommand_from help" -l disable-cache -d 'Disable any sort of cache'
+complete -c himalaya -n "__fish_seen_subcommand_from accounts; and not __fish_seen_subcommand_from list; and not __fish_seen_subcommand_from sync; and not __fish_seen_subcommand_from configure; and not __fish_seen_subcommand_from help" -s h -l help -d 'Print help (see more with \'--help\')'
+complete -c himalaya -n "__fish_seen_subcommand_from accounts; and not __fish_seen_subcommand_from list; and not __fish_seen_subcommand_from sync; and not __fish_seen_subcommand_from configure; and not __fish_seen_subcommand_from help" -s V -l version -d 'Print version'
+complete -c himalaya -n "__fish_seen_subcommand_from accounts; and not __fish_seen_subcommand_from list; and not __fish_seen_subcommand_from sync; and not __fish_seen_subcommand_from configure; and not __fish_seen_subcommand_from help" -f -a "list" -d 'List all accounts from the config file'
+complete -c himalaya -n "__fish_seen_subcommand_from accounts; and not __fish_seen_subcommand_from list; and not __fish_seen_subcommand_from sync; and not __fish_seen_subcommand_from configure; and not __fish_seen_subcommand_from help" -f -a "sync" -d 'Synchronize the given account locally'
+complete -c himalaya -n "__fish_seen_subcommand_from accounts; and not __fish_seen_subcommand_from list; and not __fish_seen_subcommand_from sync; and not __fish_seen_subcommand_from configure; and not __fish_seen_subcommand_from help" -f -a "configure" -d 'Configure the current selected account'
+complete -c himalaya -n "__fish_seen_subcommand_from accounts; and not __fish_seen_subcommand_from list; and not __fish_seen_subcommand_from sync; and not __fish_seen_subcommand_from configure; and not __fish_seen_subcommand_from help" -f -a "help" -d 'Print this message or the help of the given subcommand(s)'
+complete -c himalaya -n "__fish_seen_subcommand_from accounts; and __fish_seen_subcommand_from list" -s w -l max-width -d 'Defines a maximum width for the table' -r
+complete -c himalaya -n "__fish_seen_subcommand_from accounts; and __fish_seen_subcommand_from list" -s c -l config -d 'Set a custom configuration file path' -r
+complete -c himalaya -n "__fish_seen_subcommand_from accounts; and __fish_seen_subcommand_from list" -s a -l account -d 'Set the account' -r
+complete -c himalaya -n "__fish_seen_subcommand_from accounts; and __fish_seen_subcommand_from list" -s o -l output -d 'Set the output format' -r -f -a "{plain	,json	}"
+complete -c himalaya -n "__fish_seen_subcommand_from accounts; and __fish_seen_subcommand_from list" -s C -l color -d 'Control when to use colors.' -r -f -a "{never	,auto	,always	,ansi	}"
+complete -c himalaya -n "__fish_seen_subcommand_from accounts; and __fish_seen_subcommand_from list" -s f -l folder -d 'Set the source folder' -r
+complete -c himalaya -n "__fish_seen_subcommand_from accounts; and __fish_seen_subcommand_from list" -l disable-cache -d 'Disable any sort of cache'
+complete -c himalaya -n "__fish_seen_subcommand_from accounts; and __fish_seen_subcommand_from list" -s h -l help -d 'Print help (see more with \'--help\')'
+complete -c himalaya -n "__fish_seen_subcommand_from accounts; and __fish_seen_subcommand_from list" -s V -l version -d 'Print version'
+complete -c himalaya -n "__fish_seen_subcommand_from accounts; and __fish_seen_subcommand_from sync" -s F -l include-folder -d 'Synchronize only the given folders' -r
+complete -c himalaya -n "__fish_seen_subcommand_from accounts; and __fish_seen_subcommand_from sync" -s x -l exclude-folder -d 'Synchronize all folders except the given ones' -r
+complete -c himalaya -n "__fish_seen_subcommand_from accounts; and __fish_seen_subcommand_from sync" -s c -l config -d 'Set a custom configuration file path' -r
+complete -c himalaya -n "__fish_seen_subcommand_from accounts; and __fish_seen_subcommand_from sync" -s a -l account -d 'Set the account' -r
+complete -c himalaya -n "__fish_seen_subcommand_from accounts; and __fish_seen_subcommand_from sync" -s o -l output -d 'Set the output format' -r -f -a "{plain	,json	}"
+complete -c himalaya -n "__fish_seen_subcommand_from accounts; and __fish_seen_subcommand_from sync" -s C -l color -d 'Control when to use colors.' -r -f -a "{never	,auto	,always	,ansi	}"
+complete -c himalaya -n "__fish_seen_subcommand_from accounts; and __fish_seen_subcommand_from sync" -s f -l folder -d 'Set the source folder' -r
+complete -c himalaya -n "__fish_seen_subcommand_from accounts; and __fish_seen_subcommand_from sync" -s A -l all-folders -d 'Synchronize all folders'
+complete -c himalaya -n "__fish_seen_subcommand_from accounts; and __fish_seen_subcommand_from sync" -s d -l dry-run -d 'Do not apply changes of the synchronization'
+complete -c himalaya -n "__fish_seen_subcommand_from accounts; and __fish_seen_subcommand_from sync" -l disable-cache -d 'Disable any sort of cache'
+complete -c himalaya -n "__fish_seen_subcommand_from accounts; and __fish_seen_subcommand_from sync" -s h -l help -d 'Print help (see more with \'--help\')'
+complete -c himalaya -n "__fish_seen_subcommand_from accounts; and __fish_seen_subcommand_from sync" -s V -l version -d 'Print version'
+complete -c himalaya -n "__fish_seen_subcommand_from accounts; and __fish_seen_subcommand_from configure" -s c -l config -d 'Set a custom configuration file path' -r
+complete -c himalaya -n "__fish_seen_subcommand_from accounts; and __fish_seen_subcommand_from configure" -s a -l account -d 'Set the account' -r
+complete -c himalaya -n "__fish_seen_subcommand_from accounts; and __fish_seen_subcommand_from configure" -s o -l output -d 'Set the output format' -r -f -a "{plain	,json	}"
+complete -c himalaya -n "__fish_seen_subcommand_from accounts; and __fish_seen_subcommand_from configure" -s C -l color -d 'Control when to use colors.' -r -f -a "{never	,auto	,always	,ansi	}"
+complete -c himalaya -n "__fish_seen_subcommand_from accounts; and __fish_seen_subcommand_from configure" -s f -l folder -d 'Set the source folder' -r
+complete -c himalaya -n "__fish_seen_subcommand_from accounts; and __fish_seen_subcommand_from configure" -s r -l reset -d 'Reset the configuration'
+complete -c himalaya -n "__fish_seen_subcommand_from accounts; and __fish_seen_subcommand_from configure" -l disable-cache -d 'Disable any sort of cache'
+complete -c himalaya -n "__fish_seen_subcommand_from accounts; and __fish_seen_subcommand_from configure" -s h -l help -d 'Print help (see more with \'--help\')'
+complete -c himalaya -n "__fish_seen_subcommand_from accounts; and __fish_seen_subcommand_from configure" -s V -l version -d 'Print version'
+complete -c himalaya -n "__fish_seen_subcommand_from accounts; and __fish_seen_subcommand_from help; and not __fish_seen_subcommand_from list; and not __fish_seen_subcommand_from sync; and not __fish_seen_subcommand_from configure; and not __fish_seen_subcommand_from help" -f -a "list" -d 'List all accounts from the config file'
+complete -c himalaya -n "__fish_seen_subcommand_from accounts; and __fish_seen_subcommand_from help; and not __fish_seen_subcommand_from list; and not __fish_seen_subcommand_from sync; and not __fish_seen_subcommand_from configure; and not __fish_seen_subcommand_from help" -f -a "sync" -d 'Synchronize the given account locally'
+complete -c himalaya -n "__fish_seen_subcommand_from accounts; and __fish_seen_subcommand_from help; and not __fish_seen_subcommand_from list; and not __fish_seen_subcommand_from sync; and not __fish_seen_subcommand_from configure; and not __fish_seen_subcommand_from help" -f -a "configure" -d 'Configure the current selected account'
+complete -c himalaya -n "__fish_seen_subcommand_from accounts; and __fish_seen_subcommand_from help; and not __fish_seen_subcommand_from list; and not __fish_seen_subcommand_from sync; and not __fish_seen_subcommand_from configure; and not __fish_seen_subcommand_from help" -f -a "help" -d 'Print this message or the help of the given subcommand(s)'
+complete -c himalaya -n "__fish_seen_subcommand_from folders; and not __fish_seen_subcommand_from expunge; and not __fish_seen_subcommand_from create; and not __fish_seen_subcommand_from list; and not __fish_seen_subcommand_from delete; and not __fish_seen_subcommand_from help" -s c -l config -d 'Set a custom configuration file path' -r
+complete -c himalaya -n "__fish_seen_subcommand_from folders; and not __fish_seen_subcommand_from expunge; and not __fish_seen_subcommand_from create; and not __fish_seen_subcommand_from list; and not __fish_seen_subcommand_from delete; and not __fish_seen_subcommand_from help" -s a -l account -d 'Set the account' -r
+complete -c himalaya -n "__fish_seen_subcommand_from folders; and not __fish_seen_subcommand_from expunge; and not __fish_seen_subcommand_from create; and not __fish_seen_subcommand_from list; and not __fish_seen_subcommand_from delete; and not __fish_seen_subcommand_from help" -s o -l output -d 'Set the output format' -r -f -a "{plain	,json	}"
+complete -c himalaya -n "__fish_seen_subcommand_from folders; and not __fish_seen_subcommand_from expunge; and not __fish_seen_subcommand_from create; and not __fish_seen_subcommand_from list; and not __fish_seen_subcommand_from delete; and not __fish_seen_subcommand_from help" -s C -l color -d 'Control when to use colors.' -r -f -a "{never	,auto	,always	,ansi	}"
+complete -c himalaya -n "__fish_seen_subcommand_from folders; and not __fish_seen_subcommand_from expunge; and not __fish_seen_subcommand_from create; and not __fish_seen_subcommand_from list; and not __fish_seen_subcommand_from delete; and not __fish_seen_subcommand_from help" -s f -l folder -d 'Set the source folder' -r
+complete -c himalaya -n "__fish_seen_subcommand_from folders; and not __fish_seen_subcommand_from expunge; and not __fish_seen_subcommand_from create; and not __fish_seen_subcommand_from list; and not __fish_seen_subcommand_from delete; and not __fish_seen_subcommand_from help" -l disable-cache -d 'Disable any sort of cache'
+complete -c himalaya -n "__fish_seen_subcommand_from folders; and not __fish_seen_subcommand_from expunge; and not __fish_seen_subcommand_from create; and not __fish_seen_subcommand_from list; and not __fish_seen_subcommand_from delete; and not __fish_seen_subcommand_from help" -s h -l help -d 'Print help (see more with \'--help\')'
+complete -c himalaya -n "__fish_seen_subcommand_from folders; and not __fish_seen_subcommand_from expunge; and not __fish_seen_subcommand_from create; and not __fish_seen_subcommand_from list; and not __fish_seen_subcommand_from delete; and not __fish_seen_subcommand_from help" -s V -l version -d 'Print version'
+complete -c himalaya -n "__fish_seen_subcommand_from folders; and not __fish_seen_subcommand_from expunge; and not __fish_seen_subcommand_from create; and not __fish_seen_subcommand_from list; and not __fish_seen_subcommand_from delete; and not __fish_seen_subcommand_from help" -f -a "expunge" -d 'Delete emails marked for deletion'
+complete -c himalaya -n "__fish_seen_subcommand_from folders; and not __fish_seen_subcommand_from expunge; and not __fish_seen_subcommand_from create; and not __fish_seen_subcommand_from list; and not __fish_seen_subcommand_from delete; and not __fish_seen_subcommand_from help" -f -a "create" -d 'Create a new folder'
+complete -c himalaya -n "__fish_seen_subcommand_from folders; and not __fish_seen_subcommand_from expunge; and not __fish_seen_subcommand_from create; and not __fish_seen_subcommand_from list; and not __fish_seen_subcommand_from delete; and not __fish_seen_subcommand_from help" -f -a "list" -d 'List folders'
+complete -c himalaya -n "__fish_seen_subcommand_from folders; and not __fish_seen_subcommand_from expunge; and not __fish_seen_subcommand_from create; and not __fish_seen_subcommand_from list; and not __fish_seen_subcommand_from delete; and not __fish_seen_subcommand_from help" -f -a "delete" -d 'Delete a folder with all its emails'
+complete -c himalaya -n "__fish_seen_subcommand_from folders; and not __fish_seen_subcommand_from expunge; and not __fish_seen_subcommand_from create; and not __fish_seen_subcommand_from list; and not __fish_seen_subcommand_from delete; and not __fish_seen_subcommand_from help" -f -a "help" -d 'Print this message or the help of the given subcommand(s)'
+complete -c himalaya -n "__fish_seen_subcommand_from folders; and __fish_seen_subcommand_from expunge" -s c -l config -d 'Set a custom configuration file path' -r
+complete -c himalaya -n "__fish_seen_subcommand_from folders; and __fish_seen_subcommand_from expunge" -s a -l account -d 'Set the account' -r
+complete -c himalaya -n "__fish_seen_subcommand_from folders; and __fish_seen_subcommand_from expunge" -s o -l output -d 'Set the output format' -r -f -a "{plain	,json	}"
+complete -c himalaya -n "__fish_seen_subcommand_from folders; and __fish_seen_subcommand_from expunge" -s C -l color -d 'Control when to use colors.' -r -f -a "{never	,auto	,always	,ansi	}"
+complete -c himalaya -n "__fish_seen_subcommand_from folders; and __fish_seen_subcommand_from expunge" -s f -l folder -d 'Set the source folder' -r
+complete -c himalaya -n "__fish_seen_subcommand_from folders; and __fish_seen_subcommand_from expunge" -l disable-cache -d 'Disable any sort of cache'
+complete -c himalaya -n "__fish_seen_subcommand_from folders; and __fish_seen_subcommand_from expunge" -s h -l help -d 'Print help (see more with \'--help\')'
+complete -c himalaya -n "__fish_seen_subcommand_from folders; and __fish_seen_subcommand_from expunge" -s V -l version -d 'Print version'
+complete -c himalaya -n "__fish_seen_subcommand_from folders; and __fish_seen_subcommand_from create" -s c -l config -d 'Set a custom configuration file path' -r
+complete -c himalaya -n "__fish_seen_subcommand_from folders; and __fish_seen_subcommand_from create" -s a -l account -d 'Set the account' -r
+complete -c himalaya -n "__fish_seen_subcommand_from folders; and __fish_seen_subcommand_from create" -s o -l output -d 'Set the output format' -r -f -a "{plain	,json	}"
+complete -c himalaya -n "__fish_seen_subcommand_from folders; and __fish_seen_subcommand_from create" -s C -l color -d 'Control when to use colors.' -r -f -a "{never	,auto	,always	,ansi	}"
+complete -c himalaya -n "__fish_seen_subcommand_from folders; and __fish_seen_subcommand_from create" -s f -l folder -d 'Set the source folder' -r
+complete -c himalaya -n "__fish_seen_subcommand_from folders; and __fish_seen_subcommand_from create" -l disable-cache -d 'Disable any sort of cache'
+complete -c himalaya -n "__fish_seen_subcommand_from folders; and __fish_seen_subcommand_from create" -s h -l help -d 'Print help (see more with \'--help\')'
+complete -c himalaya -n "__fish_seen_subcommand_from folders; and __fish_seen_subcommand_from create" -s V -l version -d 'Print version'
+complete -c himalaya -n "__fish_seen_subcommand_from folders; and __fish_seen_subcommand_from list" -s w -l max-width -d 'Defines a maximum width for the table' -r
+complete -c himalaya -n "__fish_seen_subcommand_from folders; and __fish_seen_subcommand_from list" -s c -l config -d 'Set a custom configuration file path' -r
+complete -c himalaya -n "__fish_seen_subcommand_from folders; and __fish_seen_subcommand_from list" -s a -l account -d 'Set the account' -r
+complete -c himalaya -n "__fish_seen_subcommand_from folders; and __fish_seen_subcommand_from list" -s o -l output -d 'Set the output format' -r -f -a "{plain	,json	}"
+complete -c himalaya -n "__fish_seen_subcommand_from folders; and __fish_seen_subcommand_from list" -s C -l color -d 'Control when to use colors.' -r -f -a "{never	,auto	,always	,ansi	}"
+complete -c himalaya -n "__fish_seen_subcommand_from folders; and __fish_seen_subcommand_from list" -s f -l folder -d 'Set the source folder' -r
+complete -c himalaya -n "__fish_seen_subcommand_from folders; and __fish_seen_subcommand_from list" -l disable-cache -d 'Disable any sort of cache'
+complete -c himalaya -n "__fish_seen_subcommand_from folders; and __fish_seen_subcommand_from list" -s h -l help -d 'Print help (see more with \'--help\')'
+complete -c himalaya -n "__fish_seen_subcommand_from folders; and __fish_seen_subcommand_from list" -s V -l version -d 'Print version'
+complete -c himalaya -n "__fish_seen_subcommand_from folders; and __fish_seen_subcommand_from delete" -s c -l config -d 'Set a custom configuration file path' -r
+complete -c himalaya -n "__fish_seen_subcommand_from folders; and __fish_seen_subcommand_from delete" -s a -l account -d 'Set the account' -r
+complete -c himalaya -n "__fish_seen_subcommand_from folders; and __fish_seen_subcommand_from delete" -s o -l output -d 'Set the output format' -r -f -a "{plain	,json	}"
+complete -c himalaya -n "__fish_seen_subcommand_from folders; and __fish_seen_subcommand_from delete" -s C -l color -d 'Control when to use colors.' -r -f -a "{never	,auto	,always	,ansi	}"
+complete -c himalaya -n "__fish_seen_subcommand_from folders; and __fish_seen_subcommand_from delete" -s f -l folder -d 'Set the source folder' -r
+complete -c himalaya -n "__fish_seen_subcommand_from folders; and __fish_seen_subcommand_from delete" -l disable-cache -d 'Disable any sort of cache'
+complete -c himalaya -n "__fish_seen_subcommand_from folders; and __fish_seen_subcommand_from delete" -s h -l help -d 'Print help (see more with \'--help\')'
+complete -c himalaya -n "__fish_seen_subcommand_from folders; and __fish_seen_subcommand_from delete" -s V -l version -d 'Print version'
+complete -c himalaya -n "__fish_seen_subcommand_from folders; and __fish_seen_subcommand_from help; and not __fish_seen_subcommand_from expunge; and not __fish_seen_subcommand_from create; and not __fish_seen_subcommand_from list; and not __fish_seen_subcommand_from delete; and not __fish_seen_subcommand_from help" -f -a "expunge" -d 'Delete emails marked for deletion'
+complete -c himalaya -n "__fish_seen_subcommand_from folders; and __fish_seen_subcommand_from help; and not __fish_seen_subcommand_from expunge; and not __fish_seen_subcommand_from create; and not __fish_seen_subcommand_from list; and not __fish_seen_subcommand_from delete; and not __fish_seen_subcommand_from help" -f -a "create" -d 'Create a new folder'
+complete -c himalaya -n "__fish_seen_subcommand_from folders; and __fish_seen_subcommand_from help; and not __fish_seen_subcommand_from expunge; and not __fish_seen_subcommand_from create; and not __fish_seen_subcommand_from list; and not __fish_seen_subcommand_from delete; and not __fish_seen_subcommand_from help" -f -a "list" -d 'List folders'
+complete -c himalaya -n "__fish_seen_subcommand_from folders; and __fish_seen_subcommand_from help; and not __fish_seen_subcommand_from expunge; and not __fish_seen_subcommand_from create; and not __fish_seen_subcommand_from list; and not __fish_seen_subcommand_from delete; and not __fish_seen_subcommand_from help" -f -a "delete" -d 'Delete a folder with all its emails'
+complete -c himalaya -n "__fish_seen_subcommand_from folders; and __fish_seen_subcommand_from help; and not __fish_seen_subcommand_from expunge; and not __fish_seen_subcommand_from create; and not __fish_seen_subcommand_from list; and not __fish_seen_subcommand_from delete; and not __fish_seen_subcommand_from help" -f -a "help" -d 'Print this message or the help of the given subcommand(s)'
+complete -c himalaya -n "__fish_seen_subcommand_from flags; and not __fish_seen_subcommand_from add; and not __fish_seen_subcommand_from remove; and not __fish_seen_subcommand_from set; and not __fish_seen_subcommand_from help" -s c -l config -d 'Set a custom configuration file path' -r
+complete -c himalaya -n "__fish_seen_subcommand_from flags; and not __fish_seen_subcommand_from add; and not __fish_seen_subcommand_from remove; and not __fish_seen_subcommand_from set; and not __fish_seen_subcommand_from help" -s a -l account -d 'Set the account' -r
+complete -c himalaya -n "__fish_seen_subcommand_from flags; and not __fish_seen_subcommand_from add; and not __fish_seen_subcommand_from remove; and not __fish_seen_subcommand_from set; and not __fish_seen_subcommand_from help" -s o -l output -d 'Set the output format' -r -f -a "{plain	,json	}"
+complete -c himalaya -n "__fish_seen_subcommand_from flags; and not __fish_seen_subcommand_from add; and not __fish_seen_subcommand_from remove; and not __fish_seen_subcommand_from set; and not __fish_seen_subcommand_from help" -s C -l color -d 'Control when to use colors.' -r -f -a "{never	,auto	,always	,ansi	}"
+complete -c himalaya -n "__fish_seen_subcommand_from flags; and not __fish_seen_subcommand_from add; and not __fish_seen_subcommand_from remove; and not __fish_seen_subcommand_from set; and not __fish_seen_subcommand_from help" -s f -l folder -d 'Set the source folder' -r
+complete -c himalaya -n "__fish_seen_subcommand_from flags; and not __fish_seen_subcommand_from add; and not __fish_seen_subcommand_from remove; and not __fish_seen_subcommand_from set; and not __fish_seen_subcommand_from help" -l disable-cache -d 'Disable any sort of cache'
+complete -c himalaya -n "__fish_seen_subcommand_from flags; and not __fish_seen_subcommand_from add; and not __fish_seen_subcommand_from remove; and not __fish_seen_subcommand_from set; and not __fish_seen_subcommand_from help" -s h -l help -d 'Print help (see more with \'--help\')'
+complete -c himalaya -n "__fish_seen_subcommand_from flags; and not __fish_seen_subcommand_from add; and not __fish_seen_subcommand_from remove; and not __fish_seen_subcommand_from set; and not __fish_seen_subcommand_from help" -s V -l version -d 'Print version'
+complete -c himalaya -n "__fish_seen_subcommand_from flags; and not __fish_seen_subcommand_from add; and not __fish_seen_subcommand_from remove; and not __fish_seen_subcommand_from set; and not __fish_seen_subcommand_from help" -f -a "add" -d 'Adds flags to an email'
+complete -c himalaya -n "__fish_seen_subcommand_from flags; and not __fish_seen_subcommand_from add; and not __fish_seen_subcommand_from remove; and not __fish_seen_subcommand_from set; and not __fish_seen_subcommand_from help" -f -a "remove" -d 'Removes flags from an email'
+complete -c himalaya -n "__fish_seen_subcommand_from flags; and not __fish_seen_subcommand_from add; and not __fish_seen_subcommand_from remove; and not __fish_seen_subcommand_from set; and not __fish_seen_subcommand_from help" -f -a "set" -d 'Sets flags of an email'
+complete -c himalaya -n "__fish_seen_subcommand_from flags; and not __fish_seen_subcommand_from add; and not __fish_seen_subcommand_from remove; and not __fish_seen_subcommand_from set; and not __fish_seen_subcommand_from help" -f -a "help" -d 'Print this message or the help of the given subcommand(s)'
+complete -c himalaya -n "__fish_seen_subcommand_from flags; and __fish_seen_subcommand_from add" -s c -l config -d 'Set a custom configuration file path' -r
+complete -c himalaya -n "__fish_seen_subcommand_from flags; and __fish_seen_subcommand_from add" -s a -l account -d 'Set the account' -r
+complete -c himalaya -n "__fish_seen_subcommand_from flags; and __fish_seen_subcommand_from add" -s o -l output -d 'Set the output format' -r -f -a "{plain	,json	}"
+complete -c himalaya -n "__fish_seen_subcommand_from flags; and __fish_seen_subcommand_from add" -s C -l color -d 'Control when to use colors.' -r -f -a "{never	,auto	,always	,ansi	}"
+complete -c himalaya -n "__fish_seen_subcommand_from flags; and __fish_seen_subcommand_from add" -s f -l folder -d 'Set the source folder' -r
+complete -c himalaya -n "__fish_seen_subcommand_from flags; and __fish_seen_subcommand_from add" -l disable-cache -d 'Disable any sort of cache'
+complete -c himalaya -n "__fish_seen_subcommand_from flags; and __fish_seen_subcommand_from add" -s h -l help -d 'Print help (see more with \'--help\')'
+complete -c himalaya -n "__fish_seen_subcommand_from flags; and __fish_seen_subcommand_from add" -s V -l version -d 'Print version'
+complete -c himalaya -n "__fish_seen_subcommand_from flags; and __fish_seen_subcommand_from remove" -s c -l config -d 'Set a custom configuration file path' -r
+complete -c himalaya -n "__fish_seen_subcommand_from flags; and __fish_seen_subcommand_from remove" -s a -l account -d 'Set the account' -r
+complete -c himalaya -n "__fish_seen_subcommand_from flags; and __fish_seen_subcommand_from remove" -s o -l output -d 'Set the output format' -r -f -a "{plain	,json	}"
+complete -c himalaya -n "__fish_seen_subcommand_from flags; and __fish_seen_subcommand_from remove" -s C -l color -d 'Control when to use colors.' -r -f -a "{never	,auto	,always	,ansi	}"
+complete -c himalaya -n "__fish_seen_subcommand_from flags; and __fish_seen_subcommand_from remove" -s f -l folder -d 'Set the source folder' -r
+complete -c himalaya -n "__fish_seen_subcommand_from flags; and __fish_seen_subcommand_from remove" -l disable-cache -d 'Disable any sort of cache'
+complete -c himalaya -n "__fish_seen_subcommand_from flags; and __fish_seen_subcommand_from remove" -s h -l help -d 'Print help (see more with \'--help\')'
+complete -c himalaya -n "__fish_seen_subcommand_from flags; and __fish_seen_subcommand_from remove" -s V -l version -d 'Print version'
+complete -c himalaya -n "__fish_seen_subcommand_from flags; and __fish_seen_subcommand_from set" -s c -l config -d 'Set a custom configuration file path' -r
+complete -c himalaya -n "__fish_seen_subcommand_from flags; and __fish_seen_subcommand_from set" -s a -l account -d 'Set the account' -r
+complete -c himalaya -n "__fish_seen_subcommand_from flags; and __fish_seen_subcommand_from set" -s o -l output -d 'Set the output format' -r -f -a "{plain	,json	}"
+complete -c himalaya -n "__fish_seen_subcommand_from flags; and __fish_seen_subcommand_from set" -s C -l color -d 'Control when to use colors.' -r -f -a "{never	,auto	,always	,ansi	}"
+complete -c himalaya -n "__fish_seen_subcommand_from flags; and __fish_seen_subcommand_from set" -s f -l folder -d 'Set the source folder' -r
+complete -c himalaya -n "__fish_seen_subcommand_from flags; and __fish_seen_subcommand_from set" -l disable-cache -d 'Disable any sort of cache'
+complete -c himalaya -n "__fish_seen_subcommand_from flags; and __fish_seen_subcommand_from set" -s h -l help -d 'Print help (see more with \'--help\')'
+complete -c himalaya -n "__fish_seen_subcommand_from flags; and __fish_seen_subcommand_from set" -s V -l version -d 'Print version'
+complete -c himalaya -n "__fish_seen_subcommand_from flags; and __fish_seen_subcommand_from help; and not __fish_seen_subcommand_from add; and not __fish_seen_subcommand_from remove; and not __fish_seen_subcommand_from set; and not __fish_seen_subcommand_from help" -f -a "add" -d 'Adds flags to an email'
+complete -c himalaya -n "__fish_seen_subcommand_from flags; and __fish_seen_subcommand_from help; and not __fish_seen_subcommand_from add; and not __fish_seen_subcommand_from remove; and not __fish_seen_subcommand_from set; and not __fish_seen_subcommand_from help" -f -a "remove" -d 'Removes flags from an email'
+complete -c himalaya -n "__fish_seen_subcommand_from flags; and __fish_seen_subcommand_from help; and not __fish_seen_subcommand_from add; and not __fish_seen_subcommand_from remove; and not __fish_seen_subcommand_from set; and not __fish_seen_subcommand_from help" -f -a "set" -d 'Sets flags of an email'
+complete -c himalaya -n "__fish_seen_subcommand_from flags; and __fish_seen_subcommand_from help; and not __fish_seen_subcommand_from add; and not __fish_seen_subcommand_from remove; and not __fish_seen_subcommand_from set; and not __fish_seen_subcommand_from help" -f -a "help" -d 'Print this message or the help of the given subcommand(s)'
+complete -c himalaya -n "__fish_seen_subcommand_from template; and not __fish_seen_subcommand_from forward; and not __fish_seen_subcommand_from reply; and not __fish_seen_subcommand_from save; and not __fish_seen_subcommand_from send; and not __fish_seen_subcommand_from write; and not __fish_seen_subcommand_from help" -s c -l config -d 'Set a custom configuration file path' -r
+complete -c himalaya -n "__fish_seen_subcommand_from template; and not __fish_seen_subcommand_from forward; and not __fish_seen_subcommand_from reply; and not __fish_seen_subcommand_from save; and not __fish_seen_subcommand_from send; and not __fish_seen_subcommand_from write; and not __fish_seen_subcommand_from help" -s a -l account -d 'Set the account' -r
+complete -c himalaya -n "__fish_seen_subcommand_from template; and not __fish_seen_subcommand_from forward; and not __fish_seen_subcommand_from reply; and not __fish_seen_subcommand_from save; and not __fish_seen_subcommand_from send; and not __fish_seen_subcommand_from write; and not __fish_seen_subcommand_from help" -s o -l output -d 'Set the output format' -r -f -a "{plain	,json	}"
+complete -c himalaya -n "__fish_seen_subcommand_from template; and not __fish_seen_subcommand_from forward; and not __fish_seen_subcommand_from reply; and not __fish_seen_subcommand_from save; and not __fish_seen_subcommand_from send; and not __fish_seen_subcommand_from write; and not __fish_seen_subcommand_from help" -s C -l color -d 'Control when to use colors.' -r -f -a "{never	,auto	,always	,ansi	}"
+complete -c himalaya -n "__fish_seen_subcommand_from template; and not __fish_seen_subcommand_from forward; and not __fish_seen_subcommand_from reply; and not __fish_seen_subcommand_from save; and not __fish_seen_subcommand_from send; and not __fish_seen_subcommand_from write; and not __fish_seen_subcommand_from help" -s f -l folder -d 'Set the source folder' -r
+complete -c himalaya -n "__fish_seen_subcommand_from template; and not __fish_seen_subcommand_from forward; and not __fish_seen_subcommand_from reply; and not __fish_seen_subcommand_from save; and not __fish_seen_subcommand_from send; and not __fish_seen_subcommand_from write; and not __fish_seen_subcommand_from help" -l disable-cache -d 'Disable any sort of cache'
+complete -c himalaya -n "__fish_seen_subcommand_from template; and not __fish_seen_subcommand_from forward; and not __fish_seen_subcommand_from reply; and not __fish_seen_subcommand_from save; and not __fish_seen_subcommand_from send; and not __fish_seen_subcommand_from write; and not __fish_seen_subcommand_from help" -s h -l help -d 'Print help (see more with \'--help\')'
+complete -c himalaya -n "__fish_seen_subcommand_from template; and not __fish_seen_subcommand_from forward; and not __fish_seen_subcommand_from reply; and not __fish_seen_subcommand_from save; and not __fish_seen_subcommand_from send; and not __fish_seen_subcommand_from write; and not __fish_seen_subcommand_from help" -s V -l version -d 'Print version'
+complete -c himalaya -n "__fish_seen_subcommand_from template; and not __fish_seen_subcommand_from forward; and not __fish_seen_subcommand_from reply; and not __fish_seen_subcommand_from save; and not __fish_seen_subcommand_from send; and not __fish_seen_subcommand_from write; and not __fish_seen_subcommand_from help" -f -a "forward" -d 'Generates a template for forwarding an email'
+complete -c himalaya -n "__fish_seen_subcommand_from template; and not __fish_seen_subcommand_from forward; and not __fish_seen_subcommand_from reply; and not __fish_seen_subcommand_from save; and not __fish_seen_subcommand_from send; and not __fish_seen_subcommand_from write; and not __fish_seen_subcommand_from help" -f -a "reply" -d 'Generates a template for replying to an email'
+complete -c himalaya -n "__fish_seen_subcommand_from template; and not __fish_seen_subcommand_from forward; and not __fish_seen_subcommand_from reply; and not __fish_seen_subcommand_from save; and not __fish_seen_subcommand_from send; and not __fish_seen_subcommand_from write; and not __fish_seen_subcommand_from help" -f -a "save" -d 'Compiles the template into a valid email then saves it'
+complete -c himalaya -n "__fish_seen_subcommand_from template; and not __fish_seen_subcommand_from forward; and not __fish_seen_subcommand_from reply; and not __fish_seen_subcommand_from save; and not __fish_seen_subcommand_from send; and not __fish_seen_subcommand_from write; and not __fish_seen_subcommand_from help" -f -a "send" -d 'Compiles the template into a valid email then sends it'
+complete -c himalaya -n "__fish_seen_subcommand_from template; and not __fish_seen_subcommand_from forward; and not __fish_seen_subcommand_from reply; and not __fish_seen_subcommand_from save; and not __fish_seen_subcommand_from send; and not __fish_seen_subcommand_from write; and not __fish_seen_subcommand_from help" -f -a "write" -d 'Generates a template for writing a new email'
+complete -c himalaya -n "__fish_seen_subcommand_from template; and not __fish_seen_subcommand_from forward; and not __fish_seen_subcommand_from reply; and not __fish_seen_subcommand_from save; and not __fish_seen_subcommand_from send; and not __fish_seen_subcommand_from write; and not __fish_seen_subcommand_from help" -f -a "help" -d 'Print this message or the help of the given subcommand(s)'
+complete -c himalaya -n "__fish_seen_subcommand_from template; and __fish_seen_subcommand_from forward" -s H -l header -d 'Overrides a specific header' -r
+complete -c himalaya -n "__fish_seen_subcommand_from template; and __fish_seen_subcommand_from forward" -s B -l body -d 'Overrides the body' -r
+complete -c himalaya -n "__fish_seen_subcommand_from template; and __fish_seen_subcommand_from forward" -s c -l config -d 'Set a custom configuration file path' -r
+complete -c himalaya -n "__fish_seen_subcommand_from template; and __fish_seen_subcommand_from forward" -s a -l account -d 'Set the account' -r
+complete -c himalaya -n "__fish_seen_subcommand_from template; and __fish_seen_subcommand_from forward" -s o -l output -d 'Set the output format' -r -f -a "{plain	,json	}"
+complete -c himalaya -n "__fish_seen_subcommand_from template; and __fish_seen_subcommand_from forward" -s C -l color -d 'Control when to use colors.' -r -f -a "{never	,auto	,always	,ansi	}"
+complete -c himalaya -n "__fish_seen_subcommand_from template; and __fish_seen_subcommand_from forward" -s f -l folder -d 'Set the source folder' -r
+complete -c himalaya -n "__fish_seen_subcommand_from template; and __fish_seen_subcommand_from forward" -l disable-cache -d 'Disable any sort of cache'
+complete -c himalaya -n "__fish_seen_subcommand_from template; and __fish_seen_subcommand_from forward" -s h -l help -d 'Print help (see more with \'--help\')'
+complete -c himalaya -n "__fish_seen_subcommand_from template; and __fish_seen_subcommand_from forward" -s V -l version -d 'Print version'
+complete -c himalaya -n "__fish_seen_subcommand_from template; and __fish_seen_subcommand_from reply" -s H -l header -d 'Overrides a specific header' -r
+complete -c himalaya -n "__fish_seen_subcommand_from template; and __fish_seen_subcommand_from reply" -s B -l body -d 'Overrides the body' -r
+complete -c himalaya -n "__fish_seen_subcommand_from template; and __fish_seen_subcommand_from reply" -s c -l config -d 'Set a custom configuration file path' -r
+complete -c himalaya -n "__fish_seen_subcommand_from template; and __fish_seen_subcommand_from reply" -s a -l account -d 'Set the account' -r
+complete -c himalaya -n "__fish_seen_subcommand_from template; and __fish_seen_subcommand_from reply" -s o -l output -d 'Set the output format' -r -f -a "{plain	,json	}"
+complete -c himalaya -n "__fish_seen_subcommand_from template; and __fish_seen_subcommand_from reply" -s C -l color -d 'Control when to use colors.' -r -f -a "{never	,auto	,always	,ansi	}"
+complete -c himalaya -n "__fish_seen_subcommand_from template; and __fish_seen_subcommand_from reply" -s f -l folder -d 'Set the source folder' -r
+complete -c himalaya -n "__fish_seen_subcommand_from template; and __fish_seen_subcommand_from reply" -s A -l all -d 'Include all recipients'
+complete -c himalaya -n "__fish_seen_subcommand_from template; and __fish_seen_subcommand_from reply" -l disable-cache -d 'Disable any sort of cache'
+complete -c himalaya -n "__fish_seen_subcommand_from template; and __fish_seen_subcommand_from reply" -s h -l help -d 'Print help (see more with \'--help\')'
+complete -c himalaya -n "__fish_seen_subcommand_from template; and __fish_seen_subcommand_from reply" -s V -l version -d 'Print version'
+complete -c himalaya -n "__fish_seen_subcommand_from template; and __fish_seen_subcommand_from save" -s c -l config -d 'Set a custom configuration file path' -r
+complete -c himalaya -n "__fish_seen_subcommand_from template; and __fish_seen_subcommand_from save" -s a -l account -d 'Set the account' -r
+complete -c himalaya -n "__fish_seen_subcommand_from template; and __fish_seen_subcommand_from save" -s o -l output -d 'Set the output format' -r -f -a "{plain	,json	}"
+complete -c himalaya -n "__fish_seen_subcommand_from template; and __fish_seen_subcommand_from save" -s C -l color -d 'Control when to use colors.' -r -f -a "{never	,auto	,always	,ansi	}"
+complete -c himalaya -n "__fish_seen_subcommand_from template; and __fish_seen_subcommand_from save" -s f -l folder -d 'Set the source folder' -r
+complete -c himalaya -n "__fish_seen_subcommand_from template; and __fish_seen_subcommand_from save" -l disable-cache -d 'Disable any sort of cache'
+complete -c himalaya -n "__fish_seen_subcommand_from template; and __fish_seen_subcommand_from save" -s h -l help -d 'Print help (see more with \'--help\')'
+complete -c himalaya -n "__fish_seen_subcommand_from template; and __fish_seen_subcommand_from save" -s V -l version -d 'Print version'
+complete -c himalaya -n "__fish_seen_subcommand_from template; and __fish_seen_subcommand_from send" -s c -l config -d 'Set a custom configuration file path' -r
+complete -c himalaya -n "__fish_seen_subcommand_from template; and __fish_seen_subcommand_from send" -s a -l account -d 'Set the account' -r
+complete -c himalaya -n "__fish_seen_subcommand_from template; and __fish_seen_subcommand_from send" -s o -l output -d 'Set the output format' -r -f -a "{plain	,json	}"
+complete -c himalaya -n "__fish_seen_subcommand_from template; and __fish_seen_subcommand_from send" -s C -l color -d 'Control when to use colors.' -r -f -a "{never	,auto	,always	,ansi	}"
+complete -c himalaya -n "__fish_seen_subcommand_from template; and __fish_seen_subcommand_from send" -s f -l folder -d 'Set the source folder' -r
+complete -c himalaya -n "__fish_seen_subcommand_from template; and __fish_seen_subcommand_from send" -l disable-cache -d 'Disable any sort of cache'
+complete -c himalaya -n "__fish_seen_subcommand_from template; and __fish_seen_subcommand_from send" -s h -l help -d 'Print help (see more with \'--help\')'
+complete -c himalaya -n "__fish_seen_subcommand_from template; and __fish_seen_subcommand_from send" -s V -l version -d 'Print version'
+complete -c himalaya -n "__fish_seen_subcommand_from template; and __fish_seen_subcommand_from write" -s H -l header -d 'Overrides a specific header' -r
+complete -c himalaya -n "__fish_seen_subcommand_from template; and __fish_seen_subcommand_from write" -s B -l body -d 'Overrides the body' -r
+complete -c himalaya -n "__fish_seen_subcommand_from template; and __fish_seen_subcommand_from write" -s c -l config -d 'Set a custom configuration file path' -r
+complete -c himalaya -n "__fish_seen_subcommand_from template; and __fish_seen_subcommand_from write" -s a -l account -d 'Set the account' -r
+complete -c himalaya -n "__fish_seen_subcommand_from template; and __fish_seen_subcommand_from write" -s o -l output -d 'Set the output format' -r -f -a "{plain	,json	}"
+complete -c himalaya -n "__fish_seen_subcommand_from template; and __fish_seen_subcommand_from write" -s C -l color -d 'Control when to use colors.' -r -f -a "{never	,auto	,always	,ansi	}"
+complete -c himalaya -n "__fish_seen_subcommand_from template; and __fish_seen_subcommand_from write" -s f -l folder -d 'Set the source folder' -r
+complete -c himalaya -n "__fish_seen_subcommand_from template; and __fish_seen_subcommand_from write" -l disable-cache -d 'Disable any sort of cache'
+complete -c himalaya -n "__fish_seen_subcommand_from template; and __fish_seen_subcommand_from write" -s h -l help -d 'Print help (see more with \'--help\')'
+complete -c himalaya -n "__fish_seen_subcommand_from template; and __fish_seen_subcommand_from write" -s V -l version -d 'Print version'
+complete -c himalaya -n "__fish_seen_subcommand_from template; and __fish_seen_subcommand_from help; and not __fish_seen_subcommand_from forward; and not __fish_seen_subcommand_from reply; and not __fish_seen_subcommand_from save; and not __fish_seen_subcommand_from send; and not __fish_seen_subcommand_from write; and not __fish_seen_subcommand_from help" -f -a "forward" -d 'Generates a template for forwarding an email'
+complete -c himalaya -n "__fish_seen_subcommand_from template; and __fish_seen_subcommand_from help; and not __fish_seen_subcommand_from forward; and not __fish_seen_subcommand_from reply; and not __fish_seen_subcommand_from save; and not __fish_seen_subcommand_from send; and not __fish_seen_subcommand_from write; and not __fish_seen_subcommand_from help" -f -a "reply" -d 'Generates a template for replying to an email'
+complete -c himalaya -n "__fish_seen_subcommand_from template; and __fish_seen_subcommand_from help; and not __fish_seen_subcommand_from forward; and not __fish_seen_subcommand_from reply; and not __fish_seen_subcommand_from save; and not __fish_seen_subcommand_from send; and not __fish_seen_subcommand_from write; and not __fish_seen_subcommand_from help" -f -a "save" -d 'Compiles the template into a valid email then saves it'
+complete -c himalaya -n "__fish_seen_subcommand_from template; and __fish_seen_subcommand_from help; and not __fish_seen_subcommand_from forward; and not __fish_seen_subcommand_from reply; and not __fish_seen_subcommand_from save; and not __fish_seen_subcommand_from send; and not __fish_seen_subcommand_from write; and not __fish_seen_subcommand_from help" -f -a "send" -d 'Compiles the template into a valid email then sends it'
+complete -c himalaya -n "__fish_seen_subcommand_from template; and __fish_seen_subcommand_from help; and not __fish_seen_subcommand_from forward; and not __fish_seen_subcommand_from reply; and not __fish_seen_subcommand_from save; and not __fish_seen_subcommand_from send; and not __fish_seen_subcommand_from write; and not __fish_seen_subcommand_from help" -f -a "write" -d 'Generates a template for writing a new email'
+complete -c himalaya -n "__fish_seen_subcommand_from template; and __fish_seen_subcommand_from help; and not __fish_seen_subcommand_from forward; and not __fish_seen_subcommand_from reply; and not __fish_seen_subcommand_from save; and not __fish_seen_subcommand_from send; and not __fish_seen_subcommand_from write; and not __fish_seen_subcommand_from help" -f -a "help" -d 'Print this message or the help of the given subcommand(s)'
+complete -c himalaya -n "__fish_seen_subcommand_from attachments" -s c -l config -d 'Set a custom configuration file path' -r
+complete -c himalaya -n "__fish_seen_subcommand_from attachments" -s a -l account -d 'Set the account' -r
+complete -c himalaya -n "__fish_seen_subcommand_from attachments" -s o -l output -d 'Set the output format' -r -f -a "{plain	,json	}"
+complete -c himalaya -n "__fish_seen_subcommand_from attachments" -s C -l color -d 'Control when to use colors.' -r -f -a "{never	,auto	,always	,ansi	}"
+complete -c himalaya -n "__fish_seen_subcommand_from attachments" -s f -l folder -d 'Set the source folder' -r
+complete -c himalaya -n "__fish_seen_subcommand_from attachments" -l disable-cache -d 'Disable any sort of cache'
+complete -c himalaya -n "__fish_seen_subcommand_from attachments" -s h -l help -d 'Print help (see more with \'--help\')'
+complete -c himalaya -n "__fish_seen_subcommand_from attachments" -s V -l version -d 'Print version'
+complete -c himalaya -n "__fish_seen_subcommand_from list" -s s -l page-size -d 'Page size' -r
+complete -c himalaya -n "__fish_seen_subcommand_from list" -s p -l page -d 'Page number' -r
+complete -c himalaya -n "__fish_seen_subcommand_from list" -s w -l max-width -d 'Defines a maximum width for the table' -r
+complete -c himalaya -n "__fish_seen_subcommand_from list" -s c -l config -d 'Set a custom configuration file path' -r
+complete -c himalaya -n "__fish_seen_subcommand_from list" -s a -l account -d 'Set the account' -r
+complete -c himalaya -n "__fish_seen_subcommand_from list" -s o -l output -d 'Set the output format' -r -f -a "{plain	,json	}"
+complete -c himalaya -n "__fish_seen_subcommand_from list" -s C -l color -d 'Control when to use colors.' -r -f -a "{never	,auto	,always	,ansi	}"
+complete -c himalaya -n "__fish_seen_subcommand_from list" -s f -l folder -d 'Set the source folder' -r
+complete -c himalaya -n "__fish_seen_subcommand_from list" -l disable-cache -d 'Disable any sort of cache'
+complete -c himalaya -n "__fish_seen_subcommand_from list" -s h -l help -d 'Print help (see more with \'--help\')'
+complete -c himalaya -n "__fish_seen_subcommand_from list" -s V -l version -d 'Print version'
+complete -c himalaya -n "__fish_seen_subcommand_from search" -s s -l page-size -d 'Page size' -r
+complete -c himalaya -n "__fish_seen_subcommand_from search" -s p -l page -d 'Page number' -r
+complete -c himalaya -n "__fish_seen_subcommand_from search" -s w -l max-width -d 'Defines a maximum width for the table' -r
+complete -c himalaya -n "__fish_seen_subcommand_from search" -s c -l config -d 'Set a custom configuration file path' -r
+complete -c himalaya -n "__fish_seen_subcommand_from search" -s a -l account -d 'Set the account' -r
+complete -c himalaya -n "__fish_seen_subcommand_from search" -s o -l output -d 'Set the output format' -r -f -a "{plain	,json	}"
+complete -c himalaya -n "__fish_seen_subcommand_from search" -s C -l color -d 'Control when to use colors.' -r -f -a "{never	,auto	,always	,ansi	}"
+complete -c himalaya -n "__fish_seen_subcommand_from search" -s f -l folder -d 'Set the source folder' -r
+complete -c himalaya -n "__fish_seen_subcommand_from search" -l disable-cache -d 'Disable any sort of cache'
+complete -c himalaya -n "__fish_seen_subcommand_from search" -s h -l help -d 'Print help (see more with \'--help\')'
+complete -c himalaya -n "__fish_seen_subcommand_from search" -s V -l version -d 'Print version'
+complete -c himalaya -n "__fish_seen_subcommand_from sort" -s s -l page-size -d 'Page size' -r
+complete -c himalaya -n "__fish_seen_subcommand_from sort" -s p -l page -d 'Page number' -r
+complete -c himalaya -n "__fish_seen_subcommand_from sort" -s w -l max-width -d 'Defines a maximum width for the table' -r
+complete -c himalaya -n "__fish_seen_subcommand_from sort" -s c -l criterion -d 'Email sorting preferences' -r -f -a "{arrival	,arrival:asc	,arrival:desc	,cc	,cc:asc	,cc:desc	,date	,date:asc	,date:desc	,from	,from:asc	,from:desc	,size	,size:asc	,size:desc	,subject	,subject:asc	,subject:desc	,to	,to:asc	,to:desc	}"
+complete -c himalaya -n "__fish_seen_subcommand_from sort" -s c -l config -d 'Set a custom configuration file path' -r
+complete -c himalaya -n "__fish_seen_subcommand_from sort" -s a -l account -d 'Set the account' -r
+complete -c himalaya -n "__fish_seen_subcommand_from sort" -s o -l output -d 'Set the output format' -r -f -a "{plain	,json	}"
+complete -c himalaya -n "__fish_seen_subcommand_from sort" -s C -l color -d 'Control when to use colors.' -r -f -a "{never	,auto	,always	,ansi	}"
+complete -c himalaya -n "__fish_seen_subcommand_from sort" -s f -l folder -d 'Set the source folder' -r
+complete -c himalaya -n "__fish_seen_subcommand_from sort" -l disable-cache -d 'Disable any sort of cache'
+complete -c himalaya -n "__fish_seen_subcommand_from sort" -s h -l help -d 'Print help (see more with \'--help\')'
+complete -c himalaya -n "__fish_seen_subcommand_from sort" -s V -l version -d 'Print version'
+complete -c himalaya -n "__fish_seen_subcommand_from write" -s H -l header -d 'Overrides a specific header' -r
+complete -c himalaya -n "__fish_seen_subcommand_from write" -s B -l body -d 'Overrides the body' -r
+complete -c himalaya -n "__fish_seen_subcommand_from write" -s c -l config -d 'Set a custom configuration file path' -r
+complete -c himalaya -n "__fish_seen_subcommand_from write" -s a -l account -d 'Set the account' -r
+complete -c himalaya -n "__fish_seen_subcommand_from write" -s o -l output -d 'Set the output format' -r -f -a "{plain	,json	}"
+complete -c himalaya -n "__fish_seen_subcommand_from write" -s C -l color -d 'Control when to use colors.' -r -f -a "{never	,auto	,always	,ansi	}"
+complete -c himalaya -n "__fish_seen_subcommand_from write" -s f -l folder -d 'Set the source folder' -r
+complete -c himalaya -n "__fish_seen_subcommand_from write" -l disable-cache -d 'Disable any sort of cache'
+complete -c himalaya -n "__fish_seen_subcommand_from write" -s h -l help -d 'Print help (see more with \'--help\')'
+complete -c himalaya -n "__fish_seen_subcommand_from write" -s V -l version -d 'Print version'
+complete -c himalaya -n "__fish_seen_subcommand_from send" -s c -l config -d 'Set a custom configuration file path' -r
+complete -c himalaya -n "__fish_seen_subcommand_from send" -s a -l account -d 'Set the account' -r
+complete -c himalaya -n "__fish_seen_subcommand_from send" -s o -l output -d 'Set the output format' -r -f -a "{plain	,json	}"
+complete -c himalaya -n "__fish_seen_subcommand_from send" -s C -l color -d 'Control when to use colors.' -r -f -a "{never	,auto	,always	,ansi	}"
+complete -c himalaya -n "__fish_seen_subcommand_from send" -s f -l folder -d 'Set the source folder' -r
+complete -c himalaya -n "__fish_seen_subcommand_from send" -l disable-cache -d 'Disable any sort of cache'
+complete -c himalaya -n "__fish_seen_subcommand_from send" -s h -l help -d 'Print help (see more with \'--help\')'
+complete -c himalaya -n "__fish_seen_subcommand_from send" -s V -l version -d 'Print version'
+complete -c himalaya -n "__fish_seen_subcommand_from save" -s c -l config -d 'Set a custom configuration file path' -r
+complete -c himalaya -n "__fish_seen_subcommand_from save" -s a -l account -d 'Set the account' -r
+complete -c himalaya -n "__fish_seen_subcommand_from save" -s o -l output -d 'Set the output format' -r -f -a "{plain	,json	}"
+complete -c himalaya -n "__fish_seen_subcommand_from save" -s C -l color -d 'Control when to use colors.' -r -f -a "{never	,auto	,always	,ansi	}"
+complete -c himalaya -n "__fish_seen_subcommand_from save" -s f -l folder -d 'Set the source folder' -r
+complete -c himalaya -n "__fish_seen_subcommand_from save" -l disable-cache -d 'Disable any sort of cache'
+complete -c himalaya -n "__fish_seen_subcommand_from save" -s h -l help -d 'Print help (see more with \'--help\')'
+complete -c himalaya -n "__fish_seen_subcommand_from save" -s V -l version -d 'Print version'
+complete -c himalaya -n "__fish_seen_subcommand_from read" -s t -l mime-type -d 'MIME type to use' -r -f -a "{plain	,html	}"
+complete -c himalaya -n "__fish_seen_subcommand_from read" -s H -l header -d 'Shows additional headers with the email' -r
+complete -c himalaya -n "__fish_seen_subcommand_from read" -s c -l config -d 'Set a custom configuration file path' -r
+complete -c himalaya -n "__fish_seen_subcommand_from read" -s a -l account -d 'Set the account' -r
+complete -c himalaya -n "__fish_seen_subcommand_from read" -s o -l output -d 'Set the output format' -r -f -a "{plain	,json	}"
+complete -c himalaya -n "__fish_seen_subcommand_from read" -s C -l color -d 'Control when to use colors.' -r -f -a "{never	,auto	,always	,ansi	}"
+complete -c himalaya -n "__fish_seen_subcommand_from read" -s f -l folder -d 'Set the source folder' -r
+complete -c himalaya -n "__fish_seen_subcommand_from read" -s r -l raw -d 'Returns raw version of email'
+complete -c himalaya -n "__fish_seen_subcommand_from read" -l disable-cache -d 'Disable any sort of cache'
+complete -c himalaya -n "__fish_seen_subcommand_from read" -s h -l help -d 'Print help (see more with \'--help\')'
+complete -c himalaya -n "__fish_seen_subcommand_from read" -s V -l version -d 'Print version'
+complete -c himalaya -n "__fish_seen_subcommand_from reply" -s H -l header -d 'Overrides a specific header' -r
+complete -c himalaya -n "__fish_seen_subcommand_from reply" -s B -l body -d 'Overrides the body' -r
+complete -c himalaya -n "__fish_seen_subcommand_from reply" -s c -l config -d 'Set a custom configuration file path' -r
+complete -c himalaya -n "__fish_seen_subcommand_from reply" -s a -l account -d 'Set the account' -r
+complete -c himalaya -n "__fish_seen_subcommand_from reply" -s o -l output -d 'Set the output format' -r -f -a "{plain	,json	}"
+complete -c himalaya -n "__fish_seen_subcommand_from reply" -s C -l color -d 'Control when to use colors.' -r -f -a "{never	,auto	,always	,ansi	}"
+complete -c himalaya -n "__fish_seen_subcommand_from reply" -s f -l folder -d 'Set the source folder' -r
+complete -c himalaya -n "__fish_seen_subcommand_from reply" -s A -l all -d 'Include all recipients'
+complete -c himalaya -n "__fish_seen_subcommand_from reply" -l disable-cache -d 'Disable any sort of cache'
+complete -c himalaya -n "__fish_seen_subcommand_from reply" -s h -l help -d 'Print help (see more with \'--help\')'
+complete -c himalaya -n "__fish_seen_subcommand_from reply" -s V -l version -d 'Print version'
+complete -c himalaya -n "__fish_seen_subcommand_from forward" -s H -l header -d 'Overrides a specific header' -r
+complete -c himalaya -n "__fish_seen_subcommand_from forward" -s B -l body -d 'Overrides the body' -r
+complete -c himalaya -n "__fish_seen_subcommand_from forward" -s c -l config -d 'Set a custom configuration file path' -r
+complete -c himalaya -n "__fish_seen_subcommand_from forward" -s a -l account -d 'Set the account' -r
+complete -c himalaya -n "__fish_seen_subcommand_from forward" -s o -l output -d 'Set the output format' -r -f -a "{plain	,json	}"
+complete -c himalaya -n "__fish_seen_subcommand_from forward" -s C -l color -d 'Control when to use colors.' -r -f -a "{never	,auto	,always	,ansi	}"
+complete -c himalaya -n "__fish_seen_subcommand_from forward" -s f -l folder -d 'Set the source folder' -r
+complete -c himalaya -n "__fish_seen_subcommand_from forward" -l disable-cache -d 'Disable any sort of cache'
+complete -c himalaya -n "__fish_seen_subcommand_from forward" -s h -l help -d 'Print help (see more with \'--help\')'
+complete -c himalaya -n "__fish_seen_subcommand_from forward" -s V -l version -d 'Print version'
+complete -c himalaya -n "__fish_seen_subcommand_from copy" -s c -l config -d 'Set a custom configuration file path' -r
+complete -c himalaya -n "__fish_seen_subcommand_from copy" -s a -l account -d 'Set the account' -r
+complete -c himalaya -n "__fish_seen_subcommand_from copy" -s o -l output -d 'Set the output format' -r -f -a "{plain	,json	}"
+complete -c himalaya -n "__fish_seen_subcommand_from copy" -s C -l color -d 'Control when to use colors.' -r -f -a "{never	,auto	,always	,ansi	}"
+complete -c himalaya -n "__fish_seen_subcommand_from copy" -s f -l folder -d 'Set the source folder' -r
+complete -c himalaya -n "__fish_seen_subcommand_from copy" -l disable-cache -d 'Disable any sort of cache'
+complete -c himalaya -n "__fish_seen_subcommand_from copy" -s h -l help -d 'Print help (see more with \'--help\')'
+complete -c himalaya -n "__fish_seen_subcommand_from copy" -s V -l version -d 'Print version'
+complete -c himalaya -n "__fish_seen_subcommand_from move" -s c -l config -d 'Set a custom configuration file path' -r
+complete -c himalaya -n "__fish_seen_subcommand_from move" -s a -l account -d 'Set the account' -r
+complete -c himalaya -n "__fish_seen_subcommand_from move" -s o -l output -d 'Set the output format' -r -f -a "{plain	,json	}"
+complete -c himalaya -n "__fish_seen_subcommand_from move" -s C -l color -d 'Control when to use colors.' -r -f -a "{never	,auto	,always	,ansi	}"
+complete -c himalaya -n "__fish_seen_subcommand_from move" -s f -l folder -d 'Set the source folder' -r
+complete -c himalaya -n "__fish_seen_subcommand_from move" -l disable-cache -d 'Disable any sort of cache'
+complete -c himalaya -n "__fish_seen_subcommand_from move" -s h -l help -d 'Print help (see more with \'--help\')'
+complete -c himalaya -n "__fish_seen_subcommand_from move" -s V -l version -d 'Print version'
+complete -c himalaya -n "__fish_seen_subcommand_from delete" -s c -l config -d 'Set a custom configuration file path' -r
+complete -c himalaya -n "__fish_seen_subcommand_from delete" -s a -l account -d 'Set the account' -r
+complete -c himalaya -n "__fish_seen_subcommand_from delete" -s o -l output -d 'Set the output format' -r -f -a "{plain	,json	}"
+complete -c himalaya -n "__fish_seen_subcommand_from delete" -s C -l color -d 'Control when to use colors.' -r -f -a "{never	,auto	,always	,ansi	}"
+complete -c himalaya -n "__fish_seen_subcommand_from delete" -s f -l folder -d 'Set the source folder' -r
+complete -c himalaya -n "__fish_seen_subcommand_from delete" -l disable-cache -d 'Disable any sort of cache'
+complete -c himalaya -n "__fish_seen_subcommand_from delete" -s h -l help -d 'Print help (see more with \'--help\')'
+complete -c himalaya -n "__fish_seen_subcommand_from delete" -s V -l version -d 'Print version'
+complete -c himalaya -n "__fish_seen_subcommand_from notify" -s k -l keepalive -d 'Specifies the keepalive duration.' -r
+complete -c himalaya -n "__fish_seen_subcommand_from notify" -s c -l config -d 'Set a custom configuration file path' -r
+complete -c himalaya -n "__fish_seen_subcommand_from notify" -s a -l account -d 'Set the account' -r
+complete -c himalaya -n "__fish_seen_subcommand_from notify" -s o -l output -d 'Set the output format' -r -f -a "{plain	,json	}"
+complete -c himalaya -n "__fish_seen_subcommand_from notify" -s C -l color -d 'Control when to use colors.' -r -f -a "{never	,auto	,always	,ansi	}"
+complete -c himalaya -n "__fish_seen_subcommand_from notify" -s f -l folder -d 'Set the source folder' -r
+complete -c himalaya -n "__fish_seen_subcommand_from notify" -l disable-cache -d 'Disable any sort of cache'
+complete -c himalaya -n "__fish_seen_subcommand_from notify" -s h -l help -d 'Print help (see more with \'--help\')'
+complete -c himalaya -n "__fish_seen_subcommand_from notify" -s V -l version -d 'Print version'
+complete -c himalaya -n "__fish_seen_subcommand_from watch" -s k -l keepalive -d 'Specifies the keepalive duration.' -r
+complete -c himalaya -n "__fish_seen_subcommand_from watch" -s c -l config -d 'Set a custom configuration file path' -r
+complete -c himalaya -n "__fish_seen_subcommand_from watch" -s a -l account -d 'Set the account' -r
+complete -c himalaya -n "__fish_seen_subcommand_from watch" -s o -l output -d 'Set the output format' -r -f -a "{plain	,json	}"
+complete -c himalaya -n "__fish_seen_subcommand_from watch" -s C -l color -d 'Control when to use colors.' -r -f -a "{never	,auto	,always	,ansi	}"
+complete -c himalaya -n "__fish_seen_subcommand_from watch" -s f -l folder -d 'Set the source folder' -r
+complete -c himalaya -n "__fish_seen_subcommand_from watch" -l disable-cache -d 'Disable any sort of cache'
+complete -c himalaya -n "__fish_seen_subcommand_from watch" -s h -l help -d 'Print help (see more with \'--help\')'
+complete -c himalaya -n "__fish_seen_subcommand_from watch" -s V -l version -d 'Print version'
+complete -c himalaya -n "__fish_seen_subcommand_from help; and not __fish_seen_subcommand_from completion; and not __fish_seen_subcommand_from man; and not __fish_seen_subcommand_from accounts; and not __fish_seen_subcommand_from folders; and not __fish_seen_subcommand_from flags; and not __fish_seen_subcommand_from template; and not __fish_seen_subcommand_from attachments; and not __fish_seen_subcommand_from list; and not __fish_seen_subcommand_from search; and not __fish_seen_subcommand_from sort; and not __fish_seen_subcommand_from write; and not __fish_seen_subcommand_from send; and not __fish_seen_subcommand_from save; and not __fish_seen_subcommand_from read; and not __fish_seen_subcommand_from reply; and not __fish_seen_subcommand_from forward; and not __fish_seen_subcommand_from copy; and not __fish_seen_subcommand_from move; and not __fish_seen_subcommand_from delete; and not __fish_seen_subcommand_from notify; and not __fish_seen_subcommand_from watch; and not __fish_seen_subcommand_from help" -f -a "completion" -d 'Generates the completion script for the given shell'
+complete -c himalaya -n "__fish_seen_subcommand_from help; and not __fish_seen_subcommand_from completion; and not __fish_seen_subcommand_from man; and not __fish_seen_subcommand_from accounts; and not __fish_seen_subcommand_from folders; and not __fish_seen_subcommand_from flags; and not __fish_seen_subcommand_from template; and not __fish_seen_subcommand_from attachments; and not __fish_seen_subcommand_from list; and not __fish_seen_subcommand_from search; and not __fish_seen_subcommand_from sort; and not __fish_seen_subcommand_from write; and not __fish_seen_subcommand_from send; and not __fish_seen_subcommand_from save; and not __fish_seen_subcommand_from read; and not __fish_seen_subcommand_from reply; and not __fish_seen_subcommand_from forward; and not __fish_seen_subcommand_from copy; and not __fish_seen_subcommand_from move; and not __fish_seen_subcommand_from delete; and not __fish_seen_subcommand_from notify; and not __fish_seen_subcommand_from watch; and not __fish_seen_subcommand_from help" -f -a "man" -d 'Generate all man pages to the given directory'
+complete -c himalaya -n "__fish_seen_subcommand_from help; and not __fish_seen_subcommand_from completion; and not __fish_seen_subcommand_from man; and not __fish_seen_subcommand_from accounts; and not __fish_seen_subcommand_from folders; and not __fish_seen_subcommand_from flags; and not __fish_seen_subcommand_from template; and not __fish_seen_subcommand_from attachments; and not __fish_seen_subcommand_from list; and not __fish_seen_subcommand_from search; and not __fish_seen_subcommand_from sort; and not __fish_seen_subcommand_from write; and not __fish_seen_subcommand_from send; and not __fish_seen_subcommand_from save; and not __fish_seen_subcommand_from read; and not __fish_seen_subcommand_from reply; and not __fish_seen_subcommand_from forward; and not __fish_seen_subcommand_from copy; and not __fish_seen_subcommand_from move; and not __fish_seen_subcommand_from delete; and not __fish_seen_subcommand_from notify; and not __fish_seen_subcommand_from watch; and not __fish_seen_subcommand_from help" -f -a "accounts" -d 'Manage accounts'
+complete -c himalaya -n "__fish_seen_subcommand_from help; and not __fish_seen_subcommand_from completion; and not __fish_seen_subcommand_from man; and not __fish_seen_subcommand_from accounts; and not __fish_seen_subcommand_from folders; and not __fish_seen_subcommand_from flags; and not __fish_seen_subcommand_from template; and not __fish_seen_subcommand_from attachments; and not __fish_seen_subcommand_from list; and not __fish_seen_subcommand_from search; and not __fish_seen_subcommand_from sort; and not __fish_seen_subcommand_from write; and not __fish_seen_subcommand_from send; and not __fish_seen_subcommand_from save; and not __fish_seen_subcommand_from read; and not __fish_seen_subcommand_from reply; and not __fish_seen_subcommand_from forward; and not __fish_seen_subcommand_from copy; and not __fish_seen_subcommand_from move; and not __fish_seen_subcommand_from delete; and not __fish_seen_subcommand_from notify; and not __fish_seen_subcommand_from watch; and not __fish_seen_subcommand_from help" -f -a "folders" -d 'Manage folders'
+complete -c himalaya -n "__fish_seen_subcommand_from help; and not __fish_seen_subcommand_from completion; and not __fish_seen_subcommand_from man; and not __fish_seen_subcommand_from accounts; and not __fish_seen_subcommand_from folders; and not __fish_seen_subcommand_from flags; and not __fish_seen_subcommand_from template; and not __fish_seen_subcommand_from attachments; and not __fish_seen_subcommand_from list; and not __fish_seen_subcommand_from search; and not __fish_seen_subcommand_from sort; and not __fish_seen_subcommand_from write; and not __fish_seen_subcommand_from send; and not __fish_seen_subcommand_from save; and not __fish_seen_subcommand_from read; and not __fish_seen_subcommand_from reply; and not __fish_seen_subcommand_from forward; and not __fish_seen_subcommand_from copy; and not __fish_seen_subcommand_from move; and not __fish_seen_subcommand_from delete; and not __fish_seen_subcommand_from notify; and not __fish_seen_subcommand_from watch; and not __fish_seen_subcommand_from help" -f -a "flags" -d 'Handles email flags'
+complete -c himalaya -n "__fish_seen_subcommand_from help; and not __fish_seen_subcommand_from completion; and not __fish_seen_subcommand_from man; and not __fish_seen_subcommand_from accounts; and not __fish_seen_subcommand_from folders; and not __fish_seen_subcommand_from flags; and not __fish_seen_subcommand_from template; and not __fish_seen_subcommand_from attachments; and not __fish_seen_subcommand_from list; and not __fish_seen_subcommand_from search; and not __fish_seen_subcommand_from sort; and not __fish_seen_subcommand_from write; and not __fish_seen_subcommand_from send; and not __fish_seen_subcommand_from save; and not __fish_seen_subcommand_from read; and not __fish_seen_subcommand_from reply; and not __fish_seen_subcommand_from forward; and not __fish_seen_subcommand_from copy; and not __fish_seen_subcommand_from move; and not __fish_seen_subcommand_from delete; and not __fish_seen_subcommand_from notify; and not __fish_seen_subcommand_from watch; and not __fish_seen_subcommand_from help" -f -a "template" -d 'Handles email templates'
+complete -c himalaya -n "__fish_seen_subcommand_from help; and not __fish_seen_subcommand_from completion; and not __fish_seen_subcommand_from man; and not __fish_seen_subcommand_from accounts; and not __fish_seen_subcommand_from folders; and not __fish_seen_subcommand_from flags; and not __fish_seen_subcommand_from template; and not __fish_seen_subcommand_from attachments; and not __fish_seen_subcommand_from list; and not __fish_seen_subcommand_from search; and not __fish_seen_subcommand_from sort; and not __fish_seen_subcommand_from write; and not __fish_seen_subcommand_from send; and not __fish_seen_subcommand_from save; and not __fish_seen_subcommand_from read; and not __fish_seen_subcommand_from reply; and not __fish_seen_subcommand_from forward; and not __fish_seen_subcommand_from copy; and not __fish_seen_subcommand_from move; and not __fish_seen_subcommand_from delete; and not __fish_seen_subcommand_from notify; and not __fish_seen_subcommand_from watch; and not __fish_seen_subcommand_from help" -f -a "attachments" -d 'Downloads all emails attachments'
+complete -c himalaya -n "__fish_seen_subcommand_from help; and not __fish_seen_subcommand_from completion; and not __fish_seen_subcommand_from man; and not __fish_seen_subcommand_from accounts; and not __fish_seen_subcommand_from folders; and not __fish_seen_subcommand_from flags; and not __fish_seen_subcommand_from template; and not __fish_seen_subcommand_from attachments; and not __fish_seen_subcommand_from list; and not __fish_seen_subcommand_from search; and not __fish_seen_subcommand_from sort; and not __fish_seen_subcommand_from write; and not __fish_seen_subcommand_from send; and not __fish_seen_subcommand_from save; and not __fish_seen_subcommand_from read; and not __fish_seen_subcommand_from reply; and not __fish_seen_subcommand_from forward; and not __fish_seen_subcommand_from copy; and not __fish_seen_subcommand_from move; and not __fish_seen_subcommand_from delete; and not __fish_seen_subcommand_from notify; and not __fish_seen_subcommand_from watch; and not __fish_seen_subcommand_from help" -f -a "list" -d 'List envelopes'
+complete -c himalaya -n "__fish_seen_subcommand_from help; and not __fish_seen_subcommand_from completion; and not __fish_seen_subcommand_from man; and not __fish_seen_subcommand_from accounts; and not __fish_seen_subcommand_from folders; and not __fish_seen_subcommand_from flags; and not __fish_seen_subcommand_from template; and not __fish_seen_subcommand_from attachments; and not __fish_seen_subcommand_from list; and not __fish_seen_subcommand_from search; and not __fish_seen_subcommand_from sort; and not __fish_seen_subcommand_from write; and not __fish_seen_subcommand_from send; and not __fish_seen_subcommand_from save; and not __fish_seen_subcommand_from read; and not __fish_seen_subcommand_from reply; and not __fish_seen_subcommand_from forward; and not __fish_seen_subcommand_from copy; and not __fish_seen_subcommand_from move; and not __fish_seen_subcommand_from delete; and not __fish_seen_subcommand_from notify; and not __fish_seen_subcommand_from watch; and not __fish_seen_subcommand_from help" -f -a "search" -d 'Filter envelopes matching the given query'
+complete -c himalaya -n "__fish_seen_subcommand_from help; and not __fish_seen_subcommand_from completion; and not __fish_seen_subcommand_from man; and not __fish_seen_subcommand_from accounts; and not __fish_seen_subcommand_from folders; and not __fish_seen_subcommand_from flags; and not __fish_seen_subcommand_from template; and not __fish_seen_subcommand_from attachments; and not __fish_seen_subcommand_from list; and not __fish_seen_subcommand_from search; and not __fish_seen_subcommand_from sort; and not __fish_seen_subcommand_from write; and not __fish_seen_subcommand_from send; and not __fish_seen_subcommand_from save; and not __fish_seen_subcommand_from read; and not __fish_seen_subcommand_from reply; and not __fish_seen_subcommand_from forward; and not __fish_seen_subcommand_from copy; and not __fish_seen_subcommand_from move; and not __fish_seen_subcommand_from delete; and not __fish_seen_subcommand_from notify; and not __fish_seen_subcommand_from watch; and not __fish_seen_subcommand_from help" -f -a "sort" -d 'Sort envelopes by the given criteria and matching the given query'
+complete -c himalaya -n "__fish_seen_subcommand_from help; and not __fish_seen_subcommand_from completion; and not __fish_seen_subcommand_from man; and not __fish_seen_subcommand_from accounts; and not __fish_seen_subcommand_from folders; and not __fish_seen_subcommand_from flags; and not __fish_seen_subcommand_from template; and not __fish_seen_subcommand_from attachments; and not __fish_seen_subcommand_from list; and not __fish_seen_subcommand_from search; and not __fish_seen_subcommand_from sort; and not __fish_seen_subcommand_from write; and not __fish_seen_subcommand_from send; and not __fish_seen_subcommand_from save; and not __fish_seen_subcommand_from read; and not __fish_seen_subcommand_from reply; and not __fish_seen_subcommand_from forward; and not __fish_seen_subcommand_from copy; and not __fish_seen_subcommand_from move; and not __fish_seen_subcommand_from delete; and not __fish_seen_subcommand_from notify; and not __fish_seen_subcommand_from watch; and not __fish_seen_subcommand_from help" -f -a "write" -d 'Write a new email'
+complete -c himalaya -n "__fish_seen_subcommand_from help; and not __fish_seen_subcommand_from completion; and not __fish_seen_subcommand_from man; and not __fish_seen_subcommand_from accounts; and not __fish_seen_subcommand_from folders; and not __fish_seen_subcommand_from flags; and not __fish_seen_subcommand_from template; and not __fish_seen_subcommand_from attachments; and not __fish_seen_subcommand_from list; and not __fish_seen_subcommand_from search; and not __fish_seen_subcommand_from sort; and not __fish_seen_subcommand_from write; and not __fish_seen_subcommand_from send; and not __fish_seen_subcommand_from save; and not __fish_seen_subcommand_from read; and not __fish_seen_subcommand_from reply; and not __fish_seen_subcommand_from forward; and not __fish_seen_subcommand_from copy; and not __fish_seen_subcommand_from move; and not __fish_seen_subcommand_from delete; and not __fish_seen_subcommand_from notify; and not __fish_seen_subcommand_from watch; and not __fish_seen_subcommand_from help" -f -a "send" -d 'Send a raw email'
+complete -c himalaya -n "__fish_seen_subcommand_from help; and not __fish_seen_subcommand_from completion; and not __fish_seen_subcommand_from man; and not __fish_seen_subcommand_from accounts; and not __fish_seen_subcommand_from folders; and not __fish_seen_subcommand_from flags; and not __fish_seen_subcommand_from template; and not __fish_seen_subcommand_from attachments; and not __fish_seen_subcommand_from list; and not __fish_seen_subcommand_from search; and not __fish_seen_subcommand_from sort; and not __fish_seen_subcommand_from write; and not __fish_seen_subcommand_from send; and not __fish_seen_subcommand_from save; and not __fish_seen_subcommand_from read; and not __fish_seen_subcommand_from reply; and not __fish_seen_subcommand_from forward; and not __fish_seen_subcommand_from copy; and not __fish_seen_subcommand_from move; and not __fish_seen_subcommand_from delete; and not __fish_seen_subcommand_from notify; and not __fish_seen_subcommand_from watch; and not __fish_seen_subcommand_from help" -f -a "save" -d 'Save a raw email'
+complete -c himalaya -n "__fish_seen_subcommand_from help; and not __fish_seen_subcommand_from completion; and not __fish_seen_subcommand_from man; and not __fish_seen_subcommand_from accounts; and not __fish_seen_subcommand_from folders; and not __fish_seen_subcommand_from flags; and not __fish_seen_subcommand_from template; and not __fish_seen_subcommand_from attachments; and not __fish_seen_subcommand_from list; and not __fish_seen_subcommand_from search; and not __fish_seen_subcommand_from sort; and not __fish_seen_subcommand_from write; and not __fish_seen_subcommand_from send; and not __fish_seen_subcommand_from save; and not __fish_seen_subcommand_from read; and not __fish_seen_subcommand_from reply; and not __fish_seen_subcommand_from forward; and not __fish_seen_subcommand_from copy; and not __fish_seen_subcommand_from move; and not __fish_seen_subcommand_from delete; and not __fish_seen_subcommand_from notify; and not __fish_seen_subcommand_from watch; and not __fish_seen_subcommand_from help" -f -a "read" -d 'Read text bodies of emails'
+complete -c himalaya -n "__fish_seen_subcommand_from help; and not __fish_seen_subcommand_from completion; and not __fish_seen_subcommand_from man; and not __fish_seen_subcommand_from accounts; and not __fish_seen_subcommand_from folders; and not __fish_seen_subcommand_from flags; and not __fish_seen_subcommand_from template; and not __fish_seen_subcommand_from attachments; and not __fish_seen_subcommand_from list; and not __fish_seen_subcommand_from search; and not __fish_seen_subcommand_from sort; and not __fish_seen_subcommand_from write; and not __fish_seen_subcommand_from send; and not __fish_seen_subcommand_from save; and not __fish_seen_subcommand_from read; and not __fish_seen_subcommand_from reply; and not __fish_seen_subcommand_from forward; and not __fish_seen_subcommand_from copy; and not __fish_seen_subcommand_from move; and not __fish_seen_subcommand_from delete; and not __fish_seen_subcommand_from notify; and not __fish_seen_subcommand_from watch; and not __fish_seen_subcommand_from help" -f -a "reply" -d 'Answer to an email'
+complete -c himalaya -n "__fish_seen_subcommand_from help; and not __fish_seen_subcommand_from completion; and not __fish_seen_subcommand_from man; and not __fish_seen_subcommand_from accounts; and not __fish_seen_subcommand_from folders; and not __fish_seen_subcommand_from flags; and not __fish_seen_subcommand_from template; and not __fish_seen_subcommand_from attachments; and not __fish_seen_subcommand_from list; and not __fish_seen_subcommand_from search; and not __fish_seen_subcommand_from sort; and not __fish_seen_subcommand_from write; and not __fish_seen_subcommand_from send; and not __fish_seen_subcommand_from save; and not __fish_seen_subcommand_from read; and not __fish_seen_subcommand_from reply; and not __fish_seen_subcommand_from forward; and not __fish_seen_subcommand_from copy; and not __fish_seen_subcommand_from move; and not __fish_seen_subcommand_from delete; and not __fish_seen_subcommand_from notify; and not __fish_seen_subcommand_from watch; and not __fish_seen_subcommand_from help" -f -a "forward" -d 'Forward an email'
+complete -c himalaya -n "__fish_seen_subcommand_from help; and not __fish_seen_subcommand_from completion; and not __fish_seen_subcommand_from man; and not __fish_seen_subcommand_from accounts; and not __fish_seen_subcommand_from folders; and not __fish_seen_subcommand_from flags; and not __fish_seen_subcommand_from template; and not __fish_seen_subcommand_from attachments; and not __fish_seen_subcommand_from list; and not __fish_seen_subcommand_from search; and not __fish_seen_subcommand_from sort; and not __fish_seen_subcommand_from write; and not __fish_seen_subcommand_from send; and not __fish_seen_subcommand_from save; and not __fish_seen_subcommand_from read; and not __fish_seen_subcommand_from reply; and not __fish_seen_subcommand_from forward; and not __fish_seen_subcommand_from copy; and not __fish_seen_subcommand_from move; and not __fish_seen_subcommand_from delete; and not __fish_seen_subcommand_from notify; and not __fish_seen_subcommand_from watch; and not __fish_seen_subcommand_from help" -f -a "copy" -d 'Copy emails to the given folder'
+complete -c himalaya -n "__fish_seen_subcommand_from help; and not __fish_seen_subcommand_from completion; and not __fish_seen_subcommand_from man; and not __fish_seen_subcommand_from accounts; and not __fish_seen_subcommand_from folders; and not __fish_seen_subcommand_from flags; and not __fish_seen_subcommand_from template; and not __fish_seen_subcommand_from attachments; and not __fish_seen_subcommand_from list; and not __fish_seen_subcommand_from search; and not __fish_seen_subcommand_from sort; and not __fish_seen_subcommand_from write; and not __fish_seen_subcommand_from send; and not __fish_seen_subcommand_from save; and not __fish_seen_subcommand_from read; and not __fish_seen_subcommand_from reply; and not __fish_seen_subcommand_from forward; and not __fish_seen_subcommand_from copy; and not __fish_seen_subcommand_from move; and not __fish_seen_subcommand_from delete; and not __fish_seen_subcommand_from notify; and not __fish_seen_subcommand_from watch; and not __fish_seen_subcommand_from help" -f -a "move" -d 'Move emails to the given folder'
+complete -c himalaya -n "__fish_seen_subcommand_from help; and not __fish_seen_subcommand_from completion; and not __fish_seen_subcommand_from man; and not __fish_seen_subcommand_from accounts; and not __fish_seen_subcommand_from folders; and not __fish_seen_subcommand_from flags; and not __fish_seen_subcommand_from template; and not __fish_seen_subcommand_from attachments; and not __fish_seen_subcommand_from list; and not __fish_seen_subcommand_from search; and not __fish_seen_subcommand_from sort; and not __fish_seen_subcommand_from write; and not __fish_seen_subcommand_from send; and not __fish_seen_subcommand_from save; and not __fish_seen_subcommand_from read; and not __fish_seen_subcommand_from reply; and not __fish_seen_subcommand_from forward; and not __fish_seen_subcommand_from copy; and not __fish_seen_subcommand_from move; and not __fish_seen_subcommand_from delete; and not __fish_seen_subcommand_from notify; and not __fish_seen_subcommand_from watch; and not __fish_seen_subcommand_from help" -f -a "delete" -d 'Delete emails'
+complete -c himalaya -n "__fish_seen_subcommand_from help; and not __fish_seen_subcommand_from completion; and not __fish_seen_subcommand_from man; and not __fish_seen_subcommand_from accounts; and not __fish_seen_subcommand_from folders; and not __fish_seen_subcommand_from flags; and not __fish_seen_subcommand_from template; and not __fish_seen_subcommand_from attachments; and not __fish_seen_subcommand_from list; and not __fish_seen_subcommand_from search; and not __fish_seen_subcommand_from sort; and not __fish_seen_subcommand_from write; and not __fish_seen_subcommand_from send; and not __fish_seen_subcommand_from save; and not __fish_seen_subcommand_from read; and not __fish_seen_subcommand_from reply; and not __fish_seen_subcommand_from forward; and not __fish_seen_subcommand_from copy; and not __fish_seen_subcommand_from move; and not __fish_seen_subcommand_from delete; and not __fish_seen_subcommand_from notify; and not __fish_seen_subcommand_from watch; and not __fish_seen_subcommand_from help" -f -a "notify" -d 'Notifies when new messages arrive in the given folder'
+complete -c himalaya -n "__fish_seen_subcommand_from help; and not __fish_seen_subcommand_from completion; and not __fish_seen_subcommand_from man; and not __fish_seen_subcommand_from accounts; and not __fish_seen_subcommand_from folders; and not __fish_seen_subcommand_from flags; and not __fish_seen_subcommand_from template; and not __fish_seen_subcommand_from attachments; and not __fish_seen_subcommand_from list; and not __fish_seen_subcommand_from search; and not __fish_seen_subcommand_from sort; and not __fish_seen_subcommand_from write; and not __fish_seen_subcommand_from send; and not __fish_seen_subcommand_from save; and not __fish_seen_subcommand_from read; and not __fish_seen_subcommand_from reply; and not __fish_seen_subcommand_from forward; and not __fish_seen_subcommand_from copy; and not __fish_seen_subcommand_from move; and not __fish_seen_subcommand_from delete; and not __fish_seen_subcommand_from notify; and not __fish_seen_subcommand_from watch; and not __fish_seen_subcommand_from help" -f -a "watch" -d 'Watches IMAP server changes'
+complete -c himalaya -n "__fish_seen_subcommand_from help; and not __fish_seen_subcommand_from completion; and not __fish_seen_subcommand_from man; and not __fish_seen_subcommand_from accounts; and not __fish_seen_subcommand_from folders; and not __fish_seen_subcommand_from flags; and not __fish_seen_subcommand_from template; and not __fish_seen_subcommand_from attachments; and not __fish_seen_subcommand_from list; and not __fish_seen_subcommand_from search; and not __fish_seen_subcommand_from sort; and not __fish_seen_subcommand_from write; and not __fish_seen_subcommand_from send; and not __fish_seen_subcommand_from save; and not __fish_seen_subcommand_from read; and not __fish_seen_subcommand_from reply; and not __fish_seen_subcommand_from forward; and not __fish_seen_subcommand_from copy; and not __fish_seen_subcommand_from move; and not __fish_seen_subcommand_from delete; and not __fish_seen_subcommand_from notify; and not __fish_seen_subcommand_from watch; and not __fish_seen_subcommand_from help" -f -a "help" -d 'Print this message or the help of the given subcommand(s)'
+complete -c himalaya -n "__fish_seen_subcommand_from help; and __fish_seen_subcommand_from accounts; and not __fish_seen_subcommand_from list; and not __fish_seen_subcommand_from sync; and not __fish_seen_subcommand_from configure" -f -a "list" -d 'List all accounts from the config file'
+complete -c himalaya -n "__fish_seen_subcommand_from help; and __fish_seen_subcommand_from accounts; and not __fish_seen_subcommand_from list; and not __fish_seen_subcommand_from sync; and not __fish_seen_subcommand_from configure" -f -a "sync" -d 'Synchronize the given account locally'
+complete -c himalaya -n "__fish_seen_subcommand_from help; and __fish_seen_subcommand_from accounts; and not __fish_seen_subcommand_from list; and not __fish_seen_subcommand_from sync; and not __fish_seen_subcommand_from configure" -f -a "configure" -d 'Configure the current selected account'
+complete -c himalaya -n "__fish_seen_subcommand_from help; and __fish_seen_subcommand_from folders; and not __fish_seen_subcommand_from expunge; and not __fish_seen_subcommand_from create; and not __fish_seen_subcommand_from list; and not __fish_seen_subcommand_from delete" -f -a "expunge" -d 'Delete emails marked for deletion'
+complete -c himalaya -n "__fish_seen_subcommand_from help; and __fish_seen_subcommand_from folders; and not __fish_seen_subcommand_from expunge; and not __fish_seen_subcommand_from create; and not __fish_seen_subcommand_from list; and not __fish_seen_subcommand_from delete" -f -a "create" -d 'Create a new folder'
+complete -c himalaya -n "__fish_seen_subcommand_from help; and __fish_seen_subcommand_from folders; and not __fish_seen_subcommand_from expunge; and not __fish_seen_subcommand_from create; and not __fish_seen_subcommand_from list; and not __fish_seen_subcommand_from delete" -f -a "list" -d 'List folders'
+complete -c himalaya -n "__fish_seen_subcommand_from help; and __fish_seen_subcommand_from folders; and not __fish_seen_subcommand_from expunge; and not __fish_seen_subcommand_from create; and not __fish_seen_subcommand_from list; and not __fish_seen_subcommand_from delete" -f -a "delete" -d 'Delete a folder with all its emails'
+complete -c himalaya -n "__fish_seen_subcommand_from help; and __fish_seen_subcommand_from flags; and not __fish_seen_subcommand_from add; and not __fish_seen_subcommand_from remove; and not __fish_seen_subcommand_from set" -f -a "add" -d 'Adds flags to an email'
+complete -c himalaya -n "__fish_seen_subcommand_from help; and __fish_seen_subcommand_from flags; and not __fish_seen_subcommand_from add; and not __fish_seen_subcommand_from remove; and not __fish_seen_subcommand_from set" -f -a "remove" -d 'Removes flags from an email'
+complete -c himalaya -n "__fish_seen_subcommand_from help; and __fish_seen_subcommand_from flags; and not __fish_seen_subcommand_from add; and not __fish_seen_subcommand_from remove; and not __fish_seen_subcommand_from set" -f -a "set" -d 'Sets flags of an email'
+complete -c himalaya -n "__fish_seen_subcommand_from help; and __fish_seen_subcommand_from template; and not __fish_seen_subcommand_from forward; and not __fish_seen_subcommand_from reply; and not __fish_seen_subcommand_from save; and not __fish_seen_subcommand_from send; and not __fish_seen_subcommand_from write" -f -a "forward" -d 'Generates a template for forwarding an email'
+complete -c himalaya -n "__fish_seen_subcommand_from help; and __fish_seen_subcommand_from template; and not __fish_seen_subcommand_from forward; and not __fish_seen_subcommand_from reply; and not __fish_seen_subcommand_from save; and not __fish_seen_subcommand_from send; and not __fish_seen_subcommand_from write" -f -a "reply" -d 'Generates a template for replying to an email'
+complete -c himalaya -n "__fish_seen_subcommand_from help; and __fish_seen_subcommand_from template; and not __fish_seen_subcommand_from forward; and not __fish_seen_subcommand_from reply; and not __fish_seen_subcommand_from save; and not __fish_seen_subcommand_from send; and not __fish_seen_subcommand_from write" -f -a "save" -d 'Compiles the template into a valid email then saves it'
+complete -c himalaya -n "__fish_seen_subcommand_from help; and __fish_seen_subcommand_from template; and not __fish_seen_subcommand_from forward; and not __fish_seen_subcommand_from reply; and not __fish_seen_subcommand_from save; and not __fish_seen_subcommand_from send; and not __fish_seen_subcommand_from write" -f -a "send" -d 'Compiles the template into a valid email then sends it'
+complete -c himalaya -n "__fish_seen_subcommand_from help; and __fish_seen_subcommand_from template; and not __fish_seen_subcommand_from forward; and not __fish_seen_subcommand_from reply; and not __fish_seen_subcommand_from save; and not __fish_seen_subcommand_from send; and not __fish_seen_subcommand_from write" -f -a "write" -d 'Generates a template for writing a new email'
