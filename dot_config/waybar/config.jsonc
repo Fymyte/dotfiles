@@ -28,20 +28,21 @@
     "tooltip": false,
     "format": "{icon}",
     "format-icons": {
-      "notification": "<span foreground='red'><sup></sup></span>",
-      "none": "",
-      "dnd-notification": "<span foreground='red'><sup></sup></span>",
-      "dnd-none": "",
-      "inhibited-notification": "<span foreground='red'><sup></sup></span>",
-      "inhibited-none": "",
-      "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+      "notification": " <span foreground='red'><sup></sup></span>",
+      "none": " ",
+      "dnd-notification": " <span foreground='red'><sup></sup></span>",
+      "dnd-none": " ",
+      "inhibited-notification": " <span foreground='red'><sup></sup></span>",
+      "inhibited-none": " ",
+      "dnd-inhibited-notification": " <span foreground='red'><sup></sup></span>",
       "dnd-inhibited-none": ""
     },
     "return-type": "json",
     "exec-if": "which swaync-client",
     "exec": "swaync-client -swb",
-    "on-click": "swaync-client -t -sw",
-    "on-click-right": "swaync-client -d -sw",
+    // Add sleep to workaround https://github.com/Alexays/Waybar/issues/1850
+    "on-click": "sleep 0.1 && swaync-client -t -sw",
+    "on-click-right": "sleep 0.1 && swaync-client -d -sw",
     "escape": true
   },
 
@@ -53,31 +54,31 @@
   "clock": {
     "format": "{: %H:%M   %a, %b %d}",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-    "on-click": "swaync-client -t -sw",
-    "on-click-right": "swaync-client -d -sw"
+    "on-click": "sleep 0.1 && swaync-client -t -sw",
+    "on-click-right": "sleep 0.1 && swaync-client -d -sw"
   },
 
-  "backlight": {
-    "device": "intel_backlight",
-    "format": "{icon} {percent}%",
-    "format-icons": ["󰃞", "󰃟", "󰃠"],
-    "on-scroll-up": "brightnessctl set 1%+",
-    "on-scroll-down": "brightnessctl set 1%-",
-    "min-length": 6
-  },
+  // "backlight": {
+  //   "device": "intel_backlight",
+  //   "format": "{icon} {percent}%",
+  //   "format-icons": ["󰃞", "󰃟", "󰃠"],
+  //   "on-scroll-up": "brightnessctl set 1%+",
+  //   "on-scroll-down": "brightnessctl set 1%-",
+  //   "min-length": 6
+  // },
 
-  "battery": {
-    "states": {
-      "good": 95,
-      "warning": 30,
-      "critical": 20
-    },
-    "format": "{icon} {capacity}%",
-    "format-charging": " {capacity}%",
-    "format-plugged": " {capacity}%",
-    "format-alt": "{time} {icon}",
-    "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
-  },
+  // "battery": {
+  //   "states": {
+  //     "good": 95,
+  //     "warning": 30,
+  //     "critical": 20
+  //   },
+  //   "format": "{icon} {capacity}%",
+  //   "format-charging": " {capacity}%",
+  //   "format-plugged": " {capacity}%",
+  //   "format-alt": "{time} {icon}",
+  //   "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+  // },
 
   "pulseaudio": {
     "format": "{icon} {volume}%",
