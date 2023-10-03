@@ -1,6 +1,6 @@
 timeout 300 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on'
 timeout 480 'loginctl lock-session' resume 'hyprctl dispatch dpms on'
 timeout 600 'systemctl suspend'
-lock 'swaylock --daemonize -c 000000'
+lock 'swaylock --daemonize'
 after-resume 'hyprctl dispatch dpms on'
 before-sleep 'loginctl lock-session'
