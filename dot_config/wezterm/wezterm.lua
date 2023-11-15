@@ -50,10 +50,6 @@ wt.on('update-status', function(window, pane)
   window:set_right_status(leader or name or '')
 end)
 
-if wt.hostname() ~= 'pandora' then
-  config.front_end = 'WebGpu'
-end
-
 config.leader = { key = 'Space', mods = 'CTRL', timeout_milliseconds = 2000 }
 
 config.keys = {
@@ -312,8 +308,9 @@ config.key_tables = {
 
 config.ssh_domains = {
   {
-    name = 'pandora',
-    remote_address = 'pandora',
+    name = 'snorlax',
+    remote_address = 'snorlax',
+    username = 'pguillaume',
   },
 }
 
