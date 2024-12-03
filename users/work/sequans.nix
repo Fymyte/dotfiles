@@ -10,4 +10,10 @@
       primary = true;
     };
   };
+
+  programs.bash.initExtra = ''
+    if [[ $(hostname) = 'snorlax' ]]; then
+      exec fish
+    fi
+  '';
 }

@@ -16,6 +16,7 @@
     ./modules/home-manager/neovim
 
     # Shell(s)
+    ./modules/home-manager/bash
     ./modules/home-manager/fish
     ./modules/home-manager/nushell
 
@@ -33,6 +34,7 @@
   home.packages = with pkgs; [
     eza
     bash
+    foot
     libqalculate
   ];
 
@@ -59,6 +61,7 @@
 
   home.sessionVariables = {
     TERMINAL = "wezterm";
+    QT_QPA_PLATFORMTHEME = "qt5ct";
   };
 
   home.shellAliases = {
