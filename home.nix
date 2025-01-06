@@ -10,6 +10,7 @@
     ./modules/home-manager/sops
 
     ./modules/home-manager/stylix
+    ./modules/home-manager/waybar
     ./modules/home-manager/nix
 
     # Editor(s)
