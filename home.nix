@@ -23,6 +23,7 @@
     # Terminal(s)
     ./modules/home-manager/kitty
     ./modules/home-manager/wezterm
+    ./modules/home-manager/foot
 
     # Misc
     ./modules/home-manager/git
@@ -34,7 +35,6 @@
   home.packages = with pkgs; [
     eza
     bash
-    foot
     libqalculate
   ];
 
