@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  home.packages = with pkgs; [
+  home.packages = with pkgs.unstable; [
     # Neovim tools
     # TODO: move to separate file
     nixfmt-rfc-style
@@ -9,6 +9,7 @@
   ];
 
   programs.neovim = {
+    package = pkgs.unstable.neovim-unwrapped;
     enable = true;
     defaultEditor = true;
   };

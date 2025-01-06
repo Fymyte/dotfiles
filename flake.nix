@@ -2,10 +2,10 @@
   description = "Fymyte's dotfiles";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    home-manager.url = "github:nix-community/home-manager/master";
+    home-manager.url = "github:nix-community/home-manager/release-24.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     # Keyboard remapping software
@@ -20,13 +20,20 @@
   };
 
   outputs = {home-manager, ...} @ inputs: let
-    pkgs-stable = inputs.nixpkgs-stable;
-
     # Get packages for given system (x86_64-linux, ...)
     pkgsForSystem = system:
       import inputs.nixpkgs {
         inherit system;
         config.allowUnfree = true;
+        overlays = [
+          (final: prev: {
+            unstable = import inputs.nixpkgs-unstable {
+              inherit prev;
+              inherit system;
+              config.allowUnfree = true;
+            };
+          })
+        ];
       };
 
     mkHomeConfig = {extraSpecialArgs, ...} @ args:
@@ -38,15 +45,7 @@
             ]
             ++ (args.modules or []);
           pkgs = pkgsForSystem (args.system or "x86_64-linux");
-        }
-        // {
-          inherit extraSpecialArgs;
-        }
-        // {
-          extraSpecialArgs = {
-            inherit pkgs-stable;
-            inherit inputs;
-          };
+          extraSpecialArgs = extraSpecialArgs // {inherit inputs;};
         }
       );
   in {
