@@ -9,6 +9,7 @@
     # Secrets management
     ./modules/home-manager/sops
 
+    # Styling
     ./modules/home-manager/stylix
     ./modules/home-manager/waybar
     ./modules/home-manager/nix
@@ -37,7 +38,9 @@
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
-    bash
+    # Make sure GNU coreutils are always present
+    coreutils
+
     libqalculate
   ];
 
