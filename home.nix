@@ -61,7 +61,7 @@
   ];
 
   home.sessionVariables = {
-    TERMINAL = "wezterm";
+    TERMINAL = "foot";
     QT_QPA_PLATFORMTHEME = "qt5ct";
   };
 
