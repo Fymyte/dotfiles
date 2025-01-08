@@ -18,6 +18,5 @@
 
   home.sessionVariables = {
     GL_HOST = "gitlab-shared.sequans.com";
-    MAKEFLAGS = "$MAKEFLAGS --no-print-directory";
   };
 }
