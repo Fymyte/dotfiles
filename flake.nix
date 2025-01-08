@@ -37,17 +37,15 @@
       };
 
     mkHomeConfig = {extraSpecialArgs, ...} @ args:
-      home-manager.lib.homeManagerConfiguration (
-        {
-          modules =
-            [
-              ./home.nix
-            ]
-            ++ (args.modules or []);
-          pkgs = pkgsForSystem (args.system or "x86_64-linux");
-          extraSpecialArgs = extraSpecialArgs // {inherit inputs;};
-        }
-      );
+      home-manager.lib.homeManagerConfiguration {
+        modules =
+          [
+            ./home.nix
+          ]
+          ++ (args.modules or []);
+        pkgs = pkgsForSystem (args.system or "x86_64-linux");
+        extraSpecialArgs = extraSpecialArgs // {inherit inputs;};
+      };
   in {
     homeConfigurations = {
       "pguillaume@snorlax" = mkHomeConfig {
