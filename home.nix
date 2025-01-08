@@ -21,6 +21,9 @@
     ./modules/home-manager/fish
     ./modules/home-manager/nushell
 
+    # Shell tools
+    ./modules/home-manager/eza
+
     # Terminal(s)
     ./modules/home-manager/kitty
     ./modules/home-manager/wezterm
@@ -34,7 +37,6 @@
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
-    eza
     bash
     libqalculate
   ];
@@ -63,11 +65,11 @@
   home.sessionVariables = {
     TERMINAL = "foot";
     QT_QPA_PLATFORMTHEME = "qt5ct";
+    MAKEFLAGS = "$MAKEFLAGS --no-print-directory -j$(nproc)";
   };
 
   home.shellAliases = {
     dc = "docker compose";
-    ls = "eza -lh";
     vim = "nvim";
     gl = "glab";
     g = "git";
