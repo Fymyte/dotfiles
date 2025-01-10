@@ -37,11 +37,11 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  home.packages = with pkgs; [
+  home.packages = [
     # Make sure GNU coreutils are always present
-    coreutils
+    pkgs.coreutils
 
-    libqalculate
+    pkgs.libqalculate
   ];
 
   # Import my neovim config from raw lua for now
