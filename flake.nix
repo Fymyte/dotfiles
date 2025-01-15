@@ -17,6 +17,9 @@
 
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
+
+    nixgl.url = "github:nix-community/nixGL";
+    nixgl.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {home-manager, ...} @ inputs: let

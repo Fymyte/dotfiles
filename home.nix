@@ -32,6 +32,7 @@
 
     # Misc
     ./modules/home-manager/git
+    ./modules/home-manager/screenshot
   ];
 
   # Let Home Manager install and manage itself.

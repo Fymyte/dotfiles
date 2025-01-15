@@ -10,6 +10,9 @@
 
   # programs.git.userEmail = "${config.home.username}@sequans.com";
 
+  # This is not a nixos system
+  nixGL.packages = inputs.nixgl.packages;
+
   home.sessionPath = [
     "/opt/soft/toolchains64/nds32le-unknown-elf/bin"
     "${config.home.homeDirectory}/dev/sqn/sqn-sdk/tools/scriptkit/bash/"
