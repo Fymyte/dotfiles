@@ -1,0 +1,143 @@
+theme "catppuccin-mocha"
+simplified_ui true
+pane_frames false
+scroll_buffer_size 1000000
+session_serialization true
+// TODO: I don't know yet if I want that, and the performance impact
+pane_viewport_serialization true
+scrollback_lines_to_serialize 0
+plugins {
+    autolock location="file:/home/pguillaume/.config/zellij/zellij-autolock.wasm" {
+        is_enabled true
+        // Lock when any open these programs open.
+        // triggers "nvim|vim|git|fzf|zoxide|atuin"
+        // Reaction to input occurs after this many seconds. (default=0.3)
+        // (An existing scheduled reaction prevents additional reactions.)
+        reaction_seconds "1"
+        // Print to Zellij log? (default=false)
+        print_to_log true
+    }
+ // sessionizer location="file:/home/pguillaume/.config/zellij/zellij-sessionizer.wasm" {
+
+    // }
+}
+load_plugins {
+    autolock
+ // sessionizer
+}
+keybinds {
+    normal clear-defaults=true {
+        bind "Enter" {
+            // Passthru `Enter`
+            WriteChars "\r"
+            MessagePlugin "autolock" {
+
+            }
+        }
+        bind "Ctrl w" {
+            SwitchToMode "Pane"
+        }
+        bind "Ctrl t" {
+            SwitchToMode "Tab"
+        }
+        bind "Ctrl s" {
+            LaunchOrFocusPlugin "file:/home/pguillaume/.config/zellij/zellij-sessionizer.wasm" {
+                floating true
+                move_to_focused_tab true
+                cwd "/"
+                root_dirs "/home/pguillaume/dev/sqn/sqn-sdk;/home/pguillaume/dev/sqn/mfw"
+            }
+        }
+        bind "Ctrl Shift g" {
+            EditScrollback
+        }
+        bind "Alt i" {
+            ToggleFloatingPanes
+        }
+        bind "Ctrl Alt d" {
+            Detach
+        }
+    }
+    shared {
+        bind "Alt i" {
+            ToggleFloatingPanes
+        }
+    }
+    shared_except "locked" {
+        bind "Ctrl w" {
+            SwitchToMode "Pane"
+        }
+        bind "Ctrl t" {
+            SwitchToMode "Tab"
+        }
+    }
+    pane {
+        bind "v" "Ctrl v" {
+            NewPane "Right"
+            SwitchToMode "Normal"
+        }
+        bind "n" "Ctrl n" {
+            NewPane
+            SwitchToMode "Normal"
+        }
+        bind "s" "Ctrl s" {
+            NewPane "Down"
+            SwitchToMode "Normal"
+        }
+        bind "h" "Ctrl h" {
+            MoveFocusOrTab "Left"
+            SwitchToMode "Normal"
+        }
+        bind "l" "Ctrl l" {
+            MoveFocusOrTab "Right"
+            SwitchToMode "Normal"
+        }
+        bind "k" "Ctrl k" {
+            MoveFocus "Up"
+            SwitchToMode "Normal"
+        }
+        bind "j" "Ctrl j" {
+            MoveFocus "Down"
+            SwitchToMode "Normal"
+        }
+    }
+    tab {
+        bind "Shift h" "Ctrl Shift h" {
+            MoveTab "left"
+        }
+        bind "Shift l" "Ctrl Shift l" {
+            MoveTab "right"
+        }
+    }
+ // tmux clear-defaults=true {
+    //     bind "Esc" {
+    //         SwitchToMode "Normal"
+    //     }
+    //     bind "g" {
+    //         SwitchToMode "Locked"
+    //     }
+    //     bind "p" {
+    //         SwitchToMode "Pane"
+    //     }
+    //     bind "t" {
+    //         SwitchToMode "Tab"
+    //     }
+    //     bind "r" {
+    //         SwitchToMode "Resize"
+    //     }
+    //     // Use w to match nvim
+    //     bind "w" {
+    //         SwitchToMode "Move"
+    //     }
+    //     bind "s" {
+    //         SwitchToMode "Scroll"
+    //     }
+    //     bind "o" {
+    //         SwitchToMode "Session"
+    //     }
+    //     bind "m" {
+    //         LaunchOrFocusPlugin "zellij:plugin-manager"
+    //     }
+    // }
+}
+

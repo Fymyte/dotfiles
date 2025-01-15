@@ -29,6 +29,7 @@
     ./modules/home-manager/kitty
     ./modules/home-manager/wezterm
     ./modules/home-manager/foot
+    ./modules/home-manager/zellij
 
     # Misc
     ./modules/home-manager/git
