@@ -58,6 +58,13 @@
         ];
         extraSpecialArgs = {};
       };
+
+      "fymyte" = mkHomeConfig {
+        modules = [
+          ./users/fymyte.nix
+        ];
+        extraSpecialArgs = {};
+      };
     };
 
     formatter = {
