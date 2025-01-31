@@ -13,6 +13,12 @@ in {
     userEmail = primary.address;
 
     ignores = ["compile_commands.json"];
+
+    extraConfig.credential.helper = ["cache --timeout 21600"];
+  };
+
+  programs.git-credential-oauth = {
+    enable = true;
   };
 
   programs.gh = {
