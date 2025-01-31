@@ -17,6 +17,7 @@
     alejandra
     kdlfmt
     clang-tools
+    stylua
   ];
 
   # Symlink old binary name to new ltex-ls-plus executable
