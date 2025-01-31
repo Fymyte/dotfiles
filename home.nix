@@ -30,6 +30,7 @@
     ./modules/home-manager/wezterm
     ./modules/home-manager/foot
     ./modules/home-manager/zellij
+    ./modules/home-manager/tmux
 
     # Misc
     ./modules/home-manager/git
