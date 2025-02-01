@@ -7,7 +7,6 @@
     server.enable = false;
     settings = {
       main = {
-        # Start tmux instead of fish by default
         font = "Cascadia Code:size=8,Nerd Font Symbols,Noto Color Emoji";
         dpi-aware = true;
       };
