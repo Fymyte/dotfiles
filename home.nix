@@ -17,6 +17,9 @@
     # Editor(s)
     ./modules/home-manager/neovim
 
+    # Browser(s)
+    ./modules/home-manager/firefox
+
     # Shell(s)
     ./modules/home-manager/bash
     ./modules/home-manager/fish
