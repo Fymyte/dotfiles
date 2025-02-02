@@ -41,11 +41,7 @@
 
     mkHomeConfig = {extraSpecialArgs, ...} @ args:
       home-manager.lib.homeManagerConfiguration {
-        modules =
-          [
-            ./home.nix
-          ]
-          ++ (args.modules or []);
+        modules = [./home.nix] ++ (args.modules or []);
         pkgs = pkgsForSystem (args.system or "x86_64-linux");
         extraSpecialArgs = extraSpecialArgs // {inherit inputs;};
       };
@@ -53,15 +49,19 @@
     homeConfigurations = {
       "pguillaume@snorlax" = mkHomeConfig {
         modules = [
+          # TODO: separate host config from here
+          # Snorlax is not nixos, but still have some specific hm config
           ./hosts/snorlax
           ./users/work/sequans.nix
         ];
         extraSpecialArgs = {};
       };
 
-      "fymyte" = mkHomeConfig {
+      "fymyte@BOB" = mkHomeConfig {
         modules = [
           ./users/fymyte.nix
+
+          ./modules/home-manager/protonup
         ];
         extraSpecialArgs = {};
       };
