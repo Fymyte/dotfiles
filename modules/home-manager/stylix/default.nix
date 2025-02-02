@@ -5,7 +5,7 @@
   config,
   ...
 }: let
-  icon-theme = {
+  icon-theme = rec {
     name = "Colloid-Yellow-Catppuccin";
     package = (
       pkgs.colloid-icon-theme.override {
@@ -13,6 +13,8 @@
         colorVariants = ["yellow"];
       }
     );
+    # TODO: how can we remove the '-Dark' at the end and still keep the dark variant
+    package-icon-directory = "${package}/share/icons/${name}-Dark";
   };
 in {
   imports = [inputs.stylix.homeManagerModules.stylix];
@@ -23,6 +25,7 @@ in {
     cursor = lib.mkDefault {
       package = pkgs.catppuccin-cursors.mochaPeach;
       name = "catppuccin-mocha-peach-cursors";
+      size = 24;
     };
     fonts = {
       serif = lib.mkDefault {
@@ -52,7 +55,6 @@ in {
   };
 
   # Actually creates the necessary links to generated icons in XDG's standards directories
-  # TODO: how can we remove the '-Dark' at the end and still keep the dark variant
-  home.file."${config.home.homeDirectory}/.icons/${icon-theme.name}".source = "${icon-theme.package}/share/icons/${icon-theme.name}-Dark";
-  home.file."${config.xdg.dataHome}/icons/${icon-theme.name}".source = "${icon-theme.package}/share/icons/${icon-theme.name}-Dark";
+  home.file."${config.home.homeDirectory}/.icons/${icon-theme.name}".source = icon-theme.package-icon-directory;
+  home.file."${config.xdg.dataHome}/icons/${icon-theme.name}".source = icon-theme.package-icon-directory;
 }
