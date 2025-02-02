@@ -20,6 +20,7 @@
 
       key-bindings = {
         show-urls-launch = "Control+Shift+u";
+        unicode-input = "Control+Shift+semicolon";
       };
     };
   };
