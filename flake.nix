@@ -8,12 +8,12 @@
     home-manager.url = "github:nix-community/home-manager/release-24.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    stylix.url = "github:danth/stylix/release-24.11";
+    stylix.inputs.nixpkgs.follows = "nixpkgs";
+
     # Keyboard remapping software
     kmonad.url = "github:kmonad/kmonad?dir=nix";
     kmonad.inputs.nixpkgs.follows = "nixpkgs";
-
-    stylix.url = "github:danth/stylix";
-    stylix.inputs.nixpkgs.follows = "nixpkgs";
 
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
