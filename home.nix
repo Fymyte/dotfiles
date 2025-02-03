@@ -50,14 +50,6 @@
     pkgs.libqalculate
   ];
 
-  # Import my neovim config from raw lua for now
-  # home.file.".config/nvim".source = pkgs.fetchFromGitHub {
-  #   owner = "fymyte";
-  #   repo = "nvim-config";
-  #   rev = "43928f78a4b0205b03996b43ae54ff75088566a1";
-  #   hash = "sha256-L4Fgowx45DgxQlnoKKSw+/886XqbK0gw4YeSK5kzQKQ=";
-  # };
-
   programs.btop.enable = true;
   programs.btop.settings = {
     color_theme = "TTY";
