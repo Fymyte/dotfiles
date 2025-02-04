@@ -3,19 +3,24 @@
   programs.tmux.enable = true;
   programs.tmux = {
     package = pkgs.unstable.tmux;
+    sensibleOnTop = false;
     escapeTime = 0;
     baseIndex = 1;
     clock24 = true;
     mouse = true;
-    newSession = true;
+    newSession = false;
+    aggressiveResize = true;
     keyMode = "vi";
     shortcut = "Space";
     historyLimit = 100000;
     terminal = "tmux-256color";
 
-    extraConfig = ''
-      set -ga terminal-overrides ",foot:Tc"
+    shell = "${pkgs.fish}/bin/fish";
 
+    extraConfig = ''
+      set -ga terminal-overrides ",foot:Tc,Alacritty:Tc,ghostty:Tc"
+
+      set -g status-interval 5
     '';
   };
 }

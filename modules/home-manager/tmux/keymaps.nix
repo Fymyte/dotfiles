@@ -1,4 +1,8 @@
-{...}: let
+{
+  lib,
+  config,
+  ...
+}: let
   vim-pane-navigation = ''
     is_vim="ps -o state= -o comm= -t '#{pane_tty}' | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?\.?(view|n?vim?x?)(-wrapped)?(diff)?$'"
 
@@ -23,14 +27,25 @@
   '';
 
   vim-copy-mode = ''
-      bind v copy-mode
-      bind C-v copy-mode
+    bind v copy-mode
+    bind C-v copy-mode
 
-      bind -Tcopy-mode-vi v send-keys -X begin-selection
-      bind -Tcopy-mode-vi y send-keys -X copy-pipe-and-cancel
-    '';
+    bind -Tcopy-mode-vi v send-keys -X begin-selection
+    bind -Tcopy-mode-vi y send-keys -X copy-pipe-and-cancel
+  '';
+
+  window-movements = ''
+    bind C-p previous-window
+    bind C-n next-window
+  '';
 in {
-  programs.tmux.extraConfig =
+  programs.tmux.extraConfig = lib.strings.concatStrings [
     vim-pane-navigation
-    + vim-copy-mode;
+    vim-copy-mode
+    window-movements
+
+    ''
+      bind R source-file ${config.xdg.configHome}/tmux/tmux.conf
+    ''
+  ];
 }
