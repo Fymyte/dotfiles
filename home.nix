@@ -64,7 +64,6 @@
   ];
 
   home.sessionVariables = {
-    TERMINAL = "foot";
     QT_QPA_PLATFORMTHEME = "qt5ct";
     MAKEFLAGS = "$MAKEFLAGS --no-print-directory -j$(nproc)";
   };
