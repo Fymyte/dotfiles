@@ -48,6 +48,9 @@
     pkgs.coreutils
 
     pkgs.libqalculate
+
+    # Use nvim as pager
+    pkgs.page
   ];
 
   programs.btop.enable = true;
@@ -64,8 +67,11 @@
   ];
 
   home.sessionVariables = {
+    # TODO: make this dependent on the current desktop env (dont want this set inside kde)
     QT_QPA_PLATFORMTHEME = "qt5ct";
     MAKEFLAGS = "$MAKEFLAGS --no-print-directory -j$(nproc)";
+    PAGER = "${pkgs.page}/bin/page -WfC -q 90000 -z 90000";
+    MANPAGER = "${pkgs.page}/bin/page -t 'Man!'";
   };
 
   home.shellAliases = {
@@ -75,6 +81,10 @@
     g = "git";
     ga = "git add";
     gc = "git commit";
+
+    # Not converted to fish abbreviations
+    page = config.home.sessionVariables.PAGER;
+    less = config.home.sessionVariables.PAGER;
   };
 
   # Do not change

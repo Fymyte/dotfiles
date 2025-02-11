@@ -12,7 +12,11 @@ in {
     userName = primary.realName;
     userEmail = primary.address;
 
-    ignores = ["compile_commands.json"];
+    ignores = [
+      "compile_commands.json"
+      ".gdbinit"
+      ".session.nvim"
+    ];
 
     extraConfig.credential.helper = ["cache --timeout 21600"];
   };
@@ -21,17 +25,17 @@ in {
     enable = true;
   };
 
-  programs.gh = {
-    enable = true;
-    gitCredentialHelper.enable = true;
-    settings = {
-      git_protocol = "https";
-      prompt = "enabled";
+  # programs.gh = {
+  #   enable = true;
+  #   gitCredentialHelper.enable = true;
+  #   settings = {
+  #     git_protocol = "https";
+  #     prompt = "enabled";
 
-      aliases = {
-        co = "pr checkout";
-        pv = "pr view";
-      };
-    };
-  };
+  #     aliases = {
+  #       co = "pr checkout";
+  #       pv = "pr view";
+  #     };
+  #   };
+  # };
 }

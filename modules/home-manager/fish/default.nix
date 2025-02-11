@@ -1,15 +1,21 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: let
   brackets-color = "9399B2";
+
+  not-abbreviated = [
+    "page"
+    "less"
+  ];
 in {
   programs.fish = {
     enable = true;
 
     # Replace global aliases by fish abbreviation
-    shellAbbrs = config.home.shellAliases;
+    shellAbbrs = lib.attrsets.filterAttrs (n: v: lib.lists.all (x: x != n) not-abbreviated) config.home.shellAliases;
 
     plugins = [
       {

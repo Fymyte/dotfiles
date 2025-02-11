@@ -35,8 +35,14 @@
   '';
 
   window-movements = ''
+    # Allow keeping Ctrl pressed with the defaults
     bind C-p previous-window
     bind C-n next-window
+
+    bind h previous-window
+    bind C-h previous-window
+    bind l next-window
+    bind C-l next-window
   '';
 in {
   programs.tmux.extraConfig = lib.strings.concatStrings [
