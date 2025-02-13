@@ -3,6 +3,16 @@
   config,
   ...
 }: let
+  advanced-keybinding-support = ''
+    # Let other terminal keep their names while enabling supported features
+    set -ga terminal-overrides ",foot:Tc,foot:extkeys,foot:256,foot:sync"
+    set -ga terminal-overrides ",Kitty:Tc,Kitty:extkeys,Kitty:256,Kitty:sync"
+    set -ga terminal-overrides ",ghostty:Tc,ghostty:extkeys,ghostty:256,ghostty:sync"
+    set -ga terminal-overrides ",Alacritty:Tc,Alacritty:extkeys,Alacritty:256,Alacritty:sync"
+
+    set -ga extended-keys always
+  '';
+
   vim-pane-navigation = ''
     is_vim="ps -o state= -o comm= -t '#{pane_tty}' | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?\.?(view|n?vim?x?)(-wrapped)?(diff)?$'"
 
@@ -20,7 +30,8 @@
     bind -Tpane-navigation v if-shell "$is_vim" 'send-keys C-w v' 'split-window -h'
     bind -Tpane-navigation C-v if-shell "$is_vim" 'send-keys C-w v' 'split-window -h'
 
-    bind -Tpane-navigation C-v if-shell "$is_vim" 'send-keys C-w v' 'split-window -h'
+    bind -Tpane-navigation q if-shell "$is_vim" 'send-keys C-w q' 'confirm-before -p "kill-pane #P? (y/n)" kill-pane'
+    bind -Tpane-navigation C-q if-shell "$is_vim" 'send-keys C-w q' 'confirm-before -p "kill-pane #P? (y/n)" kill-pane'
 
     bind -Tcopy-mode-vi 'C-w' switch-client -Tpane-navigation
     bind -Troot C-w switch-client -Tpane-navigation
@@ -46,10 +57,14 @@
   '';
 in {
   programs.tmux.extraConfig = lib.strings.concatStrings [
+    advanced-keybinding-support
+
     vim-pane-navigation
     vim-copy-mode
     window-movements
 
+
+    # Reload tmux config with <Prefix>R
     ''
       bind R source-file ${config.xdg.configHome}/tmux/tmux.conf
     ''

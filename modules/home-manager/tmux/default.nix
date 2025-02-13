@@ -18,13 +18,6 @@
     shell = "${pkgs.fish}/bin/fish";
 
     extraConfig = ''
-      set -ga terminal-overrides ",foot:Tc,foot:extkeys,foot:256,foot:sync"
-      set -ga terminal-overrides ",Alacritty:Tc"
-      set -ga terminal-overrides ",Kitty:Tc"
-      set -ga terminal-overrides ",ghostty:Tc"
-
-      set -ga extended-keys always
-
       set -g status-interval 5
     '';
   };
