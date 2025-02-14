@@ -51,6 +51,8 @@
 
     # Use nvim as pager
     pkgs.page
+
+    pkgs.qmk
   ];
 
   programs.btop.enable = true;
