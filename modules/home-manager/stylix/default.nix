@@ -54,6 +54,11 @@ in {
     package = icon-theme.package;
   };
 
+  qt = {
+    platformTheme.name = "qtct";
+    style.name = "breeze";
+  };
+
   # Actually creates the necessary links to generated icons in XDG's standards directories
   home.file."${config.home.homeDirectory}/.icons/${icon-theme.name}".source = icon-theme.package-icon-directory;
   home.file."${config.xdg.dataHome}/icons/${icon-theme.name}".source = icon-theme.package-icon-directory;
