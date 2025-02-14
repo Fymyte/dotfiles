@@ -31,6 +31,7 @@
     ./modules/home-manager/kitty
     ./modules/home-manager/wezterm
     ./modules/home-manager/foot
+    ./modules/home-manager/ghostty
     ./modules/home-manager/zellij
     ./modules/home-manager/tmux
 
