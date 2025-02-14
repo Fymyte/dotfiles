@@ -33,6 +33,11 @@
     bind -Tpane-navigation q if-shell "$is_vim" 'send-keys C-w q' 'confirm-before -p "kill-pane #P? (y/n)" kill-pane'
     bind -Tpane-navigation C-q if-shell "$is_vim" 'send-keys C-w q' 'confirm-before -p "kill-pane #P? (y/n)" kill-pane'
 
+    bind -Tpane-navigation > if-shell "$is_vim" 'send-keys C-w >' 'resize-pane -R 5'
+    bind -Tpane-navigation C-> if-shell "$is_vim" 'send-keys C-w >' 'resize-pane -R 5'
+    bind -Tpane-navigation < if-shell "$is_vim" 'send-keys C-w <' 'resize-pane -L 5'
+    bind -Tpane-navigation C-< if-shell "$is_vim" 'send-keys C-w <' 'resize-pane -L 5'
+
     bind -Tcopy-mode-vi 'C-w' switch-client -Tpane-navigation
     bind -Troot C-w switch-client -Tpane-navigation
   '';
