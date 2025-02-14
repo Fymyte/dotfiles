@@ -71,7 +71,7 @@
     QT_QPA_PLATFORMTHEME = "qt5ct";
     MAKEFLAGS = "$MAKEFLAGS --no-print-directory -j$(nproc)";
     PAGER = "${pkgs.page}/bin/page -WfC -q 90000 -z 90000";
-    MANPAGER = "${pkgs.page}/bin/page -t 'Man!'";
+    MANPAGER = "${pkgs.page}/bin/page -t man";
   };
 
   home.shellAliases = {
