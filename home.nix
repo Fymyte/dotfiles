@@ -1,6 +1,5 @@
 # Default configuration, common to every users/hosts
 {
-  lib,
   pkgs,
   config,
   ...
