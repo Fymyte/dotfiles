@@ -15,7 +15,8 @@ in {
     ignores = [
       "compile_commands.json"
       ".gdbinit"
-      ".session.nvim"
+      "Sesssion.vim"
+      ".session.vim"
     ];
 
     extraConfig.credential.helper = ["cache --timeout 21600"];
