@@ -5,12 +5,13 @@
 }: let
   advanced-keybinding-support = ''
     # Let other terminal keep their names while enabling supported features
-    set -ga terminal-overrides ",foot:Tc,foot:extkeys,foot:256,foot:sync"
-    set -ga terminal-overrides ",Kitty:Tc,Kitty:extkeys,Kitty:256,Kitty:sync"
+    set -ga terminal-overrides ",foot:Tc,foot:256,foot:title"
+    set -ga terminal-overrides ",xterm-kitty:Tc,xterm-kitty:extkeys,xterm-kitty:256,xterm-kitty:sync,xterm-kitty:Enbp"
     set -ga terminal-overrides ",ghostty:Tc,ghostty:extkeys,ghostty:256,ghostty:sync"
-    set -ga terminal-overrides ",Alacritty:Tc,Alacritty:extkeys,Alacritty:256,Alacritty:sync"
+    set -ga terminal-overrides ",Alacritty:Tc,Alacritty:extkeys,Alacritty:256,Alacritty:sync,Alacritty:Enbp"
 
-    set -ga extended-keys always
+    set -ga extended-keys on
+    set -ga extended-keys-format csi-u
   '';
 
   vim-pane-navigation = ''
@@ -67,7 +68,6 @@ in {
     vim-pane-navigation
     vim-copy-mode
     window-movements
-
 
     # Reload tmux config with <Prefix>R
     ''
