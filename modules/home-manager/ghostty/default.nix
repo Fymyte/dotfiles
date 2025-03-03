@@ -1,5 +1,9 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   home.packages = [
-    pkgs.unstable.ghostty
+    (config.lib.nixGL.wrap pkgs.unstable.ghostty)
   ];
 }
