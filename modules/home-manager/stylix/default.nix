@@ -5,21 +5,23 @@
   config,
   ...
 }: let
-  icon-theme = rec {
+  iconTheme = rec {
     name = "Colloid-Yellow-Catppuccin";
+    light = "${name}-Light";
+    dark = "${name}-Dark";
     package = (
       pkgs.colloid-icon-theme.override {
         schemeVariants = ["catppuccin"];
         colorVariants = ["yellow"];
       }
     );
-    # TODO: how can we remove the '-Dark' at the end and still keep the dark variant
-    package-icon-directory = "${package}/share/icons/${name}-Dark";
+    packageIconDirectory = "${package}/share/icons/";
   };
 in {
   imports = [inputs.stylix.homeManagerModules.stylix];
   stylix = {
     enable = true;
+    polarity = "dark";
     image = lib.mkDefault ./wallpapers/japan-background-digital-art.jpg;
     base16Scheme = lib.mkDefault "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
     cursor = lib.mkDefault {
@@ -45,13 +47,20 @@ in {
         name = "Noto Color Emoji";
       };
     };
+    iconTheme = {
+      enable = true;
+      package = iconTheme.package;
+      light = iconTheme.light;
+      dark = iconTheme.dark;
+    };
     autoEnable = false;
-  };
 
-  gtk.iconTheme = {
-    enable = true;
-    name = icon-theme.name;
-    package = icon-theme.package;
+    targets = {
+      gtk.enable = true;
+      # gtk.flatpakSupport.enable = true;
+      # Not supported in current stylix branch
+      # qt.enable = true;
+    };
   };
 
   qt = {
@@ -60,6 +69,10 @@ in {
   };
 
   # Actually creates the necessary links to generated icons in XDG's standards directories
-  home.file."${config.home.homeDirectory}/.icons/${icon-theme.name}".source = icon-theme.package-icon-directory;
-  home.file."${config.xdg.dataHome}/icons/${icon-theme.name}".source = icon-theme.package-icon-directory;
+  home.file."${config.xdg.dataHome}/icons/${iconTheme.name}".source = "${iconTheme.packageIconDirectory}/${iconTheme.name}";
+  home.file."${config.home.homeDirectory}/.icons/${iconTheme.name}".source = "${iconTheme.packageIconDirectory}/${iconTheme.name}";
+  home.file."${config.xdg.dataHome}/icons/${iconTheme.light}".source = "${iconTheme.packageIconDirectory}/${iconTheme.light}";
+  home.file."${config.home.homeDirectory}/.icons/${iconTheme.light}".source = "${iconTheme.packageIconDirectory}/${iconTheme.light}";
+  home.file."${config.xdg.dataHome}/icons/${iconTheme.dark}".source = "${iconTheme.packageIconDirectory}/${iconTheme.dark}";
+  home.file."${config.home.homeDirectory}/.icons/${iconTheme.dark}".source = "${iconTheme.packageIconDirectory}/${iconTheme.dark}";
 }
