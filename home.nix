@@ -73,7 +73,7 @@
     # TODO: make this dependent on the current desktop env (dont want this set inside kde)
     QT_QPA_PLATFORMTHEME = "qt5ct";
     MAKEFLAGS = "$MAKEFLAGS --no-print-directory -j$(nproc)";
-    PAGER = "${pkgs.page}/bin/page -WfC -q 90000 -z 90000";
+    PAGER = "${pkgs.page}/bin/page -WC -q 99999 -z 99999";
     MANPAGER = "${pkgs.page}/bin/page -t man";
   };
 
