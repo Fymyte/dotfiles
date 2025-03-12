@@ -48,8 +48,6 @@
     # Make sure GNU coreutils are always present
     pkgs.coreutils
 
-    pkgs.libqalculate
-
     # Use nvim as pager
     pkgs.page
 
