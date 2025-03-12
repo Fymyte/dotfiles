@@ -52,6 +52,9 @@
     pkgs.page
 
     pkgs.qmk
+
+    pkgs.ripgrep
+    pkgs.fd
   ];
 
   programs.btop.enable = true;
