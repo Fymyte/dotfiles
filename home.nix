@@ -55,6 +55,8 @@
 
     pkgs.ripgrep
     pkgs.fd
+
+    pkgs.which
   ];
 
   programs.btop.enable = true;
