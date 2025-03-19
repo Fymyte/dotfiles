@@ -21,8 +21,8 @@
     nixgl.url = "github:nix-community/nixGL";
     nixgl.inputs.nixpkgs.follows = "nixpkgs";
 
+    # For the home-manager module
     walker.url = "github:abenz1267/walker";
-    walker.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {home-manager, ...} @ inputs: let
