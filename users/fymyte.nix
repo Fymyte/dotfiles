@@ -15,4 +15,6 @@
       address = "pierguill@gmail.com";
     };
   };
+
+  programs.command-not-found.enable = true;
 }
