@@ -72,6 +72,13 @@
         ];
         extraSpecialArgs = {};
       };
+
+      "fymyte@pipoupc" = mkHomeConfig {
+        modules = [
+          ./users/fymyte.nix
+        ];
+        extraSpecialArgs = {};
+      };
     };
 
     formatter = {
