@@ -35,6 +35,9 @@
     ./modules/home-manager/zellij
     ./modules/home-manager/tmux
 
+    # Languages
+    ./modules/self/rustup
+
     # Misc
     ./modules/home-manager/git
     ./modules/home-manager/screenshot
