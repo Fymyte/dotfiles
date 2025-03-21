@@ -18,6 +18,7 @@
     kdlfmt
     clang-tools
     stylua
+    taplo
   ];
 
   # Symlink old binary name to new ltex-ls-plus executable
