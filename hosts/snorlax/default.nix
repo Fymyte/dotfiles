@@ -3,8 +3,6 @@
   inputs,
   ...
 }: {
-  sops.defaultSopsFile = ../../secrets/sequans.yaml;
-
   # This is not a nixos system
   nixGL.packages = inputs.nixgl.packages;
 

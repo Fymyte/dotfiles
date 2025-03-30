@@ -5,47 +5,8 @@
   ...
 }: {
   imports = [
-    # Secrets management
-    ./modules/home-manager/sops
-
-    # Styling
-    ./modules/home-manager/stylix
-    ./modules/home-manager/waybar
-    ./modules/home-manager/nix
-
-    # Editor(s)
-    ./modules/home-manager/neovim
-
-    # Browser(s)
-    ./modules/home-manager/firefox
-
-    # Shell(s)
-    ./modules/home-manager/bash
-    ./modules/home-manager/fish
-    ./modules/home-manager/nushell
-
-    # Shell tools
-    ./modules/home-manager/eza
-
-    # Terminal(s)
-    ./modules/home-manager/kitty
-    ./modules/home-manager/wezterm
-    ./modules/home-manager/foot
-    ./modules/home-manager/ghostty
-    ./modules/home-manager/zellij
-    ./modules/home-manager/tmux
-
-    # Languages
-    ./modules/self/rustup
-
-    # Misc
-    ./modules/home-manager/git
-    ./modules/home-manager/screenshot
-    ./modules/home-manager/walker
+    ./config/home-manager
   ];
-
-  # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
 
   home.packages = [
     # Make sure GNU coreutils are always present
@@ -61,14 +22,6 @@
 
     pkgs.which
   ];
-
-  programs.btop.enable = true;
-  programs.btop.settings = {
-    color_theme = "TTY";
-    theme_background = false;
-  };
-
-  programs.fzf.enable = true;
 
   home.sessionPath = [
     "${config.home.homeDirectory}/.local/bin"
@@ -95,7 +48,4 @@
     page = config.home.sessionVariables.PAGER;
     less = config.home.sessionVariables.PAGER;
   };
-
-  # Do not change
-  home.stateVersion = "24.05";
 }

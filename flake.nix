@@ -19,42 +19,21 @@
     kmonad.url = "github:kmonad/kmonad?dir=nix";
     kmonad.inputs.nixpkgs.follows = "nixpkgs";
 
-    sops-nix.url = "github:Mic92/sops-nix";
-    sops-nix.inputs.nixpkgs.follows = "nixpkgs";
-
     nixgl.url = "github:nix-community/nixGL";
     nixgl.inputs.nixpkgs.follows = "nixpkgs";
+
+    # Declarative flatpak installation (not idempotent)
+    nix-flatpak.url = "github:gmodena/nix-flatpak/latest";
 
     # For the home-manager module
     walker.url = "github:abenz1267/walker";
   };
 
-  outputs = {home-manager, ...} @ inputs: let
-    # Get packages for given system (x86_64-linux, ...)
-    pkgsForSystem = system:
-      import inputs.nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-        overlays = [
-          (final: prev: {
-            unstable = import inputs.nixpkgs-unstable {
-              inherit prev;
-              inherit system;
-              config.allowUnfree = true;
-            };
-          })
-        ];
-      };
-
-    mkHomeConfig = {extraSpecialArgs, ...} @ args:
-      home-manager.lib.homeManagerConfiguration {
-        modules = [./home.nix] ++ (args.modules or []);
-        pkgs = pkgsForSystem (args.system or "x86_64-linux");
-        extraSpecialArgs = extraSpecialArgs // {inherit inputs;};
-      };
+  outputs = inputs: let
+    helpers = import ./lib/helpers.nix {inherit inputs;};
   in {
     homeConfigurations = {
-      "pguillaume@snorlax" = mkHomeConfig {
+      "pguillaume@snorlax" = helpers.mkHomeConfig {
         modules = [
           # TODO: separate host config from here
           # Snorlax is not nixos, but still have some specific hm config
@@ -64,13 +43,15 @@
         extraSpecialArgs = {};
       };
 
-      "fymyte@BOB" = mkHomeConfig {
+      "fymyte@BOB" = helpers.mkHomeConfig {
         modules = [
           ./users/fymyte.nix
 
-          ./modules/home-manager/protonup
+          ./config/home-manager/gaming.nix
         ];
-        extraSpecialArgs = {};
+        extraSpecialArgs = {
+          isNixOs = true;
+        };
       };
 
       "fymyte@pipoupc" = mkHomeConfig {

@@ -11,9 +11,9 @@
     };
   };
 
-  programs.bash.initExtra = ''
-    if [[ $(hostname) = 'snorlax' ]]; then
-      exec fish
-    fi
-  '';
+  # programs.bash.initExtra = ''
+  #   if [[ $(hostname) = 'snorlax' ]]; then
+  #     exec fish
+  #   fi
+  # '';
 }
