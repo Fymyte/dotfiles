@@ -30,5 +30,5 @@ in {
     enable = true;
   };
 
-  home.packages = [pkgs.unstable.glab];
+  home.packages = [pkgs.git-crypt pkgs.unstable.glab];
 }
