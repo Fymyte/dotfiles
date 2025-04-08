@@ -376,6 +376,7 @@
         "nixpkgs-unstable": "nixpkgs-unstable",
         "sops": "sops",
         "stylix": "stylix",
+        "systems": "systems_2",
         "walker": "walker"
       }
     },
@@ -450,6 +451,18 @@
       }
     },
     "systems_2": {
+      "flake": false,
+      "locked": {
+        "path": "./systems.nix",
+        "type": "path"
+      },
+      "original": {
+        "path": "./systems.nix",
+        "type": "path"
+      },
+      "parent": []
+    },
+    "systems_3": {
       "locked": {
         "lastModified": 1689347949,
         "narHash": "sha256-12tWmuL2zgBgZkdoB6qXZsgJEH9LR3oUgpaQq2RbI80=",
@@ -517,7 +530,7 @@
     "walker": {
       "inputs": {
         "nixpkgs": "nixpkgs_2",
-        "systems": "systems_2"
+        "systems": "systems_3"
       },
       "locked": {
         "lastModified": 1743355773,

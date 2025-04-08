@@ -30,20 +30,23 @@
 
     sops.url = "github:Mic92/sops-nix";
     sops.inputs.nixpkgs.follows = "nixpkgs";
+
+    systems.url = "path:./systems.nix";
+    systems.flake = false;
   };
 
   outputs = inputs: let
-    helpers = import ./lib/helpers.nix {inherit inputs;};
+    callPackage = inputs.nixpkgs.lib.callPackageWith inputs;
+    helpers = callPackage ./lib/helpers.nix {inherit inputs;};
   in {
     homeConfigurations = {
       "pguillaume@snorlax" = helpers.mkHomeConfig {
         modules = [
           # TODO: separate host config from here
-          # Snorlax is not nixos, but still have some specific hm config
+          # Snorlax is not nixos, but still has some specific hm config
           ./hosts/snorlax
           ./users/work/sequans.nix
         ];
-        extraSpecialArgs = {};
       };
 
       "fymyte@BOB" = helpers.mkHomeConfig {
@@ -52,21 +55,15 @@
 
           ./config/home-manager/gaming.nix
         ];
-        extraSpecialArgs = {
-          isNixOs = true;
-        };
       };
 
-      "fymyte@pipoupc" = mkHomeConfig {
+      "fymyte@pipoupc" = helpers.mkHomeConfig {
         modules = [
           ./users/fymyte.nix
         ];
-        extraSpecialArgs = {};
       };
     };
 
-    formatter = {
-      name = "alejandra";
-    };
+    formatter = helpers.forAllSystems ({pkgs, ...}: pkgs.alejandra);
   };
 }

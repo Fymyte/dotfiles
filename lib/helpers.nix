@@ -1,22 +1,64 @@
-{inputs, ...}: let
-  module = rec {
-    pkgsForSystem = system:
-      import inputs.nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-        overlays = [
-          (final: prev: {
-            unstable = import inputs.nixpkgs-unstable {
-              inherit prev;
+{
+  inputs,
+  nixpkgs,
+  nixpkgs-unstable,
+  home-manager,
+  systems,
+}: let
+  nixpkgs-unstable-overlay = final: prev: {
+    unstable = import nixpkgs-unstable {
+      inherit prev;
+      inherit (prev) system;
+      config.allowUnfree = true;
+    };
+  };
+
+  pkgsForSystem = system:
+    import nixpkgs {
+      inherit system;
+      config.allowUnfree = true;
+      overlays = [nixpkgs-unstable-overlay];
+    };
+
+  helpers = rec {
+    default-system = "x86_64-linux";
+
+    /*
+      *
+    Return an attribute set for every valid systems.
+    The list of systems comes from ./systems.nix.
+
+    # Type
+
+    ```
+    forAllSystems :: {pkgs = AttrSet; system = String } -> AttrSet
+    ```
+
+    # Examples
+    :::{.example}
+    ## `forAllSystems` usage example
+
+    ```nix
+    formatter = forAllSystems ({pkgs, system}: pkgs.alejandra)
+    => { "x86_64-linux" = nixpkgs.legacyPackages."x86_64-linux".alejandra; "aarch64-linux" = ... }
+    ```
+    */
+    forAllSystems = with builtins;
+      f:
+        listToAttrs (map (system: {
+            name = system;
+            value = f {
               inherit system;
-              config.allowUnfree = true;
+              pkgs = pkgsForSystem system;
             };
           })
-        ];
-      };
+          (import systems));
 
-    mkHomeConfig = {...} @ args:
-      inputs.home-manager.lib.homeManagerConfiguration {
+    mkHomeConfig = {
+      system ? default-system,
+      modules ? [],
+    }:
+      home-manager.lib.homeManagerConfiguration {
         modules =
           [
             # Entry point for my config
@@ -25,15 +67,14 @@
             # All my custom home-manager modules
             ../modules/home-manager
           ]
-          ++ (args.modules or []);
+          ++ modules;
 
-        pkgs = pkgsForSystem (args.system or "x86_64-linux");
-        extraSpecialArgs =
-          (args.extraSpecialArgs or {})
-          // {
-            inherit inputs;
-          };
+        pkgs = pkgsForSystem system;
+        extraSpecialArgs = {
+          inherit inputs helpers;
+          secrets = import ../secrets {inherit inputs;};
+        };
       };
   };
 in
-  module
+  helpers
