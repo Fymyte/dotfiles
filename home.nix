@@ -33,10 +33,5 @@
 
   home.shellAliases = {
     dc = "docker compose";
-    vim = "nvim";
-    gl = "glab";
-    g = "git";
-    ga = "git add";
-    gc = "git commit";
   };
 }

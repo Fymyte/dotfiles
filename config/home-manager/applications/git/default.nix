@@ -31,5 +31,12 @@ in {
     enable = true;
   };
 
+  home.shellAliases = {
+    gl = "glab";
+    g = "git";
+    ga = "git add";
+    gc = "git commit";
+  };
+
   home.packages = [pkgs.git-crypt pkgs.unstable.glab];
 }
