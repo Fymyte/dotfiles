@@ -33,8 +33,6 @@
     # TODO: make this dependent on the current desktop env (dont want this set inside kde)
     QT_QPA_PLATFORMTHEME = "qt5ct";
     MAKEFLAGS = "$MAKEFLAGS --no-print-directory -j$(nproc)";
-    PAGER = "${pkgs.page}/bin/page -WC -q 99999 -z 99999";
-    MANPAGER = "${pkgs.page}/bin/page -t man";
   };
 
   home.shellAliases = {
@@ -44,9 +42,5 @@
     g = "git";
     ga = "git add";
     gc = "git commit";
-
-    # Not converted to fish abbreviations
-    page = config.home.sessionVariables.PAGER;
-    less = config.home.sessionVariables.PAGER;
   };
 }

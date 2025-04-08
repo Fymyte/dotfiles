@@ -19,6 +19,7 @@
     ./applications/git
     ./applications/neovim
     ./applications/nix
+    ./applications/page
     ./applications/screenshot
     ./applications/walker
     ./applications/waybar
