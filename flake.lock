@@ -374,8 +374,29 @@
         "nixgl": "nixgl",
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",
+        "sops": "sops",
         "stylix": "stylix",
         "walker": "walker"
+      }
+    },
+    "sops": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1743910657,
+        "narHash": "sha256-zr2jmWeWyhCD8WmO2aWov2g0WPPuZfcJDKzMJZYGq3Y=",
+        "owner": "Mic92",
+        "repo": "sops-nix",
+        "rev": "523f58a4faff6c67f5f685bed33a7721e984c304",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Mic92",
+        "repo": "sops-nix",
+        "type": "github"
       }
     },
     "stylix": {

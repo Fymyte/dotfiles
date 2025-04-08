@@ -3,6 +3,10 @@
   inputs,
   ...
 }: {
+  imports = [
+    inputs.sops.homeManagerModules.sops
+  ];
+
   # This is not a nixos system
   nixGL.packages = inputs.nixgl.packages;
 
@@ -16,5 +20,11 @@
   home.sessionVariables = {
     GL_HOST = "gitlab-shared.sequans.com";
     PYTHONPATH = "$PYTHONPATH:${config.home.homeDirectory}/dev/sqn/sqn-sdk/tools/scriptkit/python";
+  };
+
+  sops = {
+    age.keyFile = "${config.xdg.configHome}/sops/age/keys.txt";
+    defaultSymlinkPath = "/run/user/2246/sops-nix/secrets";
+    defaultSecretsMountPoint = "/run/user/2246/sops-nix/secrets.d";
   };
 }

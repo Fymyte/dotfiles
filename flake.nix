@@ -27,6 +27,9 @@
 
     # For the home-manager module
     walker.url = "github:abenz1267/walker";
+
+    sops.url = "github:Mic92/sops-nix";
+    sops.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs: let
