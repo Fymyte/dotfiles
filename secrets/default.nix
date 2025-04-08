@@ -1,10 +1,4 @@
-{
-  pkgs,
-  inputs,
-  config,
-  lib,
-  ...
-}: {
+{pkgs, ...}: {
   # NOTE: the import of the sops module must be done in
   # the host specific config file
   sops = {
@@ -17,5 +11,8 @@
     };
   };
 
-  home.packages = [pkgs.sops];
+  home.packages = [
+    pkgs.sops
+    pkgs.age
+  ];
 }
