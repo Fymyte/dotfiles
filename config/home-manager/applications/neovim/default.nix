@@ -19,6 +19,8 @@
     clang-tools
     stylua
     taplo
+
+    harper
   ];
 
   # Symlink old binary name to new ltex-ls-plus executable
