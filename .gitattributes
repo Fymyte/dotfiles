@@ -1,3 +1,1 @@
 wallpapers/** filter=lfs diff=lfs merge=lfs -text
-secrets/.encrypted filter=git-crypt diff=git-crypt
-secrets/encrypted/** filter=git-crypt diff=git-crypt
