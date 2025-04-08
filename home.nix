@@ -13,9 +13,6 @@
     # Make sure GNU coreutils are always present
     pkgs.coreutils
 
-    # Use nvim as pager
-    pkgs.page
-
     pkgs.qmk
 
     pkgs.ripgrep
