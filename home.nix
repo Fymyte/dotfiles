@@ -10,11 +10,6 @@
   ];
 
   home.packages = [
-    # Make sure GNU coreutils are always present
-    pkgs.coreutils
-
-    pkgs.qmk
-
     pkgs.ripgrep
     pkgs.fd
 

@@ -21,6 +21,7 @@
     ./applications/nix
     ./applications/page
     ./applications/screenshot
+    ./applications/vial
     ./applications/walker
     ./applications/waybar
 
