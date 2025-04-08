@@ -15,7 +15,6 @@
 
     ./applications/btop
     ./applications/eza
-    ./applications/flameshot
     ./applications/fzf
     ./applications/git
     ./applications/neovim
