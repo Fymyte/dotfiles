@@ -19,6 +19,7 @@
 
     extraConfig = ''
       set -g status-interval 5
+      set -g default-command "${pkgs.bash}/bin/bash -c 'exec fish'"
     '';
   };
 }
