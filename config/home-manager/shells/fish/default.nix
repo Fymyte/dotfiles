@@ -13,6 +13,7 @@
 in {
   programs.fish = {
     enable = true;
+    package = pkgs.unstable.fish;
 
     # Replace global aliases by fish abbreviation
     shellAbbrs = lib.attrsets.filterAttrs (n: v: lib.lists.all (x: x != n) not-abbreviated) config.home.shellAliases;
