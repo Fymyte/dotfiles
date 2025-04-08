@@ -21,6 +21,7 @@ in {
       ".gdbinit"
       "Sesssion.vim"
       ".session.vim"
+      ".gitlab.nvim"
     ];
 
     extraConfig.credential.helper = ["cache --timeout 21600"];
