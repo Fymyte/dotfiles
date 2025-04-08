@@ -26,7 +26,6 @@
 
   home.sessionPath = [
     "${config.home.homeDirectory}/.local/bin"
-    "${config.home.homeDirectory}/.local/cargo/bin" # Packages installed using `cargo install <package>`
   ];
 
   home.sessionVariables = {
