@@ -4,12 +4,12 @@
   ...
 }: {
   home.packages = with pkgs.unstable; [
+    tree-sitter
     # Neovim tools
     # TODO: move to separate file
     nixfmt-rfc-style
     yaml-language-server
     lua-language-server
-    ltex-ls-plus
     ruff
     vale
     nixd
@@ -18,13 +18,13 @@
     kdlfmt
     clang-tools
     stylua
+    selene
     taplo
 
     harper
-  ];
 
-  # Symlink old binary name to new ltex-ls-plus executable
-  home.file."${config.home.homeDirectory}/.local/bin/ltex-ls".source = "${pkgs.unstable.ltex-ls-plus}/bin/ltex-ls-plus";
+    nodePackages.vscode-json-languageserver
+  ];
 
   programs.neovim = {
     package = pkgs.unstable.neovim-unwrapped;

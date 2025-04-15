@@ -31,8 +31,7 @@
     sops.url = "github:Mic92/sops-nix";
     sops.inputs.nixpkgs.follows = "nixpkgs";
 
-    systems.url = "path:./systems.nix";
-    systems.flake = false;
+    systems.url = "github:nix-systems/default";
   };
 
   outputs = inputs: let
