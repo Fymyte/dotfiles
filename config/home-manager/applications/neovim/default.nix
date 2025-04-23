@@ -24,6 +24,8 @@
     harper
 
     nodePackages.vscode-json-languageserver
+    python3Packages.python-lsp-server
+    python3Packages.pylsp-mypy
   ];
 
   programs.neovim = {
