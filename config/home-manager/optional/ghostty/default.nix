@@ -1,0 +1,25 @@
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}: {
+  home.packages = [pkgs.unstable.nerd-fonts.symbols-only];
+  programs.ghostty.enable = true;
+  programs.ghostty = {
+    package = config.lib.nixGL.wrap pkgs.unstable.ghostty;
+    enableFishIntegration = true;
+
+    settings = {
+      font-family = [
+        config.stylix.fonts.monospace.name
+        "Nerd Font Symbols"
+        config.stylix.fonts.emoji.name
+      ];
+      theme = "catppuccin-mocha";
+      font-size = config.preferences.terminal.font-size;
+
+      command = config.preferences.terminal.command;
+    };
+  };
+}

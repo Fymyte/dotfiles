@@ -3,6 +3,7 @@ keys:
     - &fymyte age12qaxunhqmg8tcsyekeqaxqaf4c3aa0u5vk9fsccn04lvs34lrynqxlh03t
   - hosts:
     - &snorlax age17lyw7383njxcv2veeprxe47z9ketpjdsz3rw3vwkhedzz85tw3hq547wmv
+    - &BOB age1zyduny49wgmdra3e5ryvg7xex2ms0jmcn383ud5z6rl2f74qn9qsx63rtj
 
 creation_rules:
   - path_regex: secrets/[^/]+\.yaml
@@ -10,6 +11,7 @@ creation_rules:
       - age:
         - *fymyte
         - *snorlax
+        - *BOB
   - path_regex: secrets/fymyte/[^/]+\.(yaml|json)$
     key_groups:
       - age:

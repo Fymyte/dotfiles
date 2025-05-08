@@ -6,7 +6,6 @@
 }:
 with lib; {
   imports = [
-    ./font.nix
     ./terminal.nix
   ];
 }

@@ -3,7 +3,5 @@
     (map lib.custom.relativeToRoot [
       "modules/common"
     ])
-
-    (lib.custom.scanPaths ./.)
   ];
 }

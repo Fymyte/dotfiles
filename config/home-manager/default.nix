@@ -1,19 +1,5 @@
 {...}: {
   imports = [
-    ./preferences
-    ./theming/stylix
-
-    ./terminals/foot
-    ./terminals/ghostty
-    ./terminals/kitty
-    ./terminals/tmux
-    ./terminals/wezterm
-    ./terminals/zellij
-
-    ./shells/bash
-    ./shells/fish
-
-    ./applications/btop
     ./applications/eza
     ./applications/fzf
     ./applications/git

@@ -1,7 +1,11 @@
-{lib, ...}: {
+{
+  config,
+  lib,
+  ...
+}: {
   imports = lib.flatten [
     (map lib.custom.relativeToRoot [
-      "modules/common"
+      "modules/home-manager"
     ])
 
     (lib.custom.scanPaths ./.)
