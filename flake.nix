@@ -83,13 +83,6 @@
       (builtins.attrNames (builtins.readDir ./home/${user}))))
     (builtins.attrNames (builtins.readDir ./home))));
 
-    #   "fymyte@pipoupc" = mkHomeConfig {
-    #     modules = [
-    #       ./users/fymyte.nix
-    #     ];
-    #   };
-    # };
-
     # One config for each `./hosts/nixos/<host>`
     nixosConfigurations = builtins.listToAttrs (map (host: {
         name = host;
