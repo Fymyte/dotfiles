@@ -24,7 +24,7 @@ in {
       ".gitlab.nvim"
     ];
 
-    extraConfig.credential.helper = ["cache --timeout 21600"];
+    extraConfig.credential.helper = ["cache --timeout 86400"];
   };
 
   programs.git-credential-oauth = {

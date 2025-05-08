@@ -83,16 +83,6 @@
       (builtins.attrNames (builtins.readDir ./home/${user}))))
     (builtins.attrNames (builtins.readDir ./home))));
 
-    # {
-    #   "pguillaume@snorlax" = mkHomeConfig {
-    #     modules = [
-    #       # TODO: separate host config from here
-    #       # Snorlax is not nixos, but still has some specific hm config
-    #       ./hosts/snorlax
-    #       ./users/work/sequans.nix
-    #     ];
-    #   };
-
     #   "fymyte@pipoupc" = mkHomeConfig {
     #     modules = [
     #       ./users/fymyte.nix

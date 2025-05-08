@@ -1,8 +1,4 @@
-{
-  pkgs,
-  lib,
-  ...
-}:
+{pkgs, ...}:
 with pkgs.tmuxPlugins; let
   # Updated version of catppuccin/tmux, which is quite outdated in nixpkgs
   tmux-catppuccin = mkTmuxPlugin {
@@ -26,6 +22,19 @@ with pkgs.tmuxPlugins; let
       hash = "sha256-c/1swuJ6pIiaU8+i62Di/1L/b4V9+5WIVzVVSJJ4ls8=";
     };
   };
+
+  tmux-fzf-url = mkTmuxPlugin {
+    pluginName = "fzf-url";
+    rtpFilePath = "fzf-url.tmux";
+    version = "2025-01-07";
+    src = pkgs.fetchFromGitHub {
+      owner = "wfxr";
+      repo = "tmux-fzf-url";
+      rev = "16381dce1c30fedd75fc775f887be7ea6c7cbf55";
+      hash = "sha256-n3dEUnu0jd1MiWKRCr3HpWlq6Lw4eCYOKLbG30QgSx0=";
+    };
+  };
+
   tmux-resurrect = mkTmuxPlugin {
     pluginName = "resurrect";
     version = "unstable-2023-03-06";
@@ -37,10 +46,13 @@ with pkgs.tmuxPlugins; let
     };
   };
 in {
-  programs.tmux.plugins = [
-    tmux-catppuccin
-    tmux-nvim
+  programs.tmux = {
+    plugins = [
+      tmux-catppuccin
+      tmux-nvim
+      tmux-fzf-url
 
-    tmux-resurrect
-  ];
+      tmux-resurrect
+    ];
+  };
 }
