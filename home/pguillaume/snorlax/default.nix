@@ -25,6 +25,9 @@
       "config/home-manager/optional/git.nix"
       "config/home-manager/optional/nh.nix"
 
+      "config/home-manager/optional/wl-clipboard.nix"
+      "config/home-manager/optional/wlr-screenshot.nix"
+
       "config/home-manager/optional/flatpaks/zen.nix"
     ])
   ];
@@ -49,6 +52,8 @@
       primary = true;
     };
   };
+
+  stylix.targets.kde.enable = false;
 
   # This is not a nixos system
   nixGL.packages = inputs.nixgl.packages;
