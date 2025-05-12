@@ -56,6 +56,9 @@
   stylix.targets.kde.enable = false;
 
   # This is not a nixos system
+  targets.genericLinux.enable = true;
+
+  # This is not a nixos system
   nixGL.packages = inputs.nixgl.packages;
 
   home.sessionVariables = {
