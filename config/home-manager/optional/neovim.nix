@@ -28,6 +28,10 @@
     nodePackages.vscode-json-languageserver
     python3Packages.python-lsp-server
     python3Packages.pylsp-mypy
+
+    # Tree-sitter requires a compiler to build parsers
+    gcc
+    gnumake
   ];
 
   programs.neovim = {
