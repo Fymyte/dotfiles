@@ -6,6 +6,7 @@
 }: {
   stylix.targets.ghostty.enable = false;
   home.packages = [pkgs.unstable.nerd-fonts.symbols-only];
+
   programs.ghostty = {
     enable = true;
     package = config.lib.nixGL.wrap pkgs.unstable.ghostty;
@@ -18,7 +19,7 @@
         config.stylix.fonts.emoji.name
       ];
       theme = "catppuccin-mocha";
-      font-size = config.preferences.terminal.font-size;
+      font-size = config.stylix.fonts.sizes.applications;
 
       command = config.preferences.terminal.command;
     };
