@@ -11,6 +11,7 @@
     "less"
   ];
 in {
+  stylix.targets.fish.enable = false;
   programs.fish = {
     enable = true;
     package = pkgs.unstable.fish;
