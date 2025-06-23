@@ -34,25 +34,12 @@ with pkgs.tmuxPlugins; let
       hash = "sha256-n3dEUnu0jd1MiWKRCr3HpWlq6Lw4eCYOKLbG30QgSx0=";
     };
   };
-
-  tmux-resurrect = mkTmuxPlugin {
-    pluginName = "resurrect";
-    version = "unstable-2023-03-06";
-    src = pkgs.fetchFromGitHub {
-      owner = "tmux-plugins";
-      repo = "tmux-resurrect";
-      rev = "cff343cf9e81983d3da0c8562b01616f12e8d548";
-      hash = "sha256-dkiIbTPIn3ampK7LItndOL69cMVfuJyOIQZL4lt58jQ=";
-    };
-  };
 in {
   programs.tmux = {
     plugins = [
       tmux-catppuccin
       tmux-nvim
       tmux-fzf-url
-
-      tmux-resurrect
     ];
   };
 }
