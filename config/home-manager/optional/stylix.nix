@@ -20,6 +20,10 @@
 in {
   imports = [inputs.stylix.homeModules.stylix];
 
+  home.packages = [
+    pkgs.nerd-fonts.symbols-only
+  ];
+
   stylix = {
     enable = true;
     polarity = "dark";

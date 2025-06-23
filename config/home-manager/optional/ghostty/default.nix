@@ -5,7 +5,6 @@
   ...
 }: {
   stylix.targets.ghostty.enable = false;
-  home.packages = [pkgs.unstable.nerd-fonts.symbols-only];
 
   programs.ghostty = {
     enable = true;
