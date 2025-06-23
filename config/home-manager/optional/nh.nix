@@ -1,6 +1,6 @@
-{lib, ...}: {
+{config, lib, ...}: {
   programs.nh = {
     enable = true;
-    flake = lib.custom.relativeToRoot ".";
+    flake = "${config.xdg.configHome}/dotfiles";
   };
 }
