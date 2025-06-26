@@ -31,8 +31,6 @@ in {
 
   networking.hostName = config.hostSpec.hostName;
 
-  # Force home-manager to use global packages
-  home-manager.useGlobalPkgs = true;
   # If there is a conflict file backed up, use this extension
   home-manager.backupFileExtension = "bak";
 

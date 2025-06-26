@@ -18,8 +18,10 @@ in {
       "wheel" # Primary user is always a sudoer
 
       (ifGroupsExists [
+        "input"
         "audio"
         "video"
+        "dialout"
         "docker"
         "networkmanager"
       ])
@@ -42,6 +44,14 @@ in {
       extraSpecialArgs = {
         inherit inputs outputs;
       };
-      users.${hostSpec.username}.imports = [(lib.custom.relativeToRoot "home/${hostSpec.username}/${hostSpec.hostName}")];
+      users.${hostSpec.username}.imports = [
+        (lib.custom.relativeToRoot "home/${hostSpec.username}/${hostSpec.hostName}")
+        ({outputs, ...}: {
+          nixpkgs = {
+            overlays = builtins.attrValues outputs.overlays;
+            config = {allowUnfree = true;};
+          };
+        })
+      ];
     };
 }
