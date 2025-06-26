@@ -21,7 +21,11 @@ in {
   imports = [inputs.stylix.homeModules.stylix];
 
   home.packages = [
+    # Font packages (force the ones from stylix, so I can disable stylix without missing fonts)
     pkgs.nerd-fonts.symbols-only
+    pkgs.dejavu_fonts
+    pkgs.cascadia-code
+    pkgs.noto-fonts-color-emoji
   ];
 
   stylix = {

@@ -1,7 +1,4 @@
 {pkgs, ...}: {
-  # Only install the symbols, then map them in kitty
-  home.packages = [(pkgs.nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})];
-
   programs.kitty = {
     enable = false;
     font = {
