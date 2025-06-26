@@ -31,7 +31,7 @@ in {
   stylix = {
     enable = true;
     polarity = "dark";
-    image = lib.mkDefault (lib.custom.relativeToRoot "wallpapers/japan-background-digital-art.jpg");
+    image = lib.mkDefault (lib.custom.relativeToRoot "wallpapers/ghost-of-tsuhima.jpg");
     base16Scheme = lib.mkDefault "${pkgs.base24-schemes}/share/themes/catppuccin-mocha.yaml";
     override = {
       scheme = "catppuccin-mocha-peach";
