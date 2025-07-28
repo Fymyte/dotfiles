@@ -63,7 +63,7 @@
     enableIPv6 = false;
   };
 
-  boot.kernelPackages = pkgs.unstable.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   services.xserver.videoDrivers = ["amdgpu"];
   hardware = {
     graphics = {

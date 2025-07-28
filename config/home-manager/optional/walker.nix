@@ -13,5 +13,5 @@
     runAsService = true;
   };
 
-  home.packages = [pkgs.unstable.libqalculate];
+  home.packages = [pkgs.libqalculate];
 }

@@ -31,13 +31,7 @@
   ];
 
   programs.neovim = {
-    package = pkgs.unstable.neovim-unwrapped.overrideAttrs (prev: {
-      meta =
-        prev.meta
-        // {
-          maintainers = prev.meta.teams;
-        };
-    });
+    package = pkgs.unstable.neovim-unwrapped;
     enable = true;
     defaultEditor = true;
   };

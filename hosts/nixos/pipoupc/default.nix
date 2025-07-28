@@ -65,7 +65,7 @@
 
   services.fwupd.enable = true;
 
-  boot.kernelPackages = pkgs.unstable.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   hardware = {
     graphics = {
       enable = true;

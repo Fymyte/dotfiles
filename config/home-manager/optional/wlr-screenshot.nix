@@ -13,7 +13,7 @@ in {
   home.packages = [
     pkgs.unstable.grim
     pkgs.unstable.slurp
-    (config.lib.nixGL.wrap pkgs.unstable.satty)
+    (config.lib.nixGL.wrap pkgs.satty)
 
     screenshot
   ];

@@ -9,7 +9,7 @@
 
   programs.foot = {
     enable = true;
-    package = pkgs.unstable.foot;
+    package = pkgs.foot;
     server.enable = false;
     settings = {
       main = {
