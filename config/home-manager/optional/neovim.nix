@@ -25,9 +25,14 @@
 
     harper
 
+    (pkgs.python3.withPackages (p: (with p; [
+      python-lsp-server
+      python-lsp-server.optional-dependencies
+      pylsp-mypy
+      pylsp-rope
+      pyls-isort
+    ])))
     nodePackages.vscode-json-languageserver
-    python3Packages.python-lsp-server
-    python3Packages.pylsp-mypy
   ];
 
   programs.neovim = {
