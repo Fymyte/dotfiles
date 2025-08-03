@@ -1,5 +1,5 @@
-{pkgs, ...}: {
+{pkgs, lib, ...}: {
   preferences.terminal = {
-    command = "${pkgs.tmux}/bin/tmux";
+    command = "${lib.getBin pkgs.zellij}/bin/zellij";
   };
 }
