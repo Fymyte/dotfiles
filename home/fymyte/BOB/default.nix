@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  inputs,
   ...
 }: {
   imports = lib.flatten [
@@ -53,4 +54,7 @@
       address = "pierguill@gmail.com";
     };
   };
+
+  # This is no-more a nixos system
+  nixGL.packages = inputs.nixgl.packages;
 }
