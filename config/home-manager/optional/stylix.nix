@@ -28,6 +28,8 @@ in {
     pkgs.noto-fonts-color-emoji
   ];
 
+  stylix.targets.kde.enable = false;
+
   stylix = {
     enable = true;
     polarity = "dark";
