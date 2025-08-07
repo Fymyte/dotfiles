@@ -57,4 +57,9 @@
 
   # This is no-more a nixos system
   nixGL.packages = inputs.nixgl.packages;
+
+  sops = {
+    defaultSymlinkPath = "/run/user/1000/sops-nix/secrets";
+    defaultSecretsMountPoint = "/run/user/1000/sops-nix/secrets.d";
+  };
 }
