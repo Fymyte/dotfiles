@@ -28,8 +28,6 @@ in {
     pkgs.noto-fonts-color-emoji
   ];
 
-  stylix.targets.kde.enable = false;
-
   stylix = {
     enable = true;
     polarity = "dark";
@@ -72,12 +70,7 @@ in {
       light = iconTheme.light;
       dark = iconTheme.dark;
     };
-    autoEnable = true;
-  };
-
-  qt = {
-    platformTheme.name = "qtct";
-    style.name = "breeze";
+    autoEnable = false;
   };
 
   # Actually creates the necessary links to generated icons in XDG's standards directories

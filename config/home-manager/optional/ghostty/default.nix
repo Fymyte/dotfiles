@@ -4,8 +4,6 @@
   lib,
   ...
 }: {
-  stylix.targets.ghostty.enable = false;
-
   programs.ghostty = {
     enable = true;
     package = config.lib.nixGL.wrap pkgs.ghostty;
