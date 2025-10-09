@@ -11,6 +11,7 @@
       "config/home-manager/optional/preferences.nix"
       "config/home-manager/optional/stylix.nix"
       "config/home-manager/optional/gtk.nix"
+      "config/home-manager/optional/qt.nix"
 
       "config/home-manager/optional/fish"
       "config/home-manager/optional/bash.nix"
