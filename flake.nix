@@ -2,7 +2,7 @@
   description = "Fymyte's dotfiles";
 
   nixConfig = {
-    extra-substituers = [ "https://fymyte.cachix.org"];
+    extra-substituers = ["https://fymyte.cachix.org"];
     extra-trusted-public-key = ["fymyte.cachix.org-1:RnotB2Ob0moe5UuXtvg1iIjTzgiy3x0FMgZYpa/DnGE="];
   };
 
