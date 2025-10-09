@@ -33,6 +33,7 @@
   outputs = {
     self,
     nixpkgs,
+    nixgl,
     home-manager,
     ...
   } @ inputs: let
@@ -57,7 +58,7 @@
       import nixpkgs {
         inherit system lib;
         config.allowUnfree = true;
-        overlays = [overlays.nixpkgs-unstable overlays.default];
+        overlays = [overlays.nixpkgs-unstable overlays.default nixgl.overlay];
       };
 
     forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
