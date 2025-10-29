@@ -77,8 +77,7 @@
         value = home-manager.lib.homeManagerConfiguration {
           modules = [({...}: {home.username = user;}) ./home/${user}/${host}];
           extraSpecialArgs = {inherit inputs outputs lib;};
-          # TODO: Find how to set system per home config
-          pkgs = pkgsForSystem defaultSystem;
+          pkgs = pkgsForSystem (import ./home/${user}/${host}/system.nix {inherit systems;});
         };
       })
       (builtins.attrNames (builtins.readDir ./home/${user}))))
