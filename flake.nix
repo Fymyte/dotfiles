@@ -23,8 +23,11 @@
     # Declarative flatpak installation (not idempotent)
     nix-flatpak.url = "github:gmodena/nix-flatpak/latest";
 
-    # For the home-manager module
-    walker.url = "github:abenz1267/walker";
+    elephant.url = "github:abenz1267/elephant";
+    walker = {
+      url = "github:abenz1267/walker";
+      inputs.elephant.follows = "elephant";
+    };
 
     sops.url = "github:Mic92/sops-nix";
     sops.inputs.nixpkgs.follows = "nixpkgs";

@@ -7,11 +7,8 @@
     inputs.walker.homeManagerModules.default
   ];
 
-  programs.walker.enable = true;
   programs.walker = {
-    package = pkgs.unstable.walker;
+    enable = true;
     runAsService = true;
   };
-
-  home.packages = [pkgs.libqalculate];
 }
