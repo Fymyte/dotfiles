@@ -26,6 +26,7 @@
       "config/home-manager/optional/git.nix"
       "config/home-manager/optional/nh.nix"
       "config/home-manager/optional/zoxide.nix"
+      "config/home-manager/optional/zk.nix"
 
       "config/home-manager/optional/wl-clipboard.nix"
       "config/home-manager/optional/wlr-screenshot.nix"
