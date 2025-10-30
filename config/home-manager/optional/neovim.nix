@@ -32,6 +32,8 @@
 
       nodePackages.vscode-json-languageserver
 
+      imagemagick
+
       (pkgs.python3.withPackages (
         p:
         (with p; [
