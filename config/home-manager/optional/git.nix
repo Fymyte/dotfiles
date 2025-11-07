@@ -24,7 +24,10 @@ in {
       ".gitlab.nvim"
     ];
 
-    extraConfig.credential.helper = ["cache --timeout 86400"];
+    extraConfig = {
+      credential.helper = ["cache --timeout 86400"];
+      init.defaultBranch = "main";
+    };
   };
 
   programs.git-credential-oauth = {
