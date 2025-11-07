@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: let
-  screenshot = with pkgs.unstable;
+  screenshot = with pkgs;
     writeShellScriptBin "screenshot" ''
       ${grim}/bin/grim -g "$("${slurp}"/bin/slurp -o)" -t ppm - |
           ${config.lib.nixGL.wrap satty}/bin/satty --filename - --fullscreen --initial-tool crop \
@@ -11,8 +11,8 @@
     '';
 in {
   home.packages = [
-    pkgs.unstable.grim
-    pkgs.unstable.slurp
+    pkgs.grim
+    pkgs.slurp
     (config.lib.nixGL.wrap pkgs.satty)
 
     screenshot
