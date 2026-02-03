@@ -27,6 +27,7 @@
       stylua
       selene
       taplo
+      ltex-ls-plus
 
       harper
 
