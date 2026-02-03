@@ -2,8 +2,8 @@
   description = "Fymyte's dotfiles";
 
   nixConfig = {
-    extra-substituers = ["https://fymyte.cachix.org"];
-    extra-trusted-public-key = ["fymyte.cachix.org-1:RnotB2Ob0moe5UuXtvg1iIjTzgiy3x0FMgZYpa/DnGE="];
+    extra-substituers = ["https://fymyte.cachix.org" "https://walker.cachix.org"];
+    extra-trusted-public-key = ["fymyte.cachix.org-1:RnotB2Ob0moe5UuXtvg1iIjTzgiy3x0FMgZYpa/DnGE=" "walker.cachix.org-1:fG8q+uAaMqhsMxWjwvk0IMb4mFPFLqHjuvfwQxE4oJM="];
   };
 
   inputs = {
