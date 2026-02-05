@@ -27,6 +27,7 @@
       "config/home-manager/optional/eza.nix"
       "config/home-manager/optional/git.nix"
       "config/home-manager/optional/nh.nix"
+      "config/home-manager/optional/zoxide.nix"
 
       "config/home-manager/optional/flatpaks/zen.nix"
     ])
