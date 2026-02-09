@@ -13,8 +13,13 @@ in {
   programs.git = {
     enable = true;
     lfs.enable = true;
-    userName = primary.realName;
-    userEmail = primary.address;
+
+    settings.user = {
+      name = primary.realName;
+      email = primary.address;
+      credential.helper = ["cache --timeout 86400"];
+      init.defaultBranch = "main";
+    };
 
     ignores = [
       "compile_commands.json"
@@ -23,11 +28,6 @@ in {
       ".session.vim"
       ".gitlab.nvim"
     ];
-
-    extraConfig = {
-      credential.helper = ["cache --timeout 86400"];
-      init.defaultBranch = "main";
-    };
   };
 
   programs.git-credential-oauth = {

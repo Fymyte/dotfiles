@@ -15,7 +15,7 @@
       tree-sitter
       # Neovim tools
       # TODO: move to separate file
-      nixfmt-rfc-style
+      nixfmt
       yaml-language-server
       lua-language-server
       vale
