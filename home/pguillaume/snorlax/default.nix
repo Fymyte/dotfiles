@@ -59,7 +59,6 @@
 
   # This is not a nixos system
   targets.genericLinux.enable = true;
-  nixGL.packages = inputs.nixgl.packages;
 
   home.sessionVariables = {
     GL_HOST = "gitlab-shared.sequans.com";

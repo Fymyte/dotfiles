@@ -58,7 +58,7 @@
   };
 
   # This is no-more a nixos system
-  nixGL.packages = inputs.nixgl.packages;
+  targets.genericLinux.enable = true;
 
   sops = {
     defaultSymlinkPath = "/run/user/1000/sops-nix/secrets";

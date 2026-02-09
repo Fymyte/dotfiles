@@ -6,7 +6,6 @@
 }: {
   programs.ghostty = {
     enable = true;
-    package = config.lib.nixGL.wrap pkgs.ghostty;
     enableFishIntegration = true;
 
     settings = {
@@ -15,7 +14,7 @@
         "Nerd Font Symbols"
         config.stylix.fonts.emoji.name
       ];
-      theme = "catppuccin-mocha";
+      theme = "Catppuccin Mocha";
       font-size = config.stylix.fonts.sizes.terminal;
 
       command = config.preferences.terminal.command;

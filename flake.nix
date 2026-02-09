@@ -17,9 +17,6 @@
     stylix.url = "github:danth/stylix/release-25.11";
     stylix.inputs.nixpkgs.follows = "nixpkgs";
 
-    nixgl.url = "github:nix-community/nixGL";
-    nixgl.inputs.nixpkgs.follows = "nixpkgs";
-
     # Declarative flatpak installation (not idempotent)
     nix-flatpak.url = "github:gmodena/nix-flatpak/latest";
 
@@ -36,7 +33,6 @@
   outputs = {
     self,
     nixpkgs,
-    nixgl,
     home-manager,
     ...
   } @ inputs: let
@@ -55,13 +51,12 @@
     };
 
     supportedSystems = [systems.x86_64-linux];
-    defaultSystem = systems.x86_64-linux;
 
     pkgsForSystem = system:
       import nixpkgs {
         inherit system lib;
         config.allowUnfree = true;
-        overlays = [overlays.nixpkgs-unstable overlays.default nixgl.overlay];
+        overlays = [overlays.nixpkgs-unstable overlays.default];
       };
 
     forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
