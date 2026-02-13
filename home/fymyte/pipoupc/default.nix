@@ -15,7 +15,7 @@
       "config/home-manager/optional/bash.nix"
       "config/home-manager/optional/ghostty"
       "config/home-manager/optional/wezterm"
-      "config/home-manager/optional/tmux"
+      "config/home-manager/optional/zellij"
       "config/home-manager/optional/neovim.nix"
       "config/home-manager/optional/page.nix"
       "config/home-manager/optional/walker.nix"
