@@ -60,6 +60,7 @@
 
   networking = {
     networkmanager.enable = true;
+    networkmanager.plugins = with pkgs; [networkmanager-openvpn];
     enableIPv6 = false;
   };
 
