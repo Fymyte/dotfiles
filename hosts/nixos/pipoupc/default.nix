@@ -24,6 +24,7 @@
       "config/nixos/optional/services/ssh.nix"
 
       "config/nixos/optional/hyprland.nix"
+      "config/nixos/optional/niri.nix"
       "config/nixos/optional/plasma.nix" # Keep plasma as backup for now
       # TODO: Remove xserver
       "config/nixos/optional/xserver.nix"
