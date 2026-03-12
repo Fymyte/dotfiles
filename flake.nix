@@ -28,6 +28,9 @@
 
     sops.url = "github:Mic92/sops-nix";
     sops.inputs.nixpkgs.follows = "nixpkgs";
+
+    nix-index-database.url = "github:nix-community/nix-index-database";
+    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {
@@ -73,7 +76,11 @@
     homeConfigurations = builtins.listToAttrs (lib.flatten (map (user: (map (host: {
         name = "${user}@${host}";
         value = home-manager.lib.homeManagerConfiguration {
-          modules = [({...}: {home.username = user;}) ./home/${user}/${host}];
+          modules = [
+            inputs.nix-index-database.homeModules.default
+            ({...}: {home.username = user;})
+            ./home/${user}/${host}
+          ];
           extraSpecialArgs = {inherit inputs outputs lib;};
           pkgs = pkgsForSystem (import ./home/${user}/${host}/system.nix {inherit systems;});
         };
