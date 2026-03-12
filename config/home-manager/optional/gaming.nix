@@ -4,7 +4,7 @@
   ...
 }: {
   home.packages = with pkgs; [
-    protonup
+    protonup-ng
     protonup-qt
   ];
 
