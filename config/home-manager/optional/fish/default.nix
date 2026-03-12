@@ -28,15 +28,6 @@ in {
           sha256 = "3d/qL+hovNA4VMWZ0n1L+dSM1lcz7P5CQJyy+/8exTc=";
         };
       }
-      {
-        name = "catppuccin";
-        src = pkgs.fetchFromGitHub {
-          owner = "catppuccin";
-          repo = "fish";
-          rev = "6a85af2ff722ad0f9fbc8424ea0a5c454661dfed";
-          sha256 = "sha256-Oc0emnIUI4LV7QJLs4B2/FQtCFewRFVp7EDv8GawFsA=";
-        };
-      }
     ];
 
     functions = {
