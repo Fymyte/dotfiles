@@ -8,6 +8,8 @@
     (map lib.custom.relativeToRoot [
       "config/home-manager/core"
 
+      "config/home-manager/optional/niri"
+
       "config/home-manager/optional/preferences.nix"
       "config/home-manager/optional/stylix.nix"
       "config/home-manager/optional/gtk.nix"
