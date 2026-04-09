@@ -31,7 +31,7 @@
 
       harper
 
-      nodePackages.vscode-json-languageserver
+      vscode-json-languageserver
 
       imagemagick
 
