@@ -16,6 +16,7 @@
       # Neovim tools
       # TODO: move to separate file
       nixfmt
+      emmylua-ls
       yaml-language-server
       lua-language-server
       vale
