@@ -62,7 +62,7 @@ in {
         name = "Noto Color Emoji";
       };
 
-      sizes.terminal = 14;
+      sizes.terminal = 16;
     };
     iconTheme = {
       enable = true;
