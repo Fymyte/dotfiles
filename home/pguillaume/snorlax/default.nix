@@ -16,6 +16,7 @@
       "config/home-manager/optional/fish"
       "config/home-manager/optional/bash.nix"
       "config/home-manager/optional/ghostty"
+      "config/home-manager/optional/kitty"
       "config/home-manager/optional/zellij"
       "config/home-manager/optional/neovim.nix"
       "config/home-manager/optional/page.nix"
