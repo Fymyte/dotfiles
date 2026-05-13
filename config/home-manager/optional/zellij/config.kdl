@@ -14,6 +14,16 @@ keybinds clear-defaults=true {
         bind "Ctrl Space" { SwitchToMode "normal"; }
     }
 
+    normal {
+        bind "f" {
+            LaunchOrFocusPlugin "session-manager" {
+                floating true
+                move_to_focused_tab true
+            }
+            SwitchToMode "locked"
+        }
+    }
+
     pane {
         bind "left" { MoveFocus "left"; }
         bind "down" { MoveFocus "down"; }
