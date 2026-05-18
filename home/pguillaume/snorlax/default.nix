@@ -29,12 +29,18 @@
       "config/home-manager/optional/zoxide.nix"
       "config/home-manager/optional/zk"
 
+      "config/home-manager/optional/opencode.nix"
+
       "config/home-manager/optional/wl-clipboard.nix"
       "config/home-manager/optional/wlr-screenshot.nix"
 
       "config/home-manager/optional/flatpaks/zen.nix"
     ])
+
+    ./opencode.nix
   ];
+
+  sops.age.sshKeyPaths = ["${config.home.homeDirectory}/.ssh/id_ed25519"];
 
   home.homeDirectory = "/data/exports/users/pguillaume/";
 
