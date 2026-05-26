@@ -6,7 +6,7 @@
   litellm-sops-secret = "litellm-api-key";
   litellm-api-key-file = "litellm-api-key.txt";
 in {
-  sops.secrets."${litellm-sops-secret}" = {sopsFile = lib.custom.relativeToRoot "secrets/hosts/snorlax.yaml";};
+  sops.secrets."${litellm-sops-secret}".sopsFile = lib.custom.relativeToRoot "secrets/hosts/snorlax.yaml";
   sops.templates."${litellm-api-key-file}".content = config.sops.placeholder."${litellm-sops-secret}";
 
   programs.opencode = {
