@@ -17,6 +17,7 @@
       "config/nixos/optional/plymouth.nix"
 
       "config/nixos/optional/zen-browser.nix"
+      "config/nixos/optional/kde-connect.nix"
 
       "config/nixos/optional/services/printing.nix"
       "config/nixos/optional/services/flatpak.nix"
