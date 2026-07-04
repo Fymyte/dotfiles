@@ -10,6 +10,9 @@
     package = pkgs.unstable.neovim-unwrapped;
     enable = true;
     defaultEditor = true;
+    withRuby = false;
+    withPython3 = false;
+    sideloadInitLua = true;
 
     extraPackages = with pkgs.unstable; [
       tree-sitter

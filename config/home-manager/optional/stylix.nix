@@ -64,7 +64,7 @@ in {
 
       sizes.terminal = 16;
     };
-    iconTheme = {
+    icons = {
       enable = true;
       package = iconTheme.package;
       light = iconTheme.light;
