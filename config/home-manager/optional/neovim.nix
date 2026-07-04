@@ -21,7 +21,6 @@
       nixfmt
       emmylua-ls
       yaml-language-server
-      lua-language-server
       vale
       nixd
       nil
