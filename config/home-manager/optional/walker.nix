@@ -17,6 +17,16 @@ in {
     config = {
       providers = {
         default = ["desktopapplications"];
+        prefixes = [
+          {
+            provider = "runner";
+            prefix = "sh";
+          }
+          {
+            provider = "bluetooth";
+            prefix = "bl";
+          }
+        ];
       };
     };
   };
