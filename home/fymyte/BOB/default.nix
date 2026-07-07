@@ -32,6 +32,8 @@
 
       "config/home-manager/optional/flatpaks/zen.nix"
     ])
+
+    ./monitors.nix
   ];
 
   hostSpec = {
