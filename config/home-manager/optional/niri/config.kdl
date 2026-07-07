@@ -7,29 +7,6 @@ input {
     }
 }
 
-output "PNP(AOC) 2460G4 0x000028EA" {
-  mode "1920x1080@144.001"
-  position x=0 y=0
-  variable-refresh-rate on-demand=true
-  transform "270"
-
-  layout {
-    preset-column-widths {
-        proportion 0.5
-        proportion 1.0
-    }
-
-    default-column-width { proportion 1.0; }
-  }
-}
-
-output "PNP(BNQ) BenQ EX3501R 85K00663019" {
-  mode "3440x1440@99.982"
-  variable-refresh-rate on-demand=true
-  position x=1080 y=250
-  focus-at-startup
-}
-
 layout {
     gaps 5
 
@@ -69,28 +46,13 @@ spawn-at-startup "hypridle"
 // spawn-at-startup "walker" "--gapplication-service"
 spawn-at-startup "~/.config/niri/dynamic-window-rules.py"
 
-// To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
-// spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
-
 hotkey-overlay {
-    // Uncomment this line to disable the "Important Hotkeys" pop-up at startup.
     skip-at-startup
 }
 
-// Uncomment this line to ask the clients to omit their client-side decorations if possible.
-// If the client will specifically ask for CSD, the request will be honored.
-// Additionally, clients will be informed that they are tiled, removing some client-side rounded corners.
-// This option will also fix border/focus ring drawing behind some semitransparent windows.
-// After enabling or disabling this, you need to restart the apps for this to take effect.
 prefer-no-csd
 
-// You can change the path where screenshots are saved.
-// A ~ at the front will be expanded to the home directory.
-// The path is formatted with strftime(3) to give you the screenshot date and time.
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
-
-// You can also set this to null to disable saving screenshots to disk.
-// screenshot-path null
 
 animations {
     // Twice as fast animations
@@ -103,6 +65,7 @@ window-rule {
     clip-to-geometry true
 }
 
+// Enable border for floating windows
 window-rule {
     match is-floating=true
     border {
@@ -119,19 +82,13 @@ window-rule {
 // Work around WezTerm's initial configure bug
 // by setting an empty default-column-width.
 window-rule {
-    // This regular expression is intentionally made as specific as possible,
-    // since this is the default config, and we want no false positives.
-    // You can get away with just app-id="wezterm" if you want.
     match app-id=r#"^org\.wezfurlong\.wezterm$"#
     default-column-width {}
 }
 
-// Open the Firefox picture-in-picture player as floating by default.
 window-rule {
-    // This app-id regular expression will work for both:
-    // - host Firefox (app-id is "firefox")
-    // - Flatpak Firefox (app-id is "org.mozilla.firefox")
     match app-id=r#"zen$"# title="^Picture-in-Picture$"
+    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
     open-floating true
 }
 
@@ -236,14 +193,6 @@ binds {
     Mod+Shift+Ctrl+K     { move-column-to-monitor-up; }
     Mod+Shift+Ctrl+L     { move-column-to-monitor-right; }
 
-    // Alternatively, there are commands to move just a single window:
-    // Mod+Shift+Ctrl+Left  { move-window-to-monitor-left; }
-    // ...
-
-    // And you can also move a whole workspace to another monitor:
-    // Mod+Shift+Ctrl+Left  { move-workspace-to-monitor-left; }
-    // ...
-
     Mod+Page_Down      { focus-workspace-down; }
     Mod+Page_Up        { focus-workspace-up; }
     Mod+Ctrl+Page_Down { move-column-to-workspace-down; }
@@ -251,21 +200,11 @@ binds {
     Mod+Ctrl+N         { move-column-to-workspace-down; }
     Mod+Ctrl+P         { move-column-to-workspace-up; }
 
-    // Alternatively, there are commands to move just a single window:
-    // Mod+Ctrl+Page_Down { move-window-to-workspace-down; }
-    // ...
-
     Mod+Shift+Page_Down { move-workspace-down; }
     Mod+Shift+Page_Up   { move-workspace-up; }
     Mod+Shift+N         { move-workspace-down; }
     Mod+Shift+P         { move-workspace-up; }
 
-    // You can bind mouse wheel scroll ticks using the following syntax.
-    // These binds will change direction based on the natural-scroll setting.
-    //
-    // To avoid scrolling through workspaces really fast, you can use
-    // the cooldown-ms property. The bind will be rate-limited to this value.
-    // You can set a cooldown on any bind, but it's most useful for the wheel.
     Mod+WheelScrollDown      cooldown-ms=150 { focus-workspace-down; }
     Mod+WheelScrollUp        cooldown-ms=150 { focus-workspace-up; }
     Mod+Ctrl+WheelScrollDown cooldown-ms=150 { move-column-to-workspace-down; }

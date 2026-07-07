@@ -1,3 +1,6 @@
 {...}: {
-  xdg.configFile."niri/config.kdl".text = builtins.readFile ./config.kdl;
+  programs.niri = {
+    enable = true;
+    config = builtins.readFile ./config.kdl;
+  };
 }
