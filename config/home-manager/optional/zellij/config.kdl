@@ -15,10 +15,16 @@ keybinds clear-defaults=true {
     }
 
     normal {
+        // Locked mode passes every key through to the pane, which is what fzf needs.
         bind "f" {
-            LaunchOrFocusPlugin "session-manager" {
+            Run "fish" "-c" "zellij_tab_switcher" {
                 floating true
-                move_to_focused_tab true
+                close_on_exit true
+                name "tab-switcher"
+                x "30%"
+                y "30%"
+                width "40%"
+                height "40%"
             }
             SwitchToMode "locked"
         }
