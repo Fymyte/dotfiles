@@ -19,7 +19,6 @@
       "config/home-manager/optional/kitty"
       "config/home-manager/optional/zellij"
       "config/home-manager/optional/neovim.nix"
-      "config/home-manager/optional/page.nix"
       "config/home-manager/optional/walker.nix"
       "config/home-manager/optional/btop.nix"
       "config/home-manager/optional/fzf.nix"
