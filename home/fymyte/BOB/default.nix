@@ -31,6 +31,8 @@
       "config/home-manager/optional/zoxide.nix"
 
       "config/home-manager/optional/flatpaks/zen.nix"
+      "config/home-manager/optional/flatpaks/goofcord.nix"
+      "config/home-manager/optional/flatpaks/vlc.nix"
     ])
 
     ./monitors.nix
