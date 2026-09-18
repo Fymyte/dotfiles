@@ -16,8 +16,8 @@
       ];
       theme = "Catppuccin Mocha";
       font-size = config.stylix.fonts.sizes.terminal;
-
       command = config.preferences.terminal.command;
+      window-padding-balance = true;
     };
   };
 }
