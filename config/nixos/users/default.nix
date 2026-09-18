@@ -24,6 +24,8 @@ in {
         "dialout"
         "docker"
         "networkmanager"
+        "scanner"
+        "lp"
       ])
     ];
 

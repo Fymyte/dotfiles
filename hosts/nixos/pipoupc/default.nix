@@ -74,6 +74,9 @@
       enable = true;
       enable32Bit = true;
     };
+    sane = {
+      enable = true;
+    };
   };
 
   system.stateVersion = "24.05"; # Did you read the comment?
