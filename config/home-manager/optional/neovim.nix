@@ -1,5 +1,6 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: let
+  editorcmd = "nvim --cmd 'let g:flatten_wait=1'";
+in {
   stylix.targets.neovim.enable = false;
 
   home.packages = [
@@ -9,7 +10,7 @@
   programs.neovim = {
     package = pkgs.unstable.neovim-unwrapped;
     enable = true;
-    defaultEditor = true;
+    defaultEditor = false;
     withRuby = false;
     withPython3 = false;
     sideloadInitLua = true;
@@ -49,5 +50,10 @@
         ])
       ))
     ];
+  };
+
+  home.sessionVariables = {
+    EDITOR = editorcmd;
+    VISUAL = editorcmd;
   };
 }
