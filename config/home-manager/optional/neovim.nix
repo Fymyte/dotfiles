@@ -1,10 +1,12 @@
 {pkgs, ...}: let
-  editorcmd = "nvim --cmd 'let g:flatten_wait=1'";
+  editorcmd = "_nvim_wait";
+  nvim-wait = pkgs.writeShellScriptBin editorcmd ''exec nvim --cmd 'let g:flatten_wait=1' "$@"'';
 in {
   stylix.targets.neovim.enable = false;
 
   home.packages = [
     pkgs.ruff
+    nvim-wait
   ];
 
   programs.neovim = {
@@ -40,8 +42,7 @@ in {
       imagemagick
 
       (pkgs.python3.withPackages (
-        p:
-        (with p; [
+        p: (with p; [
           python-lsp-server
           python-lsp-server.optional-dependencies
           pylsp-mypy
@@ -49,6 +50,7 @@ in {
           pyls-isort
         ])
       ))
+      basedpyright
     ];
   };
 
