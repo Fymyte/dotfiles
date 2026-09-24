@@ -14,5 +14,11 @@ in {
       inherit (prev) system;
       config.allowUnfree = true;
     };
+
+    nixpkgs-master = import inputs.nixpkgs-master {
+      inherit prev;
+      inherit (prev) system;
+      config.allowUnfree = true;
+    };
   };
 }
