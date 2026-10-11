@@ -23,6 +23,7 @@
       "config/nixos/optional/services/flatpak.nix"
       "config/nixos/optional/services/sddm.nix"
       "config/nixos/optional/services/ssh.nix"
+      "config/nixos/optional/services/tailscale.nix"
 
       "config/nixos/optional/hyprland.nix"
       "config/nixos/optional/niri.nix"
