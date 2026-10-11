@@ -26,6 +26,7 @@
       "config/home-manager/optional/nh.nix"
       "config/home-manager/optional/kde-connect.nix"
       "config/home-manager/optional/zoxide.nix"
+      "config/home-manager/optional/languagetool.nix"
 
       "config/home-manager/optional/flatpaks/zen.nix"
     ])
