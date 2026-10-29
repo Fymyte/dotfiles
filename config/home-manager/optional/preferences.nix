@@ -1,5 +1,5 @@
 {pkgs, lib, ...}: {
   preferences.terminal = {
-    command = "${lib.getBin pkgs.zellij}/bin/zellij";
+    command = "${lib.getBin config.programs.zellij.package}/bin/zellij";
   };
 }
