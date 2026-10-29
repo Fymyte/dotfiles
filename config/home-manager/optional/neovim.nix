@@ -40,6 +40,7 @@ in {
       vscode-json-languageserver
 
       imagemagick
+      ghostscript
       basedpyright
     ];
   };
