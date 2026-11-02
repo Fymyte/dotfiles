@@ -1,7 +1,14 @@
 {pkgs, ...}: let
+  # TODO: drop the patch once upstream stops its URL detection from replacing the OSC 8
+  # links an application sets. It cuts long links that nvim wraps in a split
+  zellij = pkgs.zellij.override {
+    zellij-unwrapped = pkgs.zellij-unwrapped.overrideAttrs (old: {
+      patches = (old.patches or []) ++ [./osc8-link-detection.patch];
+    });
+  };
   tab-switcher = pkgs.writeShellApplication {
     name = "zellij_tab_switcher";
-    runtimeInputs = [pkgs.zellij pkgs.fzf pkgs.jq];
+    runtimeInputs = [zellij pkgs.fzf pkgs.jq];
     text = builtins.readFile ./tab-switcher.sh;
   };
 in {
@@ -11,6 +18,7 @@ in {
   stylix.targets.zellij.enable = false;
   programs.zellij = {
     enable = true;
+    package = zellij;
   };
 
   home.packages = [

@@ -1,0 +1,105 @@
+diff --git a/zellij-server/src/panes/hyperlink_tracker.rs b/zellij-server/src/panes/hyperlink_tracker.rs
+index a8bd866..c301b9b 100644
+--- a/zellij-server/src/panes/hyperlink_tracker.rs
++++ b/zellij-server/src/panes/hyperlink_tracker.rs
+@@ -173,7 +173,11 @@ impl HyperlinkTracker {
+         let trimmed_url = self.trim_trailing_punctuation(&self.buffer);
+         let trimmed_len = trimmed_url.chars().count();
+ 
+-        if self.is_valid_url(&trimmed_url) {
++        // An OSC 8 link from the application carries the full target, while the
++        // detected text can be cut, e.g. where the application wraps a line itself
++        if self.is_valid_url(&trimmed_url)
++            && !has_osc8_link(&self.cursor_positions, viewport, lines_above)
++        {
+             // Calculate how many characters we trimmed
+             let chars_trimmed = original_len.saturating_sub(trimmed_len);
+ 
+@@ -311,6 +315,31 @@ impl HyperlinkTracker {
+     }
+ }
+ 
++fn has_osc8_link(
++    cells: &[HyperlinkPosition],
++    viewport: &VecDeque<Row>,
++    lines_above: &VecDeque<Row>,
++) -> bool {
++    cells.iter().any(|cell| {
++        let row = if cell.y < 0 {
++            usize::try_from(lines_above.len() as isize + cell.y)
++                .ok()
++                .and_then(|index| lines_above.get(index))
++        } else {
++            viewport.get(cell.y as usize)
++        };
++        row.is_some_and(|row| {
++            let index = row.absolute_character_index(cell.x.max(0) as usize);
++            matches!(
++                row.columns
++                    .get(index)
++                    .and_then(|character| character.styles.link_anchor),
++                Some(LinkAnchor::Start(_))
++            )
++        })
++    })
++}
++
+ #[cfg(test)]
+ mod tests {
+     use super::*;
+@@ -1362,4 +1391,55 @@ mod tests {
+             }
+         }
+     }
++
++    #[test]
++    fn a_detected_url_does_not_replace_the_osc8_link_of_its_cells() {
++        let mut tracker = HyperlinkTracker::new();
++        let mut viewport = create_test_viewport(10, 40);
++        let mut lines_above = VecDeque::new();
++        let mut link_handler = LinkHandler::new();
++
++        // An application wraps a long OSC 8 link itself: the first row shows only
++        // the start of the url, then the cursor jumps to the next row of its window
++        let shown = "https://example.com/a/very/long/";
++        let link = link_handler
++            .dispatch_osc8(&[b"8", b"", b"https://example.com/a/very/long/path"])
++            .expect("an osc 8 anchor");
++        populate_row_with_text(&mut viewport[0], shown, 0);
++        for column in 0..shown.len() {
++            let index = viewport[0].absolute_character_index(column);
++            viewport[0].columns[index]
++                .styles
++                .update(|styles| styles.link_anchor = Some(link));
++        }
++
++        for (column, ch) in shown.chars().enumerate() {
++            let cursor = create_test_cursor(column, 0);
++            tracker.update(
++                ch,
++                &cursor,
++                &mut viewport,
++                &mut lines_above,
++                &mut link_handler,
++            );
++        }
++        let cursor = create_test_cursor(10, 1);
++        tracker.update(
++            'p',
++            &cursor,
++            &mut viewport,
++            &mut lines_above,
++            &mut link_handler,
++        );
++
++        for column in 0..shown.len() {
++            let index = viewport[0].absolute_character_index(column);
++            assert_eq!(
++                viewport[0].columns[index].styles.link_anchor,
++                Some(link),
++                "the detected url replaced the link the application set at column {}",
++                column
++            );
++        }
++    }
+ }
