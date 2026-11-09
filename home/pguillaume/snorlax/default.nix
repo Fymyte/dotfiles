@@ -34,6 +34,7 @@
 
       "config/home-manager/optional/wl-clipboard.nix"
       "config/home-manager/optional/wlr-screenshot.nix"
+      "config/home-manager/optional/sap.nix"
 
       "config/home-manager/optional/flatpaks/zen.nix"
     ])
