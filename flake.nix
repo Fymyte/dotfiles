@@ -37,7 +37,7 @@
     nix-index-database.url = "github:nix-community/nix-index-database";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
 
-    sap.url = "git+ssh://git@gitlab-shared.sequans.com/pguillaume/sap-timesheet-filler.git?ref=main";
+    sap.url = "git+ssh://git@gitlab-shared.sequans.com/pguillaume/sap-timesheet-filler.git";
     sap.inputs.nixpkgs.follows = "nixpkgs";
   };
 
