@@ -1,8 +1,8 @@
 {pkgs, ...}: let
   # TODO: drop the patch once upstream stops its URL detection from replacing the OSC 8
   # links an application sets. It cuts long links that nvim wraps in a split
-  zellij = pkgs.zellij.override {
-    zellij-unwrapped = pkgs.zellij-unwrapped.overrideAttrs (old: {
+  zellij = pkgs.unstable.zellij.override {
+    zellij-unwrapped = pkgs.unstable.zellij-unwrapped.overrideAttrs (old: {
       patches = (old.patches or []) ++ [./osc8-link-detection.patch];
     });
   };

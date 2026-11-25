@@ -1,105 +1,133 @@
 diff --git a/zellij-server/src/panes/hyperlink_tracker.rs b/zellij-server/src/panes/hyperlink_tracker.rs
-index a8bd866..c301b9b 100644
+index 6cbdc7b0..df7bda64 100644
 --- a/zellij-server/src/panes/hyperlink_tracker.rs
 +++ b/zellij-server/src/panes/hyperlink_tracker.rs
-@@ -173,7 +173,11 @@ impl HyperlinkTracker {
-         let trimmed_url = self.trim_trailing_punctuation(&self.buffer);
-         let trimmed_len = trimmed_url.chars().count();
- 
--        if self.is_valid_url(&trimmed_url) {
-+        // An OSC 8 link from the application carries the full target, while the
-+        // detected text can be cut, e.g. where the application wraps a line itself
-+        if self.is_valid_url(&trimmed_url)
-+            && !has_osc8_link(&self.cursor_positions, viewport, lines_above)
+@@ -263,7 +263,11 @@ fn link_urls_in_line(
+         let text: String = cells[at..end].iter().map(|cell| cell.character).collect();
+         let url = trim_trailing_punctuation(&text);
+         let kept = url.chars().count();
+-        if is_valid_url(url) {
++        // An OSC 8 link carries the full target, while the detected text can be cut
++        // or run past it, e.g. where the application wraps a line itself
++        if is_valid_url(url)
++            && !has_osc8_link(lines_above, viewport, &cells[at..at + kept], link_handler)
 +        {
-             // Calculate how many characters we trimmed
-             let chars_trimmed = original_len.saturating_sub(trimmed_len);
- 
-@@ -311,6 +315,31 @@ impl HyperlinkTracker {
-     }
+             let previous = start_anchor_at(lines_above, viewport, cells[at]);
+             if !linked_exactly(lines_above, viewport, &cells[at..], kept, previous) {
+                 let anchor = link_handler.new_link_from_url(url.to_owned());
+@@ -277,6 +281,22 @@ fn link_urls_in_line(
+     deferred
  }
  
 +fn has_osc8_link(
-+    cells: &[HyperlinkPosition],
-+    viewport: &VecDeque<Row>,
 +    lines_above: &VecDeque<Row>,
++    viewport: &VecDeque<Row>,
++    cells: &[Cell],
++    link_handler: &LinkHandler,
 +) -> bool {
 +    cells.iter().any(|cell| {
-+        let row = if cell.y < 0 {
-+            usize::try_from(lines_above.len() as isize + cell.y)
-+                .ok()
-+                .and_then(|index| lines_above.get(index))
-+        } else {
-+            viewport.get(cell.y as usize)
-+        };
-+        row.is_some_and(|row| {
-+            let index = row.absolute_character_index(cell.x.max(0) as usize);
-+            matches!(
-+                row.columns
-+                    .get(index)
-+                    .and_then(|character| character.styles.link_anchor),
-+                Some(LinkAnchor::Start(_))
-+            )
-+        })
++        row_ref(lines_above, viewport, cell.y)
++            .and_then(|row| row.columns.get(cell.index))
++            .and_then(|character| character.styles.link_anchor)
++            .is_some_and(|anchor| {
++                matches!(anchor, LinkAnchor::Start(_)) && !link_handler.is_detected(anchor)
++            })
 +    })
 +}
 +
- #[cfg(test)]
- mod tests {
-     use super::*;
-@@ -1362,4 +1391,55 @@ mod tests {
-             }
-         }
+ fn start_anchor_at(
+     lines_above: &VecDeque<Row>,
+     viewport: &VecDeque<Row>,
+@@ -755,4 +775,42 @@ mod tests {
+         assert!(!is_valid_url("https://"));
+         assert!(!is_valid_url("short"));
      }
 +
 +    #[test]
 +    fn a_detected_url_does_not_replace_the_osc8_link_of_its_cells() {
-+        let mut tracker = HyperlinkTracker::new();
-+        let mut viewport = create_test_viewport(10, 40);
-+        let mut lines_above = VecDeque::new();
-+        let mut link_handler = LinkHandler::new();
-+
-+        // An application wraps a long OSC 8 link itself: the first row shows only
-+        // the start of the url, then the cursor jumps to the next row of its window
++        // Neovim wraps a long OSC 8 link itself in a split window. The first row
++        // shows the start of the url, then the split border and the other window
 +        let shown = "https://example.com/a/very/long/";
-+        let link = link_handler
++        let mut viewport = screen(
++            &[
++                (&format!("{}│fn main() {{}}", shown), true),
++                (&format!("{:32}│", "path"), true),
++            ],
++            50,
++        );
++        let mut handler = LinkHandler::new();
++        let link = handler
 +            .dispatch_osc8(&[b"8", b"", b"https://example.com/a/very/long/path"])
 +            .expect("an osc 8 anchor");
-+        populate_row_with_text(&mut viewport[0], shown, 0);
-+        for column in 0..shown.len() {
-+            let index = viewport[0].absolute_character_index(column);
-+            viewport[0].columns[index]
-+                .styles
-+                .update(|styles| styles.link_anchor = Some(link));
-+        }
-+
-+        for (column, ch) in shown.chars().enumerate() {
-+            let cursor = create_test_cursor(column, 0);
-+            tracker.update(
-+                ch,
-+                &cursor,
-+                &mut viewport,
-+                &mut lines_above,
-+                &mut link_handler,
-+            );
-+        }
-+        let cursor = create_test_cursor(10, 1);
-+        tracker.update(
-+            'p',
-+            &cursor,
-+            &mut viewport,
-+            &mut lines_above,
-+            &mut link_handler,
-+        );
-+
-+        for column in 0..shown.len() {
-+            let index = viewport[0].absolute_character_index(column);
-+            assert_eq!(
-+                viewport[0].columns[index].styles.link_anchor,
-+                Some(link),
-+                "the detected url replaced the link the application set at column {}",
++        for (y, len) in [(0, shown.len()), (1, "path".len())] {
++            for column in &mut viewport[y].columns[..len] {
 +                column
-+            );
++                    .styles
++                    .update(|styles| styles.link_anchor = Some(link));
++            }
++            viewport[y].columns[len]
++                .styles
++                .update(|styles| styles.link_anchor = Some(LinkAnchor::End));
 +        }
++        link_all(&mut VecDeque::new(), &mut viewport, None, &mut handler);
++        let marked = anchors(&viewport[0]);
++        assert!(
++            marked[..shown.len()]
++                .iter()
++                .all(|anchor| *anchor == Some(link)),
++            "the detected url replaced the link the application set: {:?}",
++            &marked[..shown.len()]
++        );
++        assert_eq!(handler.links().len(), 1);
 +    }
  }
+diff --git a/zellij-server/src/panes/link_handler.rs b/zellij-server/src/panes/link_handler.rs
+index 9bf369db..478b94b1 100644
+--- a/zellij-server/src/panes/link_handler.rs
++++ b/zellij-server/src/panes/link_handler.rs
+@@ -13,6 +13,8 @@ pub struct LinkHandler {
+ pub struct Link {
+     pub id: Option<String>,
+     pub uri: String,
++    /// Set for a url the hyperlink tracker found in the text, unset for an OSC 8 link
++    pub detected: bool,
+ }
+ 
+ impl LinkHandler {
+@@ -46,7 +48,14 @@ impl LinkHandler {
+                     }
+                 }
+                 let anchor = LinkAnchor::Start(self.link_index);
+-                self.links.insert(self.link_index, Link { id, uri });
++                self.links.insert(
++                    self.link_index,
++                    Link {
++                        id,
++                        uri,
++                        detected: false,
++                    },
++                );
+                 self.link_index += 1;
+                 anchor
+             })
+@@ -63,12 +72,20 @@ impl LinkHandler {
+             Link {
+                 id: Some(self.link_index.to_string()),
+                 uri: url,
++                detected: true,
+             },
+         );
+         self.link_index += 1;
+         anchor
+     }
+ 
++    pub fn is_detected(&self, link_anchor: LinkAnchor) -> bool {
++        match link_anchor {
++            LinkAnchor::Start(index) => self.links.get(&index).is_some_and(|link| link.detected),
++            LinkAnchor::End => false,
++        }
++    }
++
+     pub fn uri(&self, link_anchor: Option<LinkAnchor>) -> Option<&str> {
+         match link_anchor {
+             Some(LinkAnchor::Start(index)) => self.links.get(&index).map(|link| link.uri.as_str()),
